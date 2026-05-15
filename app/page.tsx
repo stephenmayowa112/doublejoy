@@ -2,12 +2,43 @@
 
 import { Search, Heart } from 'lucide-react'
 import Image from 'next/image'
+import { useState } from 'react'
 
 export default function Home() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     element?.scrollIntoView({ behavior: 'smooth' })
   }
+
+  // Gallery images
+  const galleryImages = [
+    '/images/DSC_8374 2.jpg.jpeg',
+    '/images/DSC_8382.jpg.jpeg',
+    '/images/DSC_8392.jpg.jpeg',
+    '/images/DSC_8403.jpg.jpeg',
+    '/images/DSC_8405.jpg.jpeg',
+    '/images/DSC_8408.jpg.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.47.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.47a.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.47b.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.47c.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.48d.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.48e.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.48f.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.48g.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.49.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.49h.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.49k.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.49l.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.50aa.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.50asd.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.51bn.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.53.21bas.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 14.02.18mnb.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 14.42.49nhgs.jpeg',
+  ]
 
   return (
     <main className="min-h-screen bg-white">
@@ -95,14 +126,14 @@ export default function Home() {
             </div>
 
             {/* Couple Image Placeholder */}
-            <div className="relative z-10 mx-auto w-64 md:w-96 h-96 md:h-[500px] bg-gradient-to-br from-deep-purple to-royal-purple rounded-t-full overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 flex items-center justify-center text-white text-center p-8">
-                <div>
-                  <Heart size={48} className="mx-auto mb-4" />
-                  <p className="text-lg font-serif">Couple Photo</p>
-                  <p className="text-sm mt-2 opacity-80">Cutout style image</p>
-                </div>
-              </div>
+            <div className="relative z-10 mx-auto w-64 md:w-96 h-96 md:h-[500px] rounded-t-full overflow-hidden shadow-2xl">
+              <Image
+                src="/images/WhatsApp Image 2026-05-14 at 13.47.47.jpeg"
+                alt="Ayobami & Gabriel"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
           </div>
 
@@ -144,13 +175,13 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Image */}
             <div className="order-2 md:order-1">
-              <div className="w-full h-96 md:h-[500px] bg-gradient-to-br from-royal-purple to-deep-purple rounded-lg overflow-hidden shadow-xl">
-                <div className="w-full h-full flex items-center justify-center text-white">
-                  <div className="text-center">
-                    <Heart size={48} className="mx-auto mb-4" />
-                    <p className="text-lg font-serif">Our Story Photo</p>
-                  </div>
-                </div>
+              <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl">
+                <Image
+                  src="/images/DSC_8382.jpg.jpeg"
+                  alt="Our Story"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
 
@@ -214,15 +245,13 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
             {/* Gabriel */}
             <div className="text-center">
-              <div className="w-full h-96 md:h-[500px] bg-gray-300 rounded-lg overflow-hidden shadow-xl mb-6 grayscale">
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-400 to-gray-600 text-white">
-                  <div>
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-white/20 flex items-center justify-center text-4xl font-serif">
-                      G
-                    </div>
-                    <p className="text-lg font-serif">Portrait Photo</p>
-                  </div>
-                </div>
+              <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl mb-6 grayscale hover:grayscale-0 transition-all duration-500">
+                <Image
+                  src="/images/DSC_8392.jpg.jpeg"
+                  alt="Gabriel Ayobamidele"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <h3 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
                 GABRIEL
@@ -237,15 +266,13 @@ export default function Home() {
 
             {/* Ayobami */}
             <div className="text-center">
-              <div className="w-full h-96 md:h-[500px] bg-gray-300 rounded-lg overflow-hidden shadow-xl mb-6 grayscale">
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-400 to-gray-600 text-white">
-                  <div>
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-white/20 flex items-center justify-center text-4xl font-serif">
-                      A
-                    </div>
-                    <p className="text-lg font-serif">Portrait Photo</p>
-                  </div>
-                </div>
+              <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl mb-6 grayscale hover:grayscale-0 transition-all duration-500">
+                <Image
+                  src="/images/DSC_8403.jpg.jpeg"
+                  alt="Ayobami Elizabeth"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <h3 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
                 AYOBAMI
@@ -364,14 +391,18 @@ export default function Home() {
           </h2>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+            {galleryImages.map((image, index) => (
               <div 
-                key={item}
-                className="aspect-square bg-gradient-to-br from-light-purple to-royal-purple rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+                key={index}
+                className="relative aspect-square rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+                onClick={() => setSelectedImage(image)}
               >
-                <div className="w-full h-full flex items-center justify-center text-white">
-                  <Heart size={32} className="opacity-50" />
-                </div>
+                <Image
+                  src={image}
+                  alt={`Gallery image ${index + 1}`}
+                  fill
+                  className="object-cover"
+                />
               </div>
             ))}
           </div>
@@ -383,6 +414,29 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Image Lightbox Modal */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            className="absolute top-4 right-4 text-white text-4xl hover:text-wedding-gold transition-colors"
+            onClick={() => setSelectedImage(null)}
+          >
+            ×
+          </button>
+          <div className="relative max-w-5xl max-h-[90vh] w-full h-full">
+            <Image
+              src={selectedImage}
+              alt="Gallery image"
+              fill
+              className="object-contain"
+            />
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <footer className="bg-deep-purple text-white py-8 px-4">
