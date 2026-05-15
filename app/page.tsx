@@ -191,19 +191,53 @@ export default function Home() {
                 .......in the beginning
               </h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                In the summer of "DoubleJoy", at a moment orchestrated by divine grace, 
-                Gabriel and Ayobami's paths crossed for the first time. What started as a 
-                casual introduction quickly blossomed into something far more meaningful—a 
-                connection rooted in faith, laughter, and shared dreams.
+                Quite the weird love story, honestly.
               </p>
               <p className="text-gray-700 leading-relaxed mb-4">
-                Their journey has been one of growth, patience, and unwavering support for 
-                one another. Through every season, they've discovered that love is not just 
-                a feeling, but a choice—a daily commitment to honor, cherish, and uplift 
-                each other.
+                We actually met at the gym. And yes! this is your sign to stop ignoring that 
+                membership card and "start next Monday." 🌚
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                Funny thing is, the year before, I had promised myself I'd finally take fitness 
+                seriously after my birthday. I had a gym close to my house, but it was under 
+                renovation, and if I'm being honest, I also wanted somewhere a little less 
+                familiar. Somewhere I could sweat in peace without seeing half the neighbourhood. 
+                So I switched locations.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                Little did I know I was not only going there to lose weight… apparently, I went 
+                there to lose my singlehood too.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                I had been consistent for a couple of months when we met. And the irony? On the 
+                exact day we met, I was exhausted, irritated, and fully ready to go home. I walked 
+                up to my coach to announce my resignation from fitness for the day, and standing 
+                there was this seemingly calm, gentleman-looking human being. (Heavy emphasis on 
+                *seemingly*, because now? Hmm. That's another conversation.)
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                My coach introduced us because we were namesakes, and that was supposed to be the 
+                end of it. I went back to my corner because Coach refused to let me escape without 
+                finishing my routine.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                Then this man walks up to me and says, <span className="italic">"If you beg me, 
+                I'll tell Coach to let you go home."</span>
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                The audacity. The confidence. The nonsense.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                But somehow, we started talking. And talking. And talking. So much that I still 
+                didn't finish that routine. Instead, we ended up walking home together.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                And somehow, since that day, we've just kept talking, walking, gyming, laughing, 
+                arguing, gist-ing, and doing life together.
               </p>
               <p className="text-royal-purple font-medium italic">
-                It was crafted in the heavens and revealed on earth. DoubleJoy'26
+                Turns out the gym really does change people's lives. Just not in the way I expected. 
+                DoubleJoy'26
               </p>
             </div>
           </div>
