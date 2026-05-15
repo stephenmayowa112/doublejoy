@@ -1,16 +1,23 @@
 'use client'
 
-import { Search, Heart } from 'lucide-react'
+import { Search, Heart, Copy, Check } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
 
 export default function Home() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [storyExpanded, setStoryExpanded] = useState(0) // 0 = collapsed, 1 = first expand, 2 = fully expanded
+  const [copiedField, setCopiedField] = useState<string | null>(null)
   
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     element?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const copyToClipboard = (text: string, field: string) => {
+    navigator.clipboard.writeText(text)
+    setCopiedField(field)
+    setTimeout(() => setCopiedField(null), 2000)
   }
 
   // Gallery images
@@ -73,6 +80,9 @@ export default function Home() {
             </button>
             <button onClick={() => scrollToSection('rsvp')} className="text-gray-700 hover:text-deep-purple transition-colors">
               RSVP
+            </button>
+            <button onClick={() => scrollToSection('gifting')} className="text-gray-700 hover:text-deep-purple transition-colors">
+              Gifting
             </button>
             <button onClick={() => scrollToSection('gallery')} className="text-gray-700 hover:text-deep-purple transition-colors">
               Gallery
@@ -504,6 +514,181 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      {/* Gifting Section */}
+      <section id="gifting" className="section-padding bg-white">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
+              Wedding Gift
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Your presence at our wedding is the greatest gift. However, if you wish to honor us with a gift, 
+              we would be grateful for a contribution towards our future together.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Naira Transfers */}
+            <div className="bg-gradient-to-br from-deep-purple to-royal-purple text-white rounded-lg p-6 shadow-xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-xl">
+                  ₦
+                </div>
+                <h3 className="text-xl font-serif">Naira Transfers</h3>
+              </div>
+              
+              <div className="space-y-3">
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-1">Account Number</p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-lg font-mono">2032909827</p>
+                    <button
+                      onClick={() => copyToClipboard('2032909827', 'naira-account')}
+                      className="p-2 hover:bg-white/20 rounded transition-colors"
+                      title="Copy account number"
+                    >
+                      {copiedField === 'naira-account' ? (
+                        <Check size={18} className="text-wedding-gold" />
+                      ) : (
+                        <Copy size={18} />
+                      )}
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-1">Account Name</p>
+                  <p className="text-lg">Ayobami Ajayi</p>
+                </div>
+                
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-1">Bank</p>
+                  <p className="text-lg">First Bank of Nigeria</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Canadian Dollar Transfers */}
+            <div className="bg-gradient-to-br from-royal-purple to-light-purple text-white rounded-lg p-6 shadow-xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-xl">
+                  C$
+                </div>
+                <h3 className="text-xl font-serif">Canadian Dollar</h3>
+              </div>
+              
+              <div className="space-y-3">
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-1">Interac Transfer</p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-lg break-all">aeajayi@gmail.com</p>
+                    <button
+                      onClick={() => copyToClipboard('aeajayi@gmail.com', 'cad-email')}
+                      className="p-2 hover:bg-white/20 rounded transition-colors ml-2"
+                      title="Copy email"
+                    >
+                      {copiedField === 'cad-email' ? (
+                        <Check size={18} className="text-wedding-gold" />
+                      ) : (
+                        <Copy size={18} />
+                      )}
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-1">Bank Options</p>
+                  <p className="text-lg">Scotiabank or RBC</p>
+                </div>
+              </div>
+            </div>
+
+            {/* US Dollar Transfers */}
+            <div className="bg-gradient-to-br from-light-purple to-royal-purple text-white rounded-lg p-6 shadow-xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-xl">
+                  $
+                </div>
+                <h3 className="text-xl font-serif">US Dollar</h3>
+              </div>
+              
+              <div className="space-y-3">
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-1">Account Number</p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-lg font-mono">2045393701</p>
+                    <button
+                      onClick={() => copyToClipboard('2045393701', 'usd-account')}
+                      className="p-2 hover:bg-white/20 rounded transition-colors"
+                      title="Copy account number"
+                    >
+                      {copiedField === 'usd-account' ? (
+                        <Check size={18} className="text-wedding-gold" />
+                      ) : (
+                        <Copy size={18} />
+                      )}
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-1">Account Name</p>
+                  <p className="text-lg">Gabriel A. Akande</p>
+                </div>
+                
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-1">Bank</p>
+                  <p className="text-lg">First Bank</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Bitcoin Wallet */}
+            <div className="bg-gradient-to-br from-deep-purple via-royal-purple to-light-purple text-white rounded-lg p-6 shadow-xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-lg">
+                  ₿
+                </div>
+                <h3 className="text-xl font-serif">Bitcoin (BTC)</h3>
+              </div>
+              
+              <div className="space-y-3">
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-2">Wallet Address</p>
+                  <div className="flex items-start justify-between gap-2">
+                    <p className="text-sm font-mono break-all leading-relaxed">
+                      1FfLqngqxBeMf5SRn4gyTHNcQZJ29AVuNm
+                    </p>
+                    <button
+                      onClick={() => copyToClipboard('1FfLqngqxBeMf5SRn4gyTHNcQZJ29AVuNm', 'btc-wallet')}
+                      className="p-2 hover:bg-white/20 rounded transition-colors flex-shrink-0"
+                      title="Copy wallet address"
+                    >
+                      {copiedField === 'btc-wallet' ? (
+                        <Check size={18} className="text-wedding-gold" />
+                      ) : (
+                        <Copy size={18} />
+                      )}
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-1">Network</p>
+                  <p className="text-lg">Bitcoin (BTC)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-8">
+            <p className="text-gray-600 italic">
+              Thank you for your love and generosity 💜
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="bg-deep-purple text-white py-8 px-4">
