@@ -8,6 +8,7 @@ export default function Home() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [storyExpanded, setStoryExpanded] = useState(0) // 0 = collapsed, 1 = first expand, 2 = fully expanded
   const [copiedField, setCopiedField] = useState<string | null>(null)
+  const [galleryVisible, setGalleryVisible] = useState(4) // Start with 4 images visible
   
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
@@ -18,6 +19,10 @@ export default function Home() {
     navigator.clipboard.writeText(text)
     setCopiedField(field)
     setTimeout(() => setCopiedField(null), 2000)
+  }
+
+  const loadMoreGallery = () => {
+    setGalleryVisible(prev => Math.min(prev + 8, galleryImages.length))
   }
 
   // Gallery images
@@ -470,10 +475,10 @@ export default function Home() {
           </h2>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {galleryImages.map((image, index) => (
+            {galleryImages.slice(0, galleryVisible).map((image, index) => (
               <div 
                 key={index}
-                className="relative aspect-square rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+                className="relative aspect-square rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer animate-fadeIn"
                 onClick={() => setSelectedImage(image.src)}
                 role="button"
                 tabIndex={0}
@@ -490,11 +495,24 @@ export default function Home() {
             ))}
           </div>
           
-          <div className="text-center mt-8">
-            <button className="btn-secondary">
-              View Full Gallery
-            </button>
-          </div>
+          {galleryVisible < galleryImages.length && (
+            <div className="text-center mt-8">
+              <button 
+                onClick={loadMoreGallery}
+                className="btn-secondary"
+              >
+                View More ({galleryImages.length - galleryVisible} remaining)
+              </button>
+            </div>
+          )}
+
+          {galleryVisible >= galleryImages.length && (
+            <div className="text-center mt-8">
+              <p className="text-gray-600 italic">
+                You've reached the end of our gallery 💜
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
