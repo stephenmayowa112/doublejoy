@@ -6,6 +6,7 @@ import { useState } from 'react'
 
 export default function Home() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [storyExpanded, setStoryExpanded] = useState(0) // 0 = collapsed, 1 = first expand, 2 = fully expanded
   
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
@@ -190,6 +191,8 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl font-serif text-deep-purple mb-6">
                 .......in the beginning
               </h2>
+              
+              {/* Initial content - always visible */}
               <p className="text-gray-700 leading-relaxed mb-4">
                 Quite the weird love story, honestly.
               </p>
@@ -208,37 +211,67 @@ export default function Home() {
                 Little did I know I was not only going there to lose weight… apparently, I went 
                 there to lose my singlehood too.
               </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                I had been consistent for a couple of months when we met. And the irony? On the 
-                exact day we met, I was exhausted, irritated, and fully ready to go home. I walked 
-                up to my coach to announce my resignation from fitness for the day, and standing 
-                there was this seemingly calm, gentleman-looking human being. (Heavy emphasis on 
-                *seemingly*, because now? Hmm. That's another conversation.)
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                My coach introduced us because we were namesakes, and that was supposed to be the 
-                end of it. I went back to my corner because Coach refused to let me escape without 
-                finishing my routine.
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Then this man walks up to me and says, <span className="italic">"If you beg me, 
-                I'll tell Coach to let you go home."</span>
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                The audacity. The confidence. The nonsense.
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                But somehow, we started talking. And talking. And talking. So much that I still 
-                didn't finish that routine. Instead, we ended up walking home together.
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                And somehow, since that day, we've just kept talking, walking, gyming, laughing, 
-                arguing, gist-ing, and doing life together.
-              </p>
-              <p className="text-royal-purple font-medium italic">
-                Turns out the gym really does change people's lives. Just not in the way I expected. 
-                DoubleJoy'26
-              </p>
+
+              {/* First expansion - visible after first click */}
+              {storyExpanded >= 1 && (
+                <div className="animate-fadeIn">
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    I had been consistent for a couple of months when we met. And the irony? On the 
+                    exact day we met, I was exhausted, irritated, and fully ready to go home. I walked 
+                    up to my coach to announce my resignation from fitness for the day, and standing 
+                    there was this seemingly calm, gentleman-looking human being. (Heavy emphasis on 
+                    *seemingly*, because now? Hmm. That's another conversation.)
+                  </p>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    My coach introduced us because we were namesakes, and that was supposed to be the 
+                    end of it. I went back to my corner because Coach refused to let me escape without 
+                    finishing my routine.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    Then this man walks up to me and says, <span className="italic">"If you beg me, 
+                    I'll tell Coach to let you go home."</span>
+                  </p>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    The audacity. The confidence. The nonsense.
+                  </p>
+                </div>
+              )}
+
+              {/* Second expansion - visible after second click */}
+              {storyExpanded >= 2 && (
+                <div className="animate-fadeIn">
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    But somehow, we started talking. And talking. And talking. So much that I still 
+                    didn't finish that routine. Instead, we ended up walking home together.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    And somehow, since that day, we've just kept talking, walking, gyming, laughing, 
+                    arguing, gist-ing, and doing life together.
+                  </p>
+                  <p className="text-royal-purple font-medium italic">
+                    Turns out the gym really does change people's lives. Just not in the way I expected. 
+                    DoubleJoy'26
+                  </p>
+                </div>
+              )}
+
+              {/* Read More Button */}
+              {storyExpanded < 2 && (
+                <button
+                  onClick={() => setStoryExpanded(storyExpanded + 1)}
+                  className="mt-4 text-deep-purple font-medium hover:text-royal-purple transition-colors flex items-center gap-2 group"
+                >
+                  <span>Read More</span>
+                  <svg 
+                    className="w-4 h-4 group-hover:translate-x-1 transition-transform" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              )}
             </div>
           </div>
         </div>
