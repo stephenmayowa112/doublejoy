@@ -1,0 +1,711 @@
+'use client'
+
+import { Search, Heart, Copy, Check } from 'lucide-react'
+import Image from 'next/image'
+import { useState } from 'react'
+
+export default function Home() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [storyExpanded, setStoryExpanded] = useState(0) // 0 = collapsed, 1 = first expand, 2 = fully expanded
+  const [copiedField, setCopiedField] = useState<string | null>(null)
+  
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id)
+    element?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const copyToClipboard = (text: string, field: string) => {
+    navigator.clipboard.writeText(text)
+    setCopiedField(field)
+    setTimeout(() => setCopiedField(null), 2000)
+  }
+
+  // Gallery images
+  const galleryImages = [
+    '/images/DSC_8374 2.jpg.jpeg',
+    '/images/DSC_8382.jpg.jpeg',
+    '/images/DSC_8392.jpg.jpeg',
+    '/images/DSC_8403.jpg.jpeg',
+    '/images/DSC_8405.jpg.jpeg',
+    '/images/DSC_8408.jpg.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.47.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.47a.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.47b.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.47c.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.48d.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.48e.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.48f.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.48g.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.49.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.49h.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.49k.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.49l.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.50aa.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.50asd.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.47.51bn.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 13.53.21bas.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 14.02.18mnb.jpeg',
+    '/images/WhatsApp Image 2026-05-14 at 14.42.49nhgs.jpeg',
+  ]
+
+  return (
+    <main className="min-h-screen bg-white">
+      {/* Announcement Bar */}
+      <div className="bg-deep-purple text-white py-3 px-4 text-center text-sm md:text-base">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
+          <span className="font-light">
+            Your love for love brought you here... DoubleJoy'26
+          </span>
+          <button 
+            onClick={() => scrollToSection('rsvp')}
+            className="bg-wedding-gold text-deep-purple px-6 py-1.5 rounded-full text-sm font-medium hover:bg-soft-gold transition-colors"
+          >
+            RSVP Now
+          </button>
+        </div>
+      </div>
+
+      {/* Header Navigation */}
+      <header className="sticky top-0 bg-white shadow-sm z-50">
+        <nav className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
+          <div className="text-3xl md:text-4xl font-serif text-deep-purple font-bold">
+            AG
+          </div>
+          <div className="hidden md:flex items-center gap-8">
+            <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-deep-purple transition-colors">
+              Home
+            </button>
+            <button onClick={() => scrollToSection('event-details')} className="text-gray-700 hover:text-deep-purple transition-colors">
+              Event Details
+            </button>
+            <button onClick={() => scrollToSection('rsvp')} className="text-gray-700 hover:text-deep-purple transition-colors">
+              RSVP
+            </button>
+            <button onClick={() => scrollToSection('gifting')} className="text-gray-700 hover:text-deep-purple transition-colors">
+              Gifting
+            </button>
+            <button onClick={() => scrollToSection('gallery')} className="text-gray-700 hover:text-deep-purple transition-colors">
+              Gallery
+            </button>
+            <button className="text-gray-700 hover:text-deep-purple transition-colors">
+              <Search size={20} />
+            </button>
+          </div>
+          <div className="md:hidden">
+            <Search size={20} className="text-gray-700" />
+          </div>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section id="home" className="relative bg-gradient-to-b from-white to-gray-50 section-padding overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8">
+            <p className="text-sm md:text-base text-gray-600 mb-2">
+              June 6th, 2026 | 10 AM Prompt
+            </p>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-deep-purple mb-2">
+              Ayobami & Gabriel
+            </h1>
+            <p className="text-lg md:text-xl text-royal-purple italic">
+              DoubleJoy'26
+            </p>
+          </div>
+
+          {/* Couple Image with Floral Decorations */}
+          <div className="relative max-w-4xl mx-auto my-12">
+            {/* Left Floral */}
+            <div className="absolute left-0 bottom-0 w-32 md:w-48 h-32 md:h-48 opacity-60">
+              <svg viewBox="0 0 200 200" className="w-full h-full text-light-purple">
+                <circle cx="50" cy="150" r="30" fill="currentColor" opacity="0.3" />
+                <circle cx="80" cy="130" r="25" fill="currentColor" opacity="0.4" />
+                <circle cx="40" cy="120" r="20" fill="currentColor" opacity="0.5" />
+                <path d="M 50 150 Q 60 100 80 80" stroke="currentColor" strokeWidth="2" fill="none" />
+                <path d="M 50 150 Q 30 110 20 90" stroke="currentColor" strokeWidth="2" fill="none" />
+              </svg>
+            </div>
+
+            {/* Right Floral */}
+            <div className="absolute right-0 bottom-0 w-32 md:w-48 h-32 md:h-48 opacity-60">
+              <svg viewBox="0 0 200 200" className="w-full h-full text-light-purple">
+                <circle cx="150" cy="150" r="30" fill="currentColor" opacity="0.3" />
+                <circle cx="120" cy="130" r="25" fill="currentColor" opacity="0.4" />
+                <circle cx="160" cy="120" r="20" fill="currentColor" opacity="0.5" />
+                <path d="M 150 150 Q 140 100 120 80" stroke="currentColor" strokeWidth="2" fill="none" />
+                <path d="M 150 150 Q 170 110 180 90" stroke="currentColor" strokeWidth="2" fill="none" />
+              </svg>
+            </div>
+
+            {/* Couple Image Placeholder */}
+            <div className="relative z-10 mx-auto w-64 md:w-96 h-96 md:h-[500px] rounded-t-full overflow-hidden shadow-2xl">
+              <Image
+                src="/images/WhatsApp Image 2026-05-14 at 13.47.47.jpeg"
+                alt="Ayobami & Gabriel"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-12">
+            <button 
+              onClick={() => scrollToSection('event-details')}
+              className="btn-primary w-full md:w-auto"
+            >
+              EVENT DETAILS
+            </button>
+            <button 
+              onClick={() => scrollToSection('rsvp')}
+              className="btn-primary w-full md:w-auto bg-wedding-gold hover:bg-soft-gold text-deep-purple"
+            >
+              RSVP
+            </button>
+            <button 
+              onClick={() => scrollToSection('gallery')}
+              className="btn-secondary w-full md:w-auto"
+            >
+              GALLERY
+            </button>
+          </div>
+
+          {/* Bible Verse */}
+          <div className="text-center mt-12 max-w-2xl mx-auto">
+            <p className="text-sm text-gray-500 mb-2">Ecclesiastes 4:12</p>
+            <p className="text-lg md:text-xl font-serif text-deep-purple italic">
+              "...A cord of three strands is not easily broken..."
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* The Story Section */}
+      <section id="story" className="bg-gray-100 section-padding">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Image */}
+            <div className="order-2 md:order-1">
+              <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl">
+                <Image
+                  src="/images/DSC_8382.jpg.jpeg"
+                  alt="Our Story"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="order-1 md:order-2">
+              <h2 className="text-4xl md:text-5xl font-serif text-deep-purple mb-6">
+                .......in the beginning
+              </h2>
+              
+              {/* Initial content - always visible */}
+              <p className="text-gray-700 leading-relaxed mb-4">
+                Quite the weird love story, honestly.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                We actually met at the gym. And yes! this is your sign to stop ignoring that 
+                membership card and "start next Monday." 🌚
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                Funny thing is, the year before, I had promised myself I'd finally take fitness 
+                seriously after my birthday. I had a gym close to my house, but it was under 
+                renovation, and if I'm being honest, I also wanted somewhere a little less 
+                familiar. Somewhere I could sweat in peace without seeing half the neighbourhood. 
+                So I switched locations.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                Little did I know I was not only going there to lose weight… apparently, I went 
+                there to lose my singlehood too.
+              </p>
+
+              {/* First expansion - visible after first click */}
+              {storyExpanded >= 1 && (
+                <div className="animate-fadeIn">
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    I had been consistent for a couple of months when we met. And the irony? On the 
+                    exact day we met, I was exhausted, irritated, and fully ready to go home. I walked 
+                    up to my coach to announce my resignation from fitness for the day, and standing 
+                    there was this seemingly calm, gentleman-looking human being. (Heavy emphasis on 
+                    *seemingly*, because now? Hmm. That's another conversation.)
+                  </p>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    My coach introduced us because we were namesakes, and that was supposed to be the 
+                    end of it. I went back to my corner because Coach refused to let me escape without 
+                    finishing my routine.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    Then this man walks up to me and says, <span className="italic">"If you beg me, 
+                    I'll tell Coach to let you go home."</span>
+                  </p>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    The audacity. The confidence. The nonsense.
+                  </p>
+                </div>
+              )}
+
+              {/* Second expansion - visible after second click */}
+              {storyExpanded >= 2 && (
+                <div className="animate-fadeIn">
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    But somehow, we started talking. And talking. And talking. So much that I still 
+                    didn't finish that routine. Instead, we ended up walking home together.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    And somehow, since that day, we've just kept talking, walking, gyming, laughing, 
+                    arguing, gist-ing, and doing life together.
+                  </p>
+                  <p className="text-royal-purple font-medium italic">
+                    Turns out the gym really does change people's lives. Just not in the way I expected. 
+                    DoubleJoy'26
+                  </p>
+                </div>
+              )}
+
+              {/* Read More Button */}
+              {storyExpanded < 2 && (
+                <button
+                  onClick={() => setStoryExpanded(storyExpanded + 1)}
+                  className="mt-4 text-deep-purple font-medium hover:text-royal-purple transition-colors flex items-center gap-2 group"
+                >
+                  <span>Read More</span>
+                  <svg 
+                    className="w-4 h-4 group-hover:translate-x-1 transition-transform" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Video Section */}
+      <section id="video" className="section-padding bg-white">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
+            Our Love Story
+          </h2>
+          <p className="text-gray-600 mb-8">
+            Watch how our journey unfolded
+          </p>
+          
+          {/* Video Placeholder */}
+          <div className="relative w-full aspect-video bg-gradient-to-br from-deep-purple to-royal-purple rounded-lg overflow-hidden shadow-2xl">
+            <div className="absolute inset-0 flex items-center justify-center text-white">
+              <div className="text-center">
+                <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-white/20 flex items-center justify-center">
+                  <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent ml-1"></div>
+                </div>
+                <p className="text-lg font-serif">Pre-Wedding Video</p>
+                <p className="text-sm mt-2 opacity-80">Embed your Vimeo/YouTube video here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Meet the Couple Section */}
+      <section id="couple" className="section-padding bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-serif text-deep-purple text-center mb-12">
+            Meet the Couple
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+            {/* Gabriel */}
+            <div className="text-center">
+              <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl mb-6 grayscale hover:grayscale-0 transition-all duration-500">
+                <Image
+                  src="/images/DSC_8392.jpg.jpeg"
+                  alt="Gabriel Ayobamidele"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <h3 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
+                GABRIEL
+              </h3>
+              <p className="text-gray-700 leading-relaxed max-w-md mx-auto">
+                Gabriel Ayobamidele is a man of faith, vision, and purpose. With a heart 
+                devoted to serving God and loving others, he brings joy, wisdom, and 
+                steadfast commitment to everything he does. His love for Ayobami is a 
+                testament to his character—patient, kind, and unwavering.
+              </p>
+            </div>
+
+            {/* Ayobami */}
+            <div className="text-center">
+              <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl mb-6 grayscale hover:grayscale-0 transition-all duration-500">
+                <Image
+                  src="/images/DSC_8403.jpg.jpeg"
+                  alt="Ayobami Elizabeth"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <h3 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
+                AYOBAMI
+              </h3>
+              <p className="text-gray-700 leading-relaxed max-w-md mx-auto">
+                Ayobami Elizabeth is a woman of grace, strength, and compassion. Her 
+                radiant spirit and genuine love for people make her a blessing to all who 
+                know her. She brings warmth, laughter, and unwavering faith into Gabriel's 
+                life, making their bond truly special.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Event Details Section */}
+      <section id="event-details" className="section-padding bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-serif text-deep-purple mb-8">
+            Event Details
+          </h2>
+          
+          <div className="bg-gradient-to-br from-deep-purple to-royal-purple text-white rounded-lg p-8 md:p-12 shadow-2xl">
+            <div className="mb-8">
+              <p className="text-sm uppercase tracking-wider mb-2 text-soft-gold">
+                The Families of
+              </p>
+              <p className="text-lg mb-2">
+                Elder & Evangelist Ajibola Afolabi Ajayi
+              </p>
+              <p className="text-sm opacity-90 mb-4">
+                Of Ita-Ogbolu, Akure-North, Ondo State
+              </p>
+              <p className="text-2xl font-serif text-wedding-gold my-4">&</p>
+              <p className="text-lg mb-2">
+                Late Chief & Mrs Samuel Bamidele Akande
+              </p>
+              <p className="text-sm opacity-90">
+                Of Araromi-Ora, Ifelodun LGA, Kwara State
+              </p>
+            </div>
+
+            <div className="border-t border-white/30 pt-8 mt-8">
+              <p className="text-sm uppercase tracking-wider mb-4 text-soft-gold">
+                Invite you to celebrate
+              </p>
+              <h3 className="text-3xl md:text-4xl font-serif mb-6">
+                Ayobami Elizabeth & Gabriel Ayobamidele
+              </h3>
+              
+              <div className="space-y-4 text-lg">
+                <p>
+                  <span className="text-wedding-gold font-medium">Date:</span> June 6th, 2026
+                </p>
+                <p>
+                  <span className="text-wedding-gold font-medium">Time:</span> 10:00 AM Prompt
+                </p>
+                <p>
+                  <span className="text-wedding-gold font-medium">Location:</span> Ikeja, Lagos State
+                </p>
+                <p>
+                  <span className="text-wedding-gold font-medium">Theme Colors:</span> Purple and Gold
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* RSVP Section */}
+      <section id="rsvp" className="section-padding bg-gradient-to-br from-soft-gold to-white">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
+            RSVP
+          </h2>
+          <p className="text-gray-700 mb-8">
+            Please confirm your attendance by May 16th, 2026 to receive your access card
+          </p>
+          
+          <div className="bg-white rounded-lg shadow-xl p-8 md:p-12">
+            <div className="mb-8">
+              <p className="text-lg text-gray-700 mb-2">
+                Contact for RSVP:
+              </p>
+              <p className="text-2xl font-serif text-deep-purple mb-1">
+                Onyinye
+              </p>
+              <a 
+                href="tel:+2349084423940" 
+                className="text-xl text-royal-purple hover:text-wedding-gold transition-colors"
+              >
+                +234 908 442 3940
+              </a>
+            </div>
+            
+            <div className="border-t border-gray-200 pt-8">
+              <p className="text-sm text-gray-600 mb-4">
+                RSVP Deadline: May 16th, 2026
+              </p>
+              <a 
+                href="tel:+2349084423940"
+                className="btn-primary inline-block"
+              >
+                Call to RSVP
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Preview Section */}
+      <section id="gallery" className="section-padding bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-serif text-deep-purple text-center mb-12">
+            Gallery
+          </h2>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {galleryImages.map((image, index) => (
+              <div 
+                key={index}
+                className="relative aspect-square rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+                onClick={() => setSelectedImage(image)}
+              >
+                <Image
+                  src={image}
+                  alt={`Gallery image ${index + 1}`}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+          
+          <div className="text-center mt-8">
+            <button className="btn-secondary">
+              View Full Gallery
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Image Lightbox Modal */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            className="absolute top-4 right-4 text-white text-4xl hover:text-wedding-gold transition-colors"
+            onClick={() => setSelectedImage(null)}
+          >
+            ×
+          </button>
+          <div className="relative max-w-5xl max-h-[90vh] w-full h-full">
+            <Image
+              src={selectedImage}
+              alt="Gallery image"
+              fill
+              className="object-contain"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Gifting Section */}
+      <section id="gifting" className="section-padding bg-white">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
+              Wedding Gift
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Your presence at our wedding is the greatest gift. However, if you wish to honor us with a gift, 
+              we would be grateful for a contribution towards our future together.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Naira Transfers */}
+            <div className="bg-gradient-to-br from-deep-purple to-royal-purple text-white rounded-lg p-6 shadow-xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-xl">
+                  ₦
+                </div>
+                <h3 className="text-xl font-serif">Naira Transfers</h3>
+              </div>
+              
+              <div className="space-y-3">
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-1">Account Number</p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-lg font-mono">2032909827</p>
+                    <button
+                      onClick={() => copyToClipboard('2032909827', 'naira-account')}
+                      className="p-2 hover:bg-white/20 rounded transition-colors"
+                      title="Copy account number"
+                    >
+                      {copiedField === 'naira-account' ? (
+                        <Check size={18} className="text-wedding-gold" />
+                      ) : (
+                        <Copy size={18} />
+                      )}
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-1">Account Name</p>
+                  <p className="text-lg">Ayobami Ajayi</p>
+                </div>
+                
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-1">Bank</p>
+                  <p className="text-lg">First Bank of Nigeria</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Canadian Dollar Transfers */}
+            <div className="bg-gradient-to-br from-royal-purple to-light-purple text-white rounded-lg p-6 shadow-xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-xl">
+                  C$
+                </div>
+                <h3 className="text-xl font-serif">Canadian Dollar</h3>
+              </div>
+              
+              <div className="space-y-3">
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-1">Interac Transfer</p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-lg break-all">aeajayi@gmail.com</p>
+                    <button
+                      onClick={() => copyToClipboard('aeajayi@gmail.com', 'cad-email')}
+                      className="p-2 hover:bg-white/20 rounded transition-colors ml-2"
+                      title="Copy email"
+                    >
+                      {copiedField === 'cad-email' ? (
+                        <Check size={18} className="text-wedding-gold" />
+                      ) : (
+                        <Copy size={18} />
+                      )}
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-1">Bank Options</p>
+                  <p className="text-lg">Scotiabank or RBC</p>
+                </div>
+              </div>
+            </div>
+
+            {/* US Dollar Transfers */}
+            <div className="bg-gradient-to-br from-light-purple to-royal-purple text-white rounded-lg p-6 shadow-xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-xl">
+                  $
+                </div>
+                <h3 className="text-xl font-serif">US Dollar</h3>
+              </div>
+              
+              <div className="space-y-3">
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-1">Account Number</p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-lg font-mono">2045393701</p>
+                    <button
+                      onClick={() => copyToClipboard('2045393701', 'usd-account')}
+                      className="p-2 hover:bg-white/20 rounded transition-colors"
+                      title="Copy account number"
+                    >
+                      {copiedField === 'usd-account' ? (
+                        <Check size={18} className="text-wedding-gold" />
+                      ) : (
+                        <Copy size={18} />
+                      )}
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-1">Account Name</p>
+                  <p className="text-lg">Gabriel A. Akande</p>
+                </div>
+                
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-1">Bank</p>
+                  <p className="text-lg">First Bank</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Bitcoin Wallet */}
+            <div className="bg-gradient-to-br from-deep-purple via-royal-purple to-light-purple text-white rounded-lg p-6 shadow-xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-lg">
+                  ₿
+                </div>
+                <h3 className="text-xl font-serif">Bitcoin (BTC)</h3>
+              </div>
+              
+              <div className="space-y-3">
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-2">Wallet Address</p>
+                  <div className="flex items-start justify-between gap-2">
+                    <p className="text-sm font-mono break-all leading-relaxed">
+                      1FfLqngqxBeMf5SRn4gyTHNcQZJ29AVuNm
+                    </p>
+                    <button
+                      onClick={() => copyToClipboard('1FfLqngqxBeMf5SRn4gyTHNcQZJ29AVuNm', 'btc-wallet')}
+                      className="p-2 hover:bg-white/20 rounded transition-colors flex-shrink-0"
+                      title="Copy wallet address"
+                    >
+                      {copiedField === 'btc-wallet' ? (
+                        <Check size={18} className="text-wedding-gold" />
+                      ) : (
+                        <Copy size={18} />
+                      )}
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm text-soft-gold mb-1">Network</p>
+                  <p className="text-lg">Bitcoin (BTC)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-8">
+            <p className="text-gray-600 italic">
+              Thank you for your love and generosity 💜
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-deep-purple text-white py-8 px-4">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <span className="text-lg">With love</span>
+            <Heart size={20} fill="currentColor" className="text-wedding-gold" />
+            <span className="text-lg">DoubleJoy'26</span>
+          </div>
+          <p className="text-sm opacity-80">
+            Ayobami Elizabeth & Gabriel Ayobamidele
+          </p>
+          <p className="text-xs opacity-60 mt-2">
+            June 6th, 2026 | Ikeja, Lagos State
+          </p>
+        </div>
+      </footer>
+    </main>
+  )
+}
