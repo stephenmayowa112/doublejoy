@@ -54,28 +54,47 @@ export default function Home() {
   ]
 
   return (
-    <main className="min-h-screen bg-white">
-      {/* Announcement Bar */}
-      <div className="bg-deep-purple text-white py-3 px-4 text-center text-sm md:text-base">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
-          <span className="font-light">
-            Your love for love brought you here... DoubleJoy'26
-          </span>
-          <button 
-            onClick={() => scrollToSection('rsvp')}
-            className="bg-wedding-gold text-deep-purple px-6 py-1.5 rounded-full text-sm font-medium hover:bg-soft-gold transition-colors"
-          >
-            RSVP Now
-          </button>
-        </div>
+    <main className="relative min-h-screen bg-white overflow-hidden">
+      {/* Decorative ambient background blobs for glassmorphism */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-light-purple/30 blur-[100px] animate-pulse"></div>
+        <div className="absolute top-[40%] right-[-10%] w-[30%] h-[50%] rounded-full bg-wedding-gold/20 blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-[-10%] left-[20%] w-[50%] h-[40%] rounded-full bg-royal-purple/20 blur-[120px] animate-pulse" style={{ animationDelay: '4s' }}></div>
       </div>
 
-      {/* Header Navigation */}
-      <header className="sticky top-0 bg-white shadow-sm z-50">
-        <nav className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
-          <div className="text-3xl md:text-4xl font-serif text-deep-purple font-bold">
-            AG
+      <div className="relative z-10">
+        {/* Announcement Bar */}
+        <div className="bg-deep-purple text-white py-3 px-4 text-center text-sm md:text-base">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
+            <span className="font-light">
+              Your love for love brought you here... DoubleJoy'26
+            </span>
+            <button 
+              onClick={() => scrollToSection('rsvp')}
+              className="bg-wedding-gold text-deep-purple px-6 py-1.5 rounded-full text-sm font-medium hover:bg-soft-gold transition-colors"
+            >
+              RSVP Now
+            </button>
           </div>
+        </div>
+
+        {/* Header Navigation */}
+        <header className="sticky top-0 bg-white/70 backdrop-blur-md border-b border-white/20 shadow-sm z-50 transition-all duration-300">
+          <nav className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
+          <button 
+            onClick={() => scrollToSection('home')} 
+            className="flex items-center hover:opacity-80 transition-opacity"
+            aria-label="Go to home"
+          >
+            <Image
+              src="/images/doublejoyLogo.png"
+              alt="DoubleJoy'26 Logo"
+              width={120}
+              height={50}
+              className="h-10 md:h-12 w-auto"
+              priority
+            />
+          </button>
           <div className="hidden md:flex items-center gap-8">
             <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-deep-purple transition-colors">
               Home
@@ -373,14 +392,21 @@ export default function Home() {
       </section>
 
       {/* Event Details Section */}
-      <section id="event-details" className="section-padding bg-white">
-        <div className="max-w-4xl mx-auto text-center">
+      <section id="event-details" className="relative section-padding overflow-hidden">
+        {/* Decorative blur for Event Details background */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="absolute left-[10%] top-[20%] w-[30%] h-[60%] bg-deep-purple/20 rounded-full blur-[100px]"></div>
+        </div>
+        <div className="relative max-w-4xl mx-auto text-center z-10">
           <h2 className="text-3xl md:text-4xl font-serif text-deep-purple mb-8">
             Event Details
           </h2>
           
-          <div className="bg-gradient-to-br from-deep-purple to-royal-purple text-white rounded-lg p-8 md:p-12 shadow-2xl">
-            <div className="mb-8">
+          <div className="bg-gradient-to-br from-deep-purple/90 to-royal-purple/80 backdrop-blur-xl border border-white/20 text-white rounded-2xl p-8 md:p-12 shadow-[0_8px_32px_rgba(0,0,0,0.15)] relative overflow-hidden">
+            {/* Inner glass reflection */}
+            <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent pointer-events-none"></div>
+
+            <div className="mb-8 relative z-10">
               <p className="text-sm uppercase tracking-wider mb-2 text-soft-gold">
                 The Families of
               </p>
@@ -427,8 +453,14 @@ export default function Home() {
       </section>
 
       {/* RSVP Section */}
-      <section id="rsvp" className="section-padding bg-gradient-to-br from-soft-gold to-white">
-        <div className="max-w-2xl mx-auto text-center">
+      <section id="rsvp" className="relative section-padding overflow-hidden">
+        {/* Decorative background blur */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="absolute top-[30%] right-[10%] w-[35%] h-[50%] bg-soft-gold/30 rounded-full blur-[100px]"></div>
+          <div className="absolute bottom-[10%] left-[5%] w-[40%] h-[40%] bg-light-purple/20 rounded-full blur-[90px]"></div>
+        </div>
+
+        <div className="relative max-w-2xl mx-auto text-center z-10">
           <h2 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
             RSVP
           </h2>
@@ -436,7 +468,7 @@ export default function Home() {
             Please confirm your attendance by May 16th, 2026 to receive your access card
           </p>
           
-          <div className="bg-white rounded-lg shadow-xl p-8 md:p-12">
+          <div className="bg-white/60 backdrop-blur-xl border border-white/50 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] p-8 md:p-12">
             <div className="mb-8">
               <p className="text-lg text-gray-700 mb-2">
                 Contact for RSVP:
@@ -519,7 +551,7 @@ export default function Home() {
       {/* Image Lightbox Modal */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/60 backdrop-blur-xl z-50 flex items-center justify-center p-4 transition-all duration-300"
           onClick={() => setSelectedImage(null)}
         >
           <button
@@ -541,8 +573,14 @@ export default function Home() {
       )}
 
       {/* Gifting Section */}
-      <section id="gifting" className="section-padding bg-white">
-        <div className="max-w-5xl mx-auto">
+      <section id="gifting" className="relative section-padding overflow-hidden">
+        {/* Decorative blur for Gifting background */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="absolute right-[5%] bottom-[20%] w-[30%] h-[50%] bg-wedding-gold/20 rounded-full blur-[100px]"></div>
+          <div className="absolute left-[5%] top-[10%] w-[40%] h-[40%] bg-royal-purple/10 rounded-full blur-[100px]"></div>
+        </div>
+
+        <div className="relative max-w-5xl mx-auto z-10">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
               Wedding Gift
@@ -555,23 +593,25 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-6">
             {/* Naira Transfers */}
-            <div className="bg-gradient-to-br from-deep-purple to-royal-purple text-white rounded-lg p-6 shadow-xl">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-xl">
-                  ₦
+            <div className="bg-deep-purple/80 backdrop-blur-xl border border-white/20 text-white rounded-2xl p-6 shadow-[0_8px_32px_rgba(0,0,0,0.15)] relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent pointer-events-none z-0"></div>
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-xl">
+                    ₦
+                  </div>
+                  <h3 className="text-xl font-serif">Naira Transfers</h3>
                 </div>
-                <h3 className="text-xl font-serif">Naira Transfers</h3>
-              </div>
-              
-              <div className="space-y-3">
-                <div className="bg-white/10 rounded-lg p-4">
-                  <p className="text-sm text-soft-gold mb-1">Account Number</p>
-                  <div className="flex items-center justify-between">
-                    <p className="text-lg font-mono">2032909827</p>
-                    <button
-                      onClick={() => copyToClipboard('2032909827', 'naira-account')}
-                      className="p-2 hover:bg-white/20 rounded transition-colors"
-                      title="Copy Naira account number"
+                
+                <div className="space-y-3">
+                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/5">
+                    <p className="text-sm text-soft-gold mb-1">Account Number</p>
+                    <div className="flex items-center justify-between">
+                      <p className="text-lg font-mono">2032909827</p>
+                      <button
+                        onClick={() => copyToClipboard('2032909827', 'naira-account')}
+                        className="p-2 hover:bg-white/20 rounded transition-colors"
+                        title="Copy Naira account number"
                       aria-label="Copy Naira account number to clipboard"
                     >
                       {copiedField === 'naira-account' ? (
@@ -660,12 +700,12 @@ export default function Home() {
                   </div>
                 </div>
                 
-                <div className="bg-white/10 rounded-lg p-4">
+                <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/5">
                   <p className="text-sm text-soft-gold mb-1">Account Name</p>
                   <p className="text-lg">Gabriel A. Akande</p>
                 </div>
                 
-                <div className="bg-white/10 rounded-lg p-4">
+                <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/5">
                   <p className="text-sm text-soft-gold mb-1">Bank</p>
                   <p className="text-lg">First Bank</p>
                 </div>
@@ -673,39 +713,42 @@ export default function Home() {
             </div>
 
             {/* Bitcoin Wallet */}
-            <div className="bg-gradient-to-br from-deep-purple via-royal-purple to-light-purple text-white rounded-lg p-6 shadow-xl">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-lg">
-                  ₿
-                </div>
-                <h3 className="text-xl font-serif">Bitcoin (BTC)</h3>
-              </div>
-              
-              <div className="space-y-3">
-                <div className="bg-white/10 rounded-lg p-4">
-                  <p className="text-sm text-soft-gold mb-2">Wallet Address</p>
-                  <div className="flex items-start justify-between gap-2">
-                    <p className="text-sm font-mono break-all leading-relaxed">
-                      1FfLqngqxBeMf5SRn4gyTHNcQZJ29AVuNm
-                    </p>
-                    <button
-                      onClick={() => copyToClipboard('1FfLqngqxBeMf5SRn4gyTHNcQZJ29AVuNm', 'btc-wallet')}
-                      className="p-2 hover:bg-white/20 rounded transition-colors flex-shrink-0"
-                      title="Copy Bitcoin wallet address"
-                      aria-label="Copy Bitcoin wallet address to clipboard"
-                    >
-                      {copiedField === 'btc-wallet' ? (
-                        <Check size={18} className="text-wedding-gold" aria-hidden="true" />
-                      ) : (
-                        <Copy size={18} aria-hidden="true" />
-                      )}
-                    </button>
+            <div className="bg-gradient-to-br from-deep-purple/80 via-royal-purple/80 to-light-purple/80 backdrop-blur-xl border border-white/20 text-white rounded-2xl p-6 shadow-[0_8px_32px_rgba(0,0,0,0.15)] relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent pointer-events-none z-0"></div>
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-lg">
+                    ₿
                   </div>
+                  <h3 className="text-xl font-serif">Bitcoin (BTC)</h3>
                 </div>
                 
-                <div className="bg-white/10 rounded-lg p-4">
-                  <p className="text-sm text-soft-gold mb-1">Network</p>
-                  <p className="text-lg">Bitcoin (BTC)</p>
+                <div className="space-y-3">
+                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/5">
+                    <p className="text-sm text-soft-gold mb-2">Wallet Address</p>
+                    <div className="flex items-start justify-between gap-2">
+                      <p className="text-sm font-mono break-all leading-relaxed">
+                        1FfLqngqxBeMf5SRn4gyTHNcQZJ29AVuNm
+                      </p>
+                      <button
+                        onClick={() => copyToClipboard('1FfLqngqxBeMf5SRn4gyTHNcQZJ29AVuNm', 'btc-wallet')}
+                        className="p-2 hover:bg-white/20 rounded transition-colors flex-shrink-0"
+                        title="Copy Bitcoin wallet address"
+                        aria-label="Copy Bitcoin wallet address to clipboard"
+                      >
+                        {copiedField === 'btc-wallet' ? (
+                          <Check size={18} className="text-wedding-gold" aria-hidden="true" />
+                        ) : (
+                          <Copy size={18} aria-hidden="true" />
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/5">
+                    <p className="text-sm text-soft-gold mb-1">Network</p>
+                    <p className="text-lg">Bitcoin (BTC)</p>
+                  </div>
                 </div>
               </div>
             </div>

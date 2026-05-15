@@ -9,6 +9,15 @@ export const metadata: Metadata = {
   },
   description: 'Join us as we celebrate the union of Ayobami Elizabeth and Gabriel Ayobamidele on June 6th, 2026',
   keywords: ['Wedding', 'Ayobami', 'Gabriel', 'DoubleJoy26', 'Nigerian Wedding'],
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/images/doublejoyLogo.png', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png' },
+    ],
+  },
   alternates: {
     canonical: '/',
   },
@@ -19,11 +28,20 @@ export const metadata: Metadata = {
     siteName: "DoubleJoy'26",
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: '/images/doublejoyLogo.png',
+        width: 1200,
+        height: 630,
+        alt: "DoubleJoy'26 Wedding Logo",
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: "Ayobami & Gabriel - DoubleJoy'26",
     description: 'Join us as we celebrate the union of Ayobami Elizabeth and Gabriel Ayobamidele on June 6th, 2026',
+    images: ['/images/doublejoyLogo.png'],
   },
 }
 
