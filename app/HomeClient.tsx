@@ -22,30 +22,30 @@ export default function Home() {
 
   // Gallery images
   const galleryImages = [
-    '/images/DSC_8374 2.jpg.jpeg',
-    '/images/DSC_8382.jpg.jpeg',
-    '/images/DSC_8392.jpg.jpeg',
-    '/images/DSC_8403.jpg.jpeg',
-    '/images/DSC_8405.jpg.jpeg',
-    '/images/DSC_8408.jpg.jpeg',
-    '/images/WhatsApp Image 2026-05-14 at 13.47.47.jpeg',
-    '/images/WhatsApp Image 2026-05-14 at 13.47.47a.jpeg',
-    '/images/WhatsApp Image 2026-05-14 at 13.47.47b.jpeg',
-    '/images/WhatsApp Image 2026-05-14 at 13.47.47c.jpeg',
-    '/images/WhatsApp Image 2026-05-14 at 13.47.48d.jpeg',
-    '/images/WhatsApp Image 2026-05-14 at 13.47.48e.jpeg',
-    '/images/WhatsApp Image 2026-05-14 at 13.47.48f.jpeg',
-    '/images/WhatsApp Image 2026-05-14 at 13.47.48g.jpeg',
-    '/images/WhatsApp Image 2026-05-14 at 13.47.49.jpeg',
-    '/images/WhatsApp Image 2026-05-14 at 13.47.49h.jpeg',
-    '/images/WhatsApp Image 2026-05-14 at 13.47.49k.jpeg',
-    '/images/WhatsApp Image 2026-05-14 at 13.47.49l.jpeg',
-    '/images/WhatsApp Image 2026-05-14 at 13.47.50aa.jpeg',
-    '/images/WhatsApp Image 2026-05-14 at 13.47.50asd.jpeg',
-    '/images/WhatsApp Image 2026-05-14 at 13.47.51bn.jpeg',
-    '/images/WhatsApp Image 2026-05-14 at 13.53.21bas.jpeg',
-    '/images/WhatsApp Image 2026-05-14 at 14.02.18mnb.jpeg',
-    '/images/WhatsApp Image 2026-05-14 at 14.42.49nhgs.jpeg',
+    { src: '/images/DSC_8374 2.jpg.jpeg', alt: "Ayobami and Gabriel sharing a joyful moment" },
+    { src: '/images/DSC_8382.jpg.jpeg', alt: "Ayobami and Gabriel looking into each other's eyes" },
+    { src: '/images/DSC_8392.jpg.jpeg', alt: "Gabriel posing for a pre-wedding portrait" },
+    { src: '/images/DSC_8403.jpg.jpeg', alt: "Ayobami glowing in her beautiful outfit" },
+    { src: '/images/DSC_8405.jpg.jpeg', alt: "Ayobami and Gabriel elegant portrait" },
+    { src: '/images/DSC_8408.jpg.jpeg', alt: "Couple sharing a laugh during their shoot" },
+    { src: '/images/WhatsApp Image 2026-05-14 at 13.47.47.jpeg', alt: "Ayobami and Gabriel sweet couple moment" },
+    { src: '/images/WhatsApp Image 2026-05-14 at 13.47.47a.jpeg', alt: "Ayobami and Gabriel having fun together" },
+    { src: '/images/WhatsApp Image 2026-05-14 at 13.47.47b.jpeg', alt: "Candid moment of the beautiful couple" },
+    { src: '/images/WhatsApp Image 2026-05-14 at 13.47.47c.jpeg', alt: "Ayobami and Gabriel romantic portrait" },
+    { src: '/images/WhatsApp Image 2026-05-14 at 13.47.48d.jpeg', alt: "Couple's beautiful traditional pre-wedding photo" },
+    { src: '/images/WhatsApp Image 2026-05-14 at 13.47.48e.jpeg', alt: "Ayobami smiling brightly next to Gabriel" },
+    { src: '/images/WhatsApp Image 2026-05-14 at 13.47.48f.jpeg', alt: "Gabriel looking at his bride-to-be" },
+    { src: '/images/WhatsApp Image 2026-05-14 at 13.47.48g.jpeg', alt: "Ayobami and Gabriel holding hands" },
+    { src: '/images/WhatsApp Image 2026-05-14 at 13.47.49.jpeg', alt: "Beautiful couple embracing" },
+    { src: '/images/WhatsApp Image 2026-05-14 at 13.47.49h.jpeg', alt: "Ayobami and Gabriel lovely outdoor shoot" },
+    { src: '/images/WhatsApp Image 2026-05-14 at 13.47.49k.jpeg', alt: "Ayobami posing elegantly" },
+    { src: '/images/WhatsApp Image 2026-05-14 at 13.47.49l.jpeg', alt: "Gabriel looking dapper in his outfit" },
+    { src: '/images/WhatsApp Image 2026-05-14 at 13.47.50aa.jpeg', alt: "Couple sharing a tender moment" },
+    { src: '/images/WhatsApp Image 2026-05-14 at 13.47.50asd.jpeg', alt: "Ayobami and Gabriel stunning pose" },
+    { src: '/images/WhatsApp Image 2026-05-14 at 13.47.51bn.jpeg', alt: "Playful couple photo of Ayobami and Gabriel" },
+    { src: '/images/WhatsApp Image 2026-05-14 at 13.53.21bas.jpeg', alt: "Ayobami and Gabriel happy and in love" },
+    { src: '/images/WhatsApp Image 2026-05-14 at 14.02.18mnb.jpeg', alt: "Beautiful close-up of Ayobami and Gabriel" },
+    { src: '/images/WhatsApp Image 2026-05-14 at 14.42.49nhgs.jpeg', alt: "Ayobami and Gabriel classic pre-wedding photo" },
   ]
 
   return (
@@ -87,12 +87,14 @@ export default function Home() {
             <button onClick={() => scrollToSection('gallery')} className="text-gray-700 hover:text-deep-purple transition-colors">
               Gallery
             </button>
-            <button className="text-gray-700 hover:text-deep-purple transition-colors">
-              <Search size={20} />
+            <button aria-label="Search" className="text-gray-700 hover:text-deep-purple transition-colors">
+              <Search aria-hidden="true" size={20} />
             </button>
           </div>
           <div className="md:hidden">
-            <Search size={20} className="text-gray-700" />
+            <button aria-label="Search mobile">
+              <Search aria-hidden="true" size={20} className="text-gray-700" />
+            </button>
           </div>
         </nav>
       </header>
@@ -472,11 +474,15 @@ export default function Home() {
               <div 
                 key={index}
                 className="relative aspect-square rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
-                onClick={() => setSelectedImage(image)}
+                onClick={() => setSelectedImage(image.src)}
+                role="button"
+                tabIndex={0}
+                aria-label={`View enlarged ${image.alt}`}
+                onKeyDown={(e) => e.key === 'Enter' && setSelectedImage(image.src)}
               >
                 <Image
-                  src={image}
-                  alt={`Gallery image ${index + 1}`}
+                  src={image.src}
+                  alt={image.alt}
                   fill
                   className="object-cover"
                 />
@@ -499,7 +505,8 @@ export default function Home() {
           onClick={() => setSelectedImage(null)}
         >
           <button
-            className="absolute top-4 right-4 text-white text-4xl hover:text-wedding-gold transition-colors"
+            aria-label="Close image gallery modal"
+            className="absolute top-4 right-4 text-white text-4xl hover:text-wedding-gold transition-colors focus:outline-none focus:ring-2 focus:ring-wedding-gold rounded"
             onClick={() => setSelectedImage(null)}
           >
             ×
@@ -507,7 +514,7 @@ export default function Home() {
           <div className="relative max-w-5xl max-h-[90vh] w-full h-full">
             <Image
               src={selectedImage}
-              alt="Gallery image"
+              alt="Enlarged gallery image"
               fill
               className="object-contain"
             />
@@ -546,12 +553,13 @@ export default function Home() {
                     <button
                       onClick={() => copyToClipboard('2032909827', 'naira-account')}
                       className="p-2 hover:bg-white/20 rounded transition-colors"
-                      title="Copy account number"
+                      title="Copy Naira account number"
+                      aria-label="Copy Naira account number to clipboard"
                     >
                       {copiedField === 'naira-account' ? (
-                        <Check size={18} className="text-wedding-gold" />
+                        <Check size={18} className="text-wedding-gold" aria-hidden="true" />
                       ) : (
-                        <Copy size={18} />
+                        <Copy size={18} aria-hidden="true" />
                       )}
                     </button>
                   </div>
@@ -586,12 +594,13 @@ export default function Home() {
                     <button
                       onClick={() => copyToClipboard('aeajayi@gmail.com', 'cad-email')}
                       className="p-2 hover:bg-white/20 rounded transition-colors ml-2"
-                      title="Copy email"
+                      title="Copy Interac email"
+                      aria-label="Copy Canadian Dollar Interac email to clipboard"
                     >
                       {copiedField === 'cad-email' ? (
-                        <Check size={18} className="text-wedding-gold" />
+                        <Check size={18} className="text-wedding-gold" aria-hidden="true" />
                       ) : (
-                        <Copy size={18} />
+                        <Copy size={18} aria-hidden="true" />
                       )}
                     </button>
                   </div>
@@ -621,12 +630,13 @@ export default function Home() {
                     <button
                       onClick={() => copyToClipboard('2045393701', 'usd-account')}
                       className="p-2 hover:bg-white/20 rounded transition-colors"
-                      title="Copy account number"
+                      title="Copy US Dollar account number"
+                      aria-label="Copy US Dollar account number to clipboard"
                     >
                       {copiedField === 'usd-account' ? (
-                        <Check size={18} className="text-wedding-gold" />
+                        <Check size={18} className="text-wedding-gold" aria-hidden="true" />
                       ) : (
-                        <Copy size={18} />
+                        <Copy size={18} aria-hidden="true" />
                       )}
                     </button>
                   </div>
@@ -663,12 +673,13 @@ export default function Home() {
                     <button
                       onClick={() => copyToClipboard('1FfLqngqxBeMf5SRn4gyTHNcQZJ29AVuNm', 'btc-wallet')}
                       className="p-2 hover:bg-white/20 rounded transition-colors flex-shrink-0"
-                      title="Copy wallet address"
+                      title="Copy Bitcoin wallet address"
+                      aria-label="Copy Bitcoin wallet address to clipboard"
                     >
                       {copiedField === 'btc-wallet' ? (
-                        <Check size={18} className="text-wedding-gold" />
+                        <Check size={18} className="text-wedding-gold" aria-hidden="true" />
                       ) : (
-                        <Copy size={18} />
+                        <Copy size={18} aria-hidden="true" />
                       )}
                     </button>
                   </div>

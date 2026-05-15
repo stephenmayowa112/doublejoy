@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   },
   description: 'Join us as we celebrate the union of Ayobami Elizabeth and Gabriel Ayobamidele on June 6th, 2026',
   keywords: ['Wedding', 'Ayobami', 'Gabriel', 'DoubleJoy26', 'Nigerian Wedding'],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: "Ayobami & Gabriel - DoubleJoy'26",
     description: 'Join us as we celebrate the union of Ayobami Elizabeth and Gabriel Ayobamidele on June 6th, 2026',
