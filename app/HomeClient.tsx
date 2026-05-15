@@ -57,9 +57,9 @@ export default function Home() {
     <main className="relative min-h-screen bg-white overflow-hidden">
       {/* Decorative ambient background blobs for glassmorphism */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-light-purple/30 blur-[100px] animate-pulse"></div>
-        <div className="absolute top-[40%] right-[-10%] w-[30%] h-[50%] rounded-full bg-wedding-gold/20 blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute bottom-[-10%] left-[20%] w-[50%] h-[40%] rounded-full bg-royal-purple/20 blur-[120px] animate-pulse" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-light-purple/60 blur-[120px] animate-pulse"></div>
+        <div className="absolute top-[40%] right-[-10%] w-[30%] h-[50%] rounded-full bg-wedding-gold/40 blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-[-10%] left-[20%] w-[50%] h-[40%] rounded-full bg-royal-purple/40 blur-[120px] animate-pulse" style={{ animationDelay: '4s' }}></div>
       </div>
 
       <div className="relative z-10">
@@ -124,7 +124,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="relative bg-gradient-to-b from-white to-gray-50 section-padding overflow-hidden">
+      <section id="home" className="relative bg-gradient-to-b from-white/80 to-white/40 backdrop-blur-sm section-padding overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
             <p className="text-sm md:text-base text-gray-600 mb-2">
@@ -207,7 +207,7 @@ export default function Home() {
       </section>
 
       {/* The Story Section */}
-      <section id="story" className="bg-gray-100 section-padding">
+      <section id="story" className="bg-white/40 backdrop-blur-md section-padding">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Image */}
@@ -314,7 +314,7 @@ export default function Home() {
       </section>
 
       {/* Video Section */}
-      <section id="video" className="section-padding bg-white">
+      <section id="video" className="section-padding bg-white/40 backdrop-blur-md">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
             Our Love Story
@@ -339,7 +339,7 @@ export default function Home() {
       </section>
 
       {/* Meet the Couple Section */}
-      <section id="couple" className="section-padding bg-gray-50">
+      <section id="couple" className="section-padding bg-white/40 backdrop-blur-md">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-serif text-deep-purple text-center mb-12">
             Meet the Couple
@@ -395,7 +395,7 @@ export default function Home() {
       <section id="event-details" className="relative section-padding overflow-hidden">
         {/* Decorative blur for Event Details background */}
         <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="absolute left-[10%] top-[20%] w-[30%] h-[60%] bg-deep-purple/20 rounded-full blur-[100px]"></div>
+          <div className="absolute left-[10%] top-[20%] w-[30%] h-[60%] bg-deep-purple/40 rounded-full blur-[100px]"></div>
         </div>
         <div className="relative max-w-4xl mx-auto text-center z-10">
           <h2 className="text-3xl md:text-4xl font-serif text-deep-purple mb-8">
@@ -456,8 +456,8 @@ export default function Home() {
       <section id="rsvp" className="relative section-padding overflow-hidden">
         {/* Decorative background blur */}
         <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="absolute top-[30%] right-[10%] w-[35%] h-[50%] bg-soft-gold/30 rounded-full blur-[100px]"></div>
-          <div className="absolute bottom-[10%] left-[5%] w-[40%] h-[40%] bg-light-purple/20 rounded-full blur-[90px]"></div>
+          <div className="absolute top-[30%] right-[10%] w-[35%] h-[50%] bg-wedding-gold/40 rounded-full blur-[100px]"></div>
+          <div className="absolute bottom-[10%] left-[5%] w-[40%] h-[40%] bg-light-purple/40 rounded-full blur-[90px]"></div>
         </div>
 
         <div className="relative max-w-2xl mx-auto text-center z-10">
@@ -500,7 +500,7 @@ export default function Home() {
       </section>
 
       {/* Gallery Preview Section */}
-      <section id="gallery" className="section-padding bg-gray-50">
+      <section id="gallery" className="section-padding bg-white/40 backdrop-blur-md">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-serif text-deep-purple text-center mb-12">
             Gallery
@@ -576,8 +576,8 @@ export default function Home() {
       <section id="gifting" className="relative section-padding overflow-hidden">
         {/* Decorative blur for Gifting background */}
         <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="absolute right-[5%] bottom-[20%] w-[30%] h-[50%] bg-wedding-gold/20 rounded-full blur-[100px]"></div>
-          <div className="absolute left-[5%] top-[10%] w-[40%] h-[40%] bg-royal-purple/10 rounded-full blur-[100px]"></div>
+          <div className="absolute right-[5%] bottom-[20%] w-[30%] h-[50%] bg-wedding-gold/40 rounded-full blur-[100px]"></div>
+          <div className="absolute left-[5%] top-[10%] w-[40%] h-[40%] bg-royal-purple/40 rounded-full blur-[100px]"></div>
         </div>
 
         <div className="relative max-w-5xl mx-auto z-10">
