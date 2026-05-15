@@ -633,6 +633,7 @@ export default function Home() {
                   <p className="text-lg">First Bank of Nigeria</p>
                 </div>
               </div>
+              </div>
             </div>
 
             {/* Canadian Dollar Transfers */}
@@ -778,6 +779,7 @@ export default function Home() {
           </p>
         </div>
       </footer>
+      </div>
     </main>
   )
 }
