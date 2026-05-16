@@ -1,11 +1,14 @@
-// ...
+'use client'
+
 import { FiHeart, FiCopy, FiCheck, FiMenu, FiX, FiAlertTriangle, FiMoon, FiGift } from 'react-icons/fi'
 import Image from 'next/image'
 import { useState, useCallback } from 'react'
+import Lightbox from "yet-another-react-lightbox"
+import "yet-another-react-lightbox/styles.css"
 
 export default function Home() {
 // ...
-  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [photoIndex, setPhotoIndex] = useState<number>(-1)
   const [storyExpanded, setStoryExpanded] = useState(0) // 0 = collapsed, 1 = first expand, 2 = fully expanded
   const [copiedField, setCopiedField] = useState<string | null>(null)
   const [galleryVisible, setGalleryVisible] = useState(4) // Start with 4 images visible
@@ -568,11 +571,11 @@ export default function Home() {
               <div 
                 key={index}
                 className="relative aspect-square rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer animate-fadeIn"
-                onClick={() => setSelectedImage(image.src)}
+                onClick={() => setPhotoIndex(index)}
                 role="button"
                 tabIndex={0}
                 aria-label={`View enlarged ${image.alt}`}
-                onKeyDown={(e) => e.key === 'Enter' && setSelectedImage(image.src)}
+                onKeyDown={(e) => e.key === 'Enter' && setPhotoIndex(index)}
               >
                 <Image
                   src={image.src}
@@ -609,30 +612,12 @@ export default function Home() {
       </section>
 
       {/* Image Lightbox Modal */}
-      {selectedImage && (
-        <div 
-          className="fixed inset-0 bg-black/60 backdrop-blur-xl z-50 flex items-center justify-center p-4 transition-all duration-300"
-          onClick={() => setSelectedImage(null)}
-        >
-          <button
-            aria-label="Close image gallery modal"
-            className="absolute top-4 right-4 text-white text-4xl hover:text-wedding-gold transition-colors focus:outline-none focus:ring-2 focus:ring-wedding-gold rounded"
-            onClick={() => setSelectedImage(null)}
-          >
-            ×
-          </button>
-          <div className="relative max-w-5xl max-h-[90vh] w-full h-full">
-            <Image
-              src={selectedImage}
-              alt="Enlarged gallery image"
-              fill
-              sizes="100vw"
-              className="object-contain"
-              priority
-            />
-          </div>
-        </div>
-      )}
+      <Lightbox
+        open={photoIndex >= 0}
+        close={() => setPhotoIndex(-1)}
+        index={photoIndex > -1 ? photoIndex : 0}
+        slides={galleryImages.map(img => ({ src: img.src, alt: img.alt }))}
+      />
 
       {/* Gifting Section */}
       <section id="gifting" className="relative section-padding overflow-hidden">
