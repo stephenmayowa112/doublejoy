@@ -374,7 +374,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
             {/* Gabriel */}
             <div className="text-center">
-              <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl mb-6 bg-gray-100 grayscale hover:grayscale-0 transition-all duration-500">
+              <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden mb-6">
                 <Image
                   src="/images/ayo1.jpeg"
                   alt="Gabriel Ayobamidele"
@@ -395,7 +395,7 @@ export default function Home() {
 
             {/* Ayobami */}
             <div className="text-center">
-              <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl mb-6 bg-gray-100 grayscale hover:grayscale-0 transition-all duration-500">
+              <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden mb-6">
                 <Image
                   src="/images/ayo2.jpeg"
                   alt="Ayobami Elizabeth"
