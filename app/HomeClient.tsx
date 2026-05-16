@@ -13,7 +13,7 @@ export default function Home() {
   const [photoIndex, setPhotoIndex] = useState<number>(-1)
   const [storyExpanded, setStoryExpanded] = useState(0) // 0 = collapsed, 1 = first expand, 2 = fully expanded
   const [copiedField, setCopiedField] = useState<string | null>(null)
-  const [galleryVisible, setGalleryVisible] = useState(4) // Start with 4 images visible
+  const [galleryVisible, setGalleryVisible] = useState(3) // Start with 3 images visible
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   
   const scrollToSection = (id: string) => {
@@ -205,11 +205,13 @@ export default function Home() {
             {/* Couple Image Placeholder */}
             <div className="relative z-10 mx-auto w-64 md:w-96 h-96 md:h-[500px] rounded-t-full overflow-hidden shadow-2xl">
               <Image
-                src="/images/WhatsApp Image 2026-05-14 at 13.47.47.jpeg"
+                src="/images/WhatsApp-purple Image 2026-05-14 at 13.47.47.jpeg"
                 alt="Ayobami & Gabriel"
                 fill
+                sizes="(max-width: 768px) 256px, 384px"
                 className="object-cover"
                 priority
+                quality={85}
               />
             </div>
           </div>
@@ -254,12 +256,13 @@ export default function Home() {
             <div className="order-2 md:order-1">
               <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl">
                 <Image
-                  src="/images/DSC_8382.jpg.jpeg"
+                  src="/images/whiteDSC_8382.jpg.jpeg"
                   alt="Our Story"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                   loading="lazy"
+                  quality={80}
                 />
               </div>
             </div>
@@ -587,10 +590,10 @@ export default function Home() {
                   src={image.src}
                   alt={image.alt}
                   fill
-                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   className="object-cover"
                   loading="lazy"
-                  quality={75}
+                  quality={70}
                 />
               </div>
             ))}
