@@ -1,10 +1,10 @@
-'use client'
-
+// ...
 import { FiHeart, FiCopy, FiCheck, FiMenu, FiX, FiAlertTriangle, FiMoon, FiGift } from 'react-icons/fi'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
 export default function Home() {
+// ...
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [storyExpanded, setStoryExpanded] = useState(0) // 0 = collapsed, 1 = first expand, 2 = fully expanded
   const [copiedField, setCopiedField] = useState<string | null>(null)
@@ -243,7 +243,9 @@ export default function Home() {
                   src="/images/DSC_8382.jpg.jpeg"
                   alt="Our Story"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -379,7 +381,9 @@ export default function Home() {
                   src="/images/ayo1.jpeg"
                   alt="Gabriel Ayobamidele"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-contain"
+                  loading="lazy"
                 />
               </div>
               <h3 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
@@ -400,7 +404,9 @@ export default function Home() {
                   src="/images/ayo2.jpeg"
                   alt="Ayobami Elizabeth"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-contain"
+                  loading="lazy"
                 />
               </div>
               <h3 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
@@ -567,7 +573,10 @@ export default function Home() {
                   src={image.src}
                   alt={image.alt}
                   fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   className="object-cover"
+                  loading="lazy"
+                  quality={75}
                 />
               </div>
             ))}
@@ -612,7 +621,9 @@ export default function Home() {
               src={selectedImage}
               alt="Enlarged gallery image"
               fill
+              sizes="100vw"
               className="object-contain"
+              priority
             />
           </div>
         </div>
