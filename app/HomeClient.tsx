@@ -1,6 +1,6 @@
 'use client'
 
-import { FiHeart, FiCopy, FiCheck, FiMenu, FiX } from 'react-icons/fi'
+import { FiHeart, FiCopy, FiCheck, FiMenu, FiX, FiAlertTriangle, FiMoon, FiGift } from 'react-icons/fi'
 import Image from 'next/image'
 import { useState } from 'react'
 
@@ -69,8 +69,8 @@ export default function Home() {
           {/* Announcement Bar */}
           <div className="bg-deep-purple text-white py-2 px-4 text-center text-xs md:text-sm">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
-              <span className="font-light">
-                Your love for love brought you here... DoubleJoy'26 | ⚠️ Strictly By Invitation Only
+              <span className="font-light flex items-center justify-center gap-2">
+                Your love for love brought you here... DoubleJoy'26 | <FiAlertTriangle className="inline-block" /> Strictly By Invitation Only
               </span>
               <button 
                 onClick={() => scrollToSection('rsvp')}
@@ -260,7 +260,7 @@ export default function Home() {
               </p>
               <p className="text-gray-700 leading-relaxed mb-4">
                 We actually met at the gym. And yes! this is your sign to stop ignoring that 
-                membership card and "start next Monday." 🌚
+                membership card and "start next Monday." <FiMoon className="inline-block relative -top-[2px] text-gray-500" />
               </p>
               <p className="text-gray-700 leading-relaxed mb-4">
                 Funny thing is, the year before, I had promised myself I'd finally take fitness 
@@ -476,8 +476,8 @@ export default function Home() {
               
               {/* Invitation Notice */}
               <div className="mt-8 bg-wedding-gold/20 border-2 border-wedding-gold rounded-lg p-4">
-                <p className="text-wedding-gold font-bold text-sm md:text-base">
-                  ⚠️ STRICTLY BY INVITATION ONLY
+                <p className="text-wedding-gold font-bold text-sm md:text-base flex items-center justify-center gap-2">
+                  <FiAlertTriangle /> STRICTLY BY INVITATION ONLY
                 </p>
                 <p className="text-white/90 text-sm mt-1">
                   No Plus Ones • Access Card Required
@@ -506,8 +506,8 @@ export default function Home() {
           
           {/* Invitation Notice */}
           <div className="bg-deep-purple/10 border-2 border-deep-purple rounded-lg p-4 mb-8">
-            <p className="text-deep-purple font-semibold text-sm md:text-base">
-              ⚠️ STRICTLY BY INVITATION ONLY • NO PLUS ONES
+            <p className="text-deep-purple font-semibold text-sm md:text-base flex items-center justify-center gap-2">
+              <FiAlertTriangle /> STRICTLY BY INVITATION ONLY • NO PLUS ONES
             </p>
             <p className="text-gray-700 text-sm mt-2">
               This is an intimate celebration. Only invited guests will be admitted.
@@ -587,7 +587,7 @@ export default function Home() {
           {galleryVisible >= galleryImages.length && (
             <div className="text-center mt-8">
               <p className="text-gray-600 italic">
-                You've reached the end of our gallery 💜
+                You've reached the end of our gallery <FiHeart className="inline-block relative -top-[2px] text-gray-500" />
               </p>
             </div>
           )}
@@ -638,8 +638,8 @@ export default function Home() {
             
             {/* Gift Policy Notice */}
             <div className="max-w-2xl mx-auto bg-deep-purple/10 border-2 border-deep-purple rounded-lg p-4 mb-8">
-              <p className="text-deep-purple font-bold text-base md:text-lg mb-2">
-                💰 MONETARY GIFTS ONLY
+              <p className="flex items-center justify-center gap-2 text-deep-purple font-bold text-base md:text-lg mb-2">
+                <FiGift className="text-xl" /> MONETARY GIFTS ONLY
               </p>
               <p className="text-gray-700 text-sm md:text-base">
                 We kindly request that all gifts be monetary contributions.
@@ -647,164 +647,164 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-4">
             {/* Naira Transfers */}
-            <div className="bg-deep-purple/80 backdrop-blur-xl border border-white/20 text-white rounded-2xl p-6 shadow-[0_8px_32px_rgba(0,0,0,0.15)] relative overflow-hidden">
+            <div className="bg-deep-purple/80 backdrop-blur-xl border border-white/20 text-white rounded-xl p-4 shadow-[0_8px_32px_rgba(0,0,0,0.15)] relative overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent pointer-events-none z-0"></div>
               <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-xl">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-8 h-8 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-base">
                     ₦
                   </div>
-                  <h3 className="text-xl font-serif">Naira Transfers</h3>
+                  <h3 className="text-base font-serif">Naira Transfers</h3>
                 </div>
                 
-                <div className="space-y-3">
-                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/5">
-                    <p className="text-sm text-soft-gold mb-1">Account Number</p>
+                <div className="space-y-2">
+                  <div className="bg-white/10 backdrop-blur-md rounded-lg p-3 border border-white/5">
+                    <p className="text-xs text-soft-gold mb-1">Account Number</p>
                     <div className="flex items-center justify-between">
-                      <p className="text-lg font-mono">2032909827</p>
+                      <p className="text-sm font-mono">2032909827</p>
                       <button
                         onClick={() => copyToClipboard('2032909827', 'naira-account')}
-                        className="p-2 hover:bg-white/20 rounded transition-colors"
+                        className="p-1.5 hover:bg-white/20 rounded transition-colors"
                         title="Copy Naira account number"
                       aria-label="Copy Naira account number to clipboard"
                     >
                       {copiedField === 'naira-account' ? (
-                        <FiCheck size={18} className="text-wedding-gold" aria-hidden="true" />
+                        <FiCheck size={14} className="text-wedding-gold" aria-hidden="true" />
                       ) : (
-                        <FiCopy size={18} aria-hidden="true" />
+                        <FiCopy size={14} aria-hidden="true" />
                       )}
                     </button>
                   </div>
                 </div>
                 
-                <div className="bg-white/10 rounded-lg p-4">
-                  <p className="text-sm text-soft-gold mb-1">Account Name</p>
-                  <p className="text-lg">Ayobami Ajayi</p>
+                <div className="bg-white/10 rounded-lg p-3">
+                  <p className="text-xs text-soft-gold mb-1">Account Name</p>
+                  <p className="text-sm">Ayobami Ajayi</p>
                 </div>
                 
-                <div className="bg-white/10 rounded-lg p-4">
-                  <p className="text-sm text-soft-gold mb-1">Bank</p>
-                  <p className="text-lg">First Bank of Nigeria</p>
+                <div className="bg-white/10 rounded-lg p-3">
+                  <p className="text-xs text-soft-gold mb-1">Bank</p>
+                  <p className="text-sm">First Bank of Nigeria</p>
                 </div>
               </div>
               </div>
             </div>
 
             {/* Canadian Dollar Transfers */}
-            <div className="bg-gradient-to-br from-royal-purple to-light-purple text-white rounded-lg p-6 shadow-xl">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-xl">
+            <div className="bg-gradient-to-br from-royal-purple to-light-purple text-white rounded-xl p-4 shadow-xl">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-8 h-8 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-base">
                   C$
                 </div>
-                <h3 className="text-xl font-serif">Canadian Dollar</h3>
+                <h3 className="text-base font-serif">Canadian Dollar</h3>
               </div>
               
-              <div className="space-y-3">
-                <div className="bg-white/10 rounded-lg p-4">
-                  <p className="text-sm text-soft-gold mb-1">Interac Transfer</p>
+              <div className="space-y-2">
+                <div className="bg-white/10 rounded-lg p-3">
+                  <p className="text-xs text-soft-gold mb-1">Interac Transfer</p>
                   <div className="flex items-center justify-between">
-                    <p className="text-lg break-all">aeajayi@gmail.com</p>
+                    <p className="text-sm break-all">aeajayi@gmail.com</p>
                     <button
                       onClick={() => copyToClipboard('aeajayi@gmail.com', 'cad-email')}
-                      className="p-2 hover:bg-white/20 rounded transition-colors ml-2"
+                      className="p-1.5 hover:bg-white/20 rounded transition-colors ml-2"
                       title="Copy Interac email"
                       aria-label="Copy Canadian Dollar Interac email to clipboard"
                     >
                       {copiedField === 'cad-email' ? (
-                        <FiCheck size={18} className="text-wedding-gold" aria-hidden="true" />
+                        <FiCheck size={14} className="text-wedding-gold" aria-hidden="true" />
                       ) : (
-                        <FiCopy size={18} aria-hidden="true" />
+                        <FiCopy size={14} aria-hidden="true" />
                       )}
                     </button>
                   </div>
                 </div>
                 
-                <div className="bg-white/10 rounded-lg p-4">
-                  <p className="text-sm text-soft-gold mb-1">Bank Options</p>
-                  <p className="text-lg">Scotiabank or RBC</p>
+                <div className="bg-white/10 rounded-lg p-3">
+                  <p className="text-xs text-soft-gold mb-1">Bank Options</p>
+                  <p className="text-sm">Scotiabank or RBC</p>
                 </div>
               </div>
             </div>
 
             {/* US Dollar Transfers */}
-            <div className="bg-gradient-to-br from-light-purple to-royal-purple text-white rounded-lg p-6 shadow-xl">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-xl">
+            <div className="bg-gradient-to-br from-light-purple to-royal-purple text-white rounded-xl p-4 shadow-xl">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-8 h-8 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-base">
                   $
                 </div>
-                <h3 className="text-xl font-serif">US Dollar</h3>
+                <h3 className="text-base font-serif">US Dollar</h3>
               </div>
               
-              <div className="space-y-3">
-                <div className="bg-white/10 rounded-lg p-4">
-                  <p className="text-sm text-soft-gold mb-1">Account Number</p>
+              <div className="space-y-2">
+                <div className="bg-white/10 rounded-lg p-3">
+                  <p className="text-xs text-soft-gold mb-1">Account Number</p>
                   <div className="flex items-center justify-between">
-                    <p className="text-lg font-mono">2045393701</p>
+                    <p className="text-sm font-mono">2045393701</p>
                     <button
                       onClick={() => copyToClipboard('2045393701', 'usd-account')}
-                      className="p-2 hover:bg-white/20 rounded transition-colors"
+                      className="p-1.5 hover:bg-white/20 rounded transition-colors"
                       title="Copy US Dollar account number"
                       aria-label="Copy US Dollar account number to clipboard"
                     >
                       {copiedField === 'usd-account' ? (
-                        <FiCheck size={18} className="text-wedding-gold" aria-hidden="true" />
+                        <FiCheck size={14} className="text-wedding-gold" aria-hidden="true" />
                       ) : (
-                        <FiCopy size={18} aria-hidden="true" />
+                        <FiCopy size={14} aria-hidden="true" />
                       )}
                     </button>
                   </div>
                 </div>
                 
-                <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/5">
-                  <p className="text-sm text-soft-gold mb-1">Account Name</p>
-                  <p className="text-lg">Gabriel A. Akande</p>
+                <div className="bg-white/10 backdrop-blur-md rounded-lg p-3 border border-white/5">
+                  <p className="text-xs text-soft-gold mb-1">Account Name</p>
+                  <p className="text-sm">Gabriel A. Akande</p>
                 </div>
                 
-                <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/5">
-                  <p className="text-sm text-soft-gold mb-1">Bank</p>
-                  <p className="text-lg">First Bank</p>
+                <div className="bg-white/10 backdrop-blur-md rounded-lg p-3 border border-white/5">
+                  <p className="text-xs text-soft-gold mb-1">Bank</p>
+                  <p className="text-sm">First Bank</p>
                 </div>
               </div>
             </div>
 
             {/* Bitcoin Wallet */}
-            <div className="bg-gradient-to-br from-deep-purple/80 via-royal-purple/80 to-light-purple/80 backdrop-blur-xl border border-white/20 text-white rounded-2xl p-6 shadow-[0_8px_32px_rgba(0,0,0,0.15)] relative overflow-hidden">
+            <div className="bg-gradient-to-br from-deep-purple/80 via-royal-purple/80 to-light-purple/80 backdrop-blur-xl border border-white/20 text-white rounded-xl p-4 shadow-[0_8px_32px_rgba(0,0,0,0.15)] relative overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent pointer-events-none z-0"></div>
               <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-lg">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-8 h-8 bg-wedding-gold rounded-full flex items-center justify-center text-deep-purple font-bold text-base">
                     ₿
                   </div>
-                  <h3 className="text-xl font-serif">Bitcoin (BTC)</h3>
+                  <h3 className="text-base font-serif">Bitcoin (BTC)</h3>
                 </div>
                 
-                <div className="space-y-3">
-                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/5">
-                    <p className="text-sm text-soft-gold mb-2">Wallet Address</p>
+                <div className="space-y-2">
+                  <div className="bg-white/10 backdrop-blur-md rounded-lg p-3 border border-white/5">
+                    <p className="text-xs text-soft-gold mb-1">Wallet Address</p>
                     <div className="flex items-start justify-between gap-2">
-                      <p className="text-sm font-mono break-all leading-relaxed">
+                      <p className="text-xs font-mono break-all leading-relaxed">
                         1FfLqngqxBeMf5SRn4gyTHNcQZJ29AVuNm
                       </p>
                       <button
                         onClick={() => copyToClipboard('1FfLqngqxBeMf5SRn4gyTHNcQZJ29AVuNm', 'btc-wallet')}
-                        className="p-2 hover:bg-white/20 rounded transition-colors flex-shrink-0"
+                        className="p-1.5 hover:bg-white/20 rounded transition-colors flex-shrink-0"
                         title="Copy Bitcoin wallet address"
                         aria-label="Copy Bitcoin wallet address to clipboard"
                       >
                         {copiedField === 'btc-wallet' ? (
-                          <FiCheck size={18} className="text-wedding-gold" aria-hidden="true" />
+                          <FiCheck size={14} className="text-wedding-gold" aria-hidden="true" />
                         ) : (
-                          <FiCopy size={18} aria-hidden="true" />
+                          <FiCopy size={14} aria-hidden="true" />
                         )}
                       </button>
                     </div>
                   </div>
                   
-                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/5">
-                    <p className="text-sm text-soft-gold mb-1">Network</p>
-                    <p className="text-lg">Bitcoin (BTC)</p>
+                  <div className="bg-white/10 backdrop-blur-md rounded-lg p-3 border border-white/5">
+                    <p className="text-xs text-soft-gold mb-1">Network</p>
+                    <p className="text-sm">Bitcoin (BTC)</p>
                   </div>
                 </div>
               </div>
@@ -813,7 +813,7 @@ export default function Home() {
 
           <div className="text-center mt-8">
             <p className="text-gray-600 italic mb-2">
-              Thank you for your love and generosity 💜
+              Thank you for your love and generosity <FiHeart className="inline-block relative -top-[2px] text-gray-500" />
             </p>
             <p className="text-sm text-gray-500">
               Please note: Only monetary gifts will be accepted
