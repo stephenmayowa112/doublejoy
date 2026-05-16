@@ -1,6 +1,6 @@
 'use client'
 
-import { Heart, Copy, Check, Menu, X } from 'lucide-react'
+import { FiHeart, FiCopy, FiCheck, FiMenu, FiX } from 'react-icons/fi'
 import Image from 'next/image'
 import { useState } from 'react'
 
@@ -121,7 +121,7 @@ export default function Home() {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-gray-700"
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
             </button>
           </div>
         </nav>
@@ -644,9 +644,6 @@ export default function Home() {
               <p className="text-gray-700 text-sm md:text-base">
                 We kindly request that all gifts be monetary contributions.
               </p>
-              <p className="text-gray-600 text-sm mt-2 italic">
-                Exception: Solar panels are also welcome! ☀️
-              </p>
             </div>
           </div>
 
@@ -674,9 +671,9 @@ export default function Home() {
                       aria-label="Copy Naira account number to clipboard"
                     >
                       {copiedField === 'naira-account' ? (
-                        <Check size={18} className="text-wedding-gold" aria-hidden="true" />
+                        <FiCheck size={18} className="text-wedding-gold" aria-hidden="true" />
                       ) : (
-                        <Copy size={18} aria-hidden="true" />
+                        <FiCopy size={18} aria-hidden="true" />
                       )}
                     </button>
                   </div>
@@ -716,9 +713,9 @@ export default function Home() {
                       aria-label="Copy Canadian Dollar Interac email to clipboard"
                     >
                       {copiedField === 'cad-email' ? (
-                        <Check size={18} className="text-wedding-gold" aria-hidden="true" />
+                        <FiCheck size={18} className="text-wedding-gold" aria-hidden="true" />
                       ) : (
-                        <Copy size={18} aria-hidden="true" />
+                        <FiCopy size={18} aria-hidden="true" />
                       )}
                     </button>
                   </div>
@@ -752,9 +749,9 @@ export default function Home() {
                       aria-label="Copy US Dollar account number to clipboard"
                     >
                       {copiedField === 'usd-account' ? (
-                        <Check size={18} className="text-wedding-gold" aria-hidden="true" />
+                        <FiCheck size={18} className="text-wedding-gold" aria-hidden="true" />
                       ) : (
-                        <Copy size={18} aria-hidden="true" />
+                        <FiCopy size={18} aria-hidden="true" />
                       )}
                     </button>
                   </div>
@@ -797,9 +794,9 @@ export default function Home() {
                         aria-label="Copy Bitcoin wallet address to clipboard"
                       >
                         {copiedField === 'btc-wallet' ? (
-                          <Check size={18} className="text-wedding-gold" aria-hidden="true" />
+                          <FiCheck size={18} className="text-wedding-gold" aria-hidden="true" />
                         ) : (
-                          <Copy size={18} aria-hidden="true" />
+                          <FiCopy size={18} aria-hidden="true" />
                         )}
                       </button>
                     </div>
@@ -819,7 +816,7 @@ export default function Home() {
               Thank you for your love and generosity 💜
             </p>
             <p className="text-sm text-gray-500">
-              Please note: Only monetary gifts (or solar panels ☀️) will be accepted
+              Please note: Only monetary gifts will be accepted
             </p>
           </div>
         </div>
@@ -834,7 +831,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="text-lg">With love</span>
-            <Heart size={20} fill="currentColor" className="text-wedding-gold" />
+            <FiHeart size={20} fill="currentColor" className="text-wedding-gold" />
             <span className="text-lg">DoubleJoy'26</span>
           </div>
           <p className="text-sm opacity-80">
