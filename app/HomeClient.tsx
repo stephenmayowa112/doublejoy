@@ -2,9 +2,11 @@
 
 import { FiHeart, FiCopy, FiCheck, FiMenu, FiX, FiAlertTriangle, FiMoon, FiGift } from 'react-icons/fi'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import { useState, useCallback } from 'react'
-import Lightbox from "yet-another-react-lightbox"
 import "yet-another-react-lightbox/styles.css"
+
+const Lightbox = dynamic(() => import('yet-another-react-lightbox'), { ssr: false })
 
 export default function Home() {
 // ...
