@@ -27,14 +27,17 @@ export default function Home() {
     setGalleryVisible(prev => Math.min(prev + 8, galleryImages.length))
   }
 
-  // Gallery images
+  // Gallery images - Arranged by outfit: Purple/Black formal, White dress, Casual
   const galleryImages = [
-    { src: '/images/DSC_8374 2.jpg.jpeg', alt: "Ayobami and Gabriel sharing a joyful moment" },
+    // Purple/Black formal photos (DSC series - typically formal shoots)
     { src: '/images/DSC_8382.jpg.jpeg', alt: "Ayobami and Gabriel looking into each other's eyes" },
     { src: '/images/DSC_8392.jpg.jpeg', alt: "Gabriel posing for a pre-wedding portrait" },
     { src: '/images/DSC_8403.jpg.jpeg', alt: "Ayobami glowing in her beautiful outfit" },
     { src: '/images/DSC_8405.jpg.jpeg', alt: "Ayobami and Gabriel elegant portrait" },
     { src: '/images/DSC_8408.jpg.jpeg', alt: "Couple sharing a laugh during their shoot" },
+    { src: '/images/DSC_8374 2.jpg.jpeg', alt: "Ayobami and Gabriel sharing a joyful moment" },
+    
+    // White dress photos (WhatsApp images - formal/traditional)
     { src: '/images/WhatsApp Image 2026-05-14 at 13.47.47.jpeg', alt: "Ayobami and Gabriel sweet couple moment" },
     { src: '/images/WhatsApp Image 2026-05-14 at 13.47.47a.jpeg', alt: "Ayobami and Gabriel having fun together" },
     { src: '/images/WhatsApp Image 2026-05-14 at 13.47.47b.jpeg', alt: "Candid moment of the beautiful couple" },
@@ -43,6 +46,8 @@ export default function Home() {
     { src: '/images/WhatsApp Image 2026-05-14 at 13.47.48e.jpeg', alt: "Ayobami smiling brightly next to Gabriel" },
     { src: '/images/WhatsApp Image 2026-05-14 at 13.47.48f.jpeg', alt: "Gabriel looking at his bride-to-be" },
     { src: '/images/WhatsApp Image 2026-05-14 at 13.47.48g.jpeg', alt: "Ayobami and Gabriel holding hands" },
+    
+    // Casual everyday photos
     { src: '/images/WhatsApp Image 2026-05-14 at 13.47.49.jpeg', alt: "Beautiful couple embracing" },
     { src: '/images/WhatsApp Image 2026-05-14 at 13.47.49h.jpeg', alt: "Ayobami and Gabriel lovely outdoor shoot" },
     { src: '/images/WhatsApp Image 2026-05-14 at 13.47.49k.jpeg', alt: "Ayobami posing elegantly" },
