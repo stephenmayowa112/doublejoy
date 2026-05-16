@@ -1,6 +1,6 @@
 'use client'
 
-import { Search, Heart, Copy, Check } from 'lucide-react'
+import { Heart, Copy, Check, Menu, X } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
 
@@ -9,10 +9,12 @@ export default function Home() {
   const [storyExpanded, setStoryExpanded] = useState(0) // 0 = collapsed, 1 = first expand, 2 = fully expanded
   const [copiedField, setCopiedField] = useState<string | null>(null)
   const [galleryVisible, setGalleryVisible] = useState(4) // Start with 4 images visible
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     element?.scrollIntoView({ behavior: 'smooth' })
+    setIsMobileMenuOpen(false) // Close menu on click
   }
 
   const copyToClipboard = (text: string, field: string) => {
@@ -111,16 +113,38 @@ export default function Home() {
             <button onClick={() => scrollToSection('gallery')} className="text-gray-700 hover:text-deep-purple transition-colors">
               Gallery
             </button>
-            <button aria-label="Search" className="text-gray-700 hover:text-deep-purple transition-colors">
-              <Search aria-hidden="true" size={20} />
-            </button>
           </div>
-          <div className="md:hidden">
-            <button aria-label="Search mobile">
-              <Search aria-hidden="true" size={20} className="text-gray-700" />
+          <div className="md:hidden flex items-center gap-4">
+            <button 
+              aria-label="Toggle menu" 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-gray-700"
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </nav>
+
+        {/* Mobile Menu Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-lg py-4 px-6 flex flex-col gap-4 animate-fadeIn">
+            <button onClick={() => scrollToSection('home')} className="text-left text-gray-800 text-lg hover:text-deep-purple transition-colors">
+              Home
+            </button>
+            <button onClick={() => scrollToSection('event-details')} className="text-left text-gray-800 text-lg hover:text-deep-purple transition-colors">
+              Event Details
+            </button>
+            <button onClick={() => scrollToSection('rsvp')} className="text-left text-gray-800 text-lg hover:text-deep-purple transition-colors">
+              RSVP
+            </button>
+            <button onClick={() => scrollToSection('gifting')} className="text-left text-gray-800 text-lg hover:text-deep-purple transition-colors">
+              Gifting
+            </button>
+            <button onClick={() => scrollToSection('gallery')} className="text-left text-gray-800 text-lg hover:text-deep-purple transition-colors">
+              Gallery
+            </button>
+          </div>
+        )}
       </header>
 
       {/* Hero Section */}
@@ -601,14 +625,27 @@ export default function Home() {
         </div>
 
         <div className="relative max-w-5xl mx-auto z-10">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
               Wedding Gift
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto mb-6">
               Your presence at our wedding is the greatest gift. However, if you wish to honor us with a gift, 
               we would be grateful for a contribution towards our future together.
             </p>
+            
+            {/* Gift Policy Notice */}
+            <div className="max-w-2xl mx-auto bg-deep-purple/10 border-2 border-deep-purple rounded-lg p-4 mb-8">
+              <p className="text-deep-purple font-bold text-base md:text-lg mb-2">
+                💰 MONETARY GIFTS ONLY
+              </p>
+              <p className="text-gray-700 text-sm md:text-base">
+                We kindly request that all gifts be monetary contributions.
+              </p>
+              <p className="text-gray-600 text-sm mt-2 italic">
+                Exception: Solar panels are also welcome! ☀️
+              </p>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -776,8 +813,11 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-8">
-            <p className="text-gray-600 italic">
+            <p className="text-gray-600 italic mb-2">
               Thank you for your love and generosity 💜
+            </p>
+            <p className="text-sm text-gray-500">
+              Please note: Only monetary gifts (or solar panels ☀️) will be accepted
             </p>
           </div>
         </div>
