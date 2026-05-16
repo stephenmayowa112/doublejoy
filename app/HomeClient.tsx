@@ -67,7 +67,7 @@ export default function Home() {
         <div className="bg-deep-purple text-white py-3 px-4 text-center text-sm md:text-base">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
             <span className="font-light">
-              Your love for love brought you here... DoubleJoy'26
+              Your love for love brought you here... DoubleJoy'26 | ⚠️ Strictly By Invitation Only
             </span>
             <button 
               onClick={() => scrollToSection('rsvp')}
@@ -91,7 +91,7 @@ export default function Home() {
               alt="DoubleJoy'26 Logo"
               width={250}
               height={100}
-              className="absolute left-0 top-1/2 -translate-y-1/2 w-[126px] md:w-[196px] h-auto max-w-none"
+              className="absolute left-0 top-1/2 -translate-y-1/2 w-[76px] md:w-[118px] h-auto max-w-none"
               priority
             />
           </button>
@@ -447,6 +447,16 @@ export default function Home() {
                   <span className="text-wedding-gold font-medium">Theme Colors:</span> Purple and Gold
                 </p>
               </div>
+              
+              {/* Invitation Notice */}
+              <div className="mt-8 bg-wedding-gold/20 border-2 border-wedding-gold rounded-lg p-4">
+                <p className="text-wedding-gold font-bold text-sm md:text-base">
+                  ⚠️ STRICTLY BY INVITATION ONLY
+                </p>
+                <p className="text-white/90 text-sm mt-1">
+                  No Plus Ones • Access Card Required
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -464,9 +474,19 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
             RSVP
           </h2>
-          <p className="text-gray-700 mb-8">
+          <p className="text-gray-700 mb-4">
             Please confirm your attendance by May 16th, 2026 to receive your access card
           </p>
+          
+          {/* Invitation Notice */}
+          <div className="bg-deep-purple/10 border-2 border-deep-purple rounded-lg p-4 mb-8">
+            <p className="text-deep-purple font-semibold text-sm md:text-base">
+              ⚠️ STRICTLY BY INVITATION ONLY • NO PLUS ONES
+            </p>
+            <p className="text-gray-700 text-sm mt-2">
+              This is an intimate celebration. Only invited guests will be admitted.
+            </p>
+          </div>
           
           <div className="bg-white/60 backdrop-blur-xl border border-white/50 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] p-8 md:p-12">
             <div className="mb-8">
