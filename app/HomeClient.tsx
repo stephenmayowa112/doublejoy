@@ -65,27 +65,28 @@ export default function Home() {
       </div>
 
       <div className="relative z-10">
-        {/* Announcement Bar */}
-        <div className="bg-deep-purple text-white py-3 px-4 text-center text-sm md:text-base">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
-            <span className="font-light">
-              Your love for love brought you here... DoubleJoy'26 | ⚠️ Strictly By Invitation Only
-            </span>
-            <button 
-              onClick={() => scrollToSection('rsvp')}
-              className="bg-wedding-gold text-deep-purple px-6 py-1.5 rounded-full text-sm font-medium hover:bg-soft-gold transition-colors"
-            >
-              RSVP Now
-            </button>
+        <div className="sticky top-0 z-50 flex flex-col">
+          {/* Announcement Bar */}
+          <div className="bg-deep-purple text-white py-2 px-4 text-center text-xs md:text-sm">
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
+              <span className="font-light">
+                Your love for love brought you here... DoubleJoy'26 | ⚠️ Strictly By Invitation Only
+              </span>
+              <button 
+                onClick={() => scrollToSection('rsvp')}
+                className="bg-wedding-gold text-deep-purple px-4 py-1 rounded-full text-xs font-medium hover:bg-soft-gold transition-colors"
+              >
+                RSVP Now
+              </button>
+            </div>
           </div>
-        </div>
 
-        {/* Header Navigation */}
-        <header className="sticky top-0 bg-white/70 backdrop-blur-md border-b border-white/20 shadow-sm z-50 transition-all duration-300">
-          <nav className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
-          <button 
-            onClick={() => scrollToSection('home')} 
-            className="flex items-center hover:opacity-80 transition-opacity w-32 md:w-48 h-10 md:h-12 relative"
+          {/* Header Navigation */}
+          <header className="bg-white/70 backdrop-blur-md border-b border-white/20 shadow-sm transition-all duration-300">
+            <nav className="max-w-7xl mx-auto px-4 md:px-8 py-2 md:py-3 flex items-center justify-between">
+            <button 
+              onClick={() => scrollToSection('home')} 
+            className="flex items-center hover:opacity-80 transition-opacity w-32 md:w-48 h-8 md:h-10 relative"
             aria-label="Go to home"
           >
             <Image
@@ -146,6 +147,7 @@ export default function Home() {
           </div>
         )}
       </header>
+      </div>
 
       {/* Hero Section */}
       <section id="home" className="relative bg-gradient-to-b from-white/80 to-white/40 backdrop-blur-sm section-padding overflow-hidden">
@@ -372,12 +374,12 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
             {/* Gabriel */}
             <div className="text-center">
-              <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl mb-6 grayscale hover:grayscale-0 transition-all duration-500">
+              <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl mb-6 bg-gray-100 grayscale hover:grayscale-0 transition-all duration-500">
                 <Image
                   src="/images/ayo1.jpeg"
                   alt="Gabriel Ayobamidele"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
               <h3 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
@@ -393,12 +395,12 @@ export default function Home() {
 
             {/* Ayobami */}
             <div className="text-center">
-              <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl mb-6 grayscale hover:grayscale-0 transition-all duration-500">
+              <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl mb-6 bg-gray-100 grayscale hover:grayscale-0 transition-all duration-500">
                 <Image
                   src="/images/ayo2.jpeg"
                   alt="Ayobami Elizabeth"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
               <h3 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
