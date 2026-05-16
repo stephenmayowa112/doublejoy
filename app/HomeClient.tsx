@@ -764,21 +764,12 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-deep-purple text-white py-12 px-4 relative overflow-hidden">
+      <footer className="bg-deep-purple text-white py-8 px-4 relative overflow-hidden">
         {/* Decorative blur for footer */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <div className="absolute top-[-50%] left-[20%] w-[60%] h-[100%] bg-wedding-gold/10 rounded-full blur-[100px]"></div>
         </div>
         <div className="max-w-7xl mx-auto text-center relative z-10">
-          <div className="flex justify-center mb-8">
-            <Image
-              src="/images/doublejoyLogo.png"
-              alt="DoubleJoy'26 Logo"
-              width={300}
-              height={125}
-              className="w-48 md:w-64 h-auto drop-shadow-xl"
-            />
-          </div>
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="text-lg">With love</span>
             <Heart size={20} fill="currentColor" className="text-wedding-gold" />
