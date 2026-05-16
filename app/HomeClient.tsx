@@ -83,15 +83,15 @@ export default function Home() {
           <nav className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
           <button 
             onClick={() => scrollToSection('home')} 
-            className="flex items-center hover:opacity-80 transition-opacity"
+            className="flex items-center hover:opacity-80 transition-opacity w-32 md:w-48 h-10 md:h-12 relative"
             aria-label="Go to home"
           >
             <Image
               src="/images/doublejoyLogo.png"
               alt="DoubleJoy'26 Logo"
-              width={120}
-              height={50}
-              className="h-10 md:h-12 w-auto"
+              width={250}
+              height={100}
+              className="absolute left-0 top-1/2 -translate-y-1/2 w-[126px] md:w-[196px] h-auto max-w-none"
               priority
             />
           </button>
@@ -764,8 +764,21 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-deep-purple text-white py-8 px-4">
-        <div className="max-w-7xl mx-auto text-center">
+      <footer className="bg-deep-purple text-white py-12 px-4 relative overflow-hidden">
+        {/* Decorative blur for footer */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="absolute top-[-50%] left-[20%] w-[60%] h-[100%] bg-wedding-gold/10 rounded-full blur-[100px]"></div>
+        </div>
+        <div className="max-w-7xl mx-auto text-center relative z-10">
+          <div className="flex justify-center mb-8">
+            <Image
+              src="/images/doublejoyLogo.png"
+              alt="DoubleJoy'26 Logo"
+              width={300}
+              height={125}
+              className="w-48 md:w-64 h-auto drop-shadow-xl"
+            />
+          </div>
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="text-lg">With love</span>
             <Heart size={20} fill="currentColor" className="text-wedding-gold" />
