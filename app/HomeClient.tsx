@@ -56,7 +56,7 @@ export default function Home() {
   ]
 
   return (
-    <main className="relative min-h-screen bg-white overflow-hidden">
+    <main className="relative min-h-screen bg-white">
       {/* Decorative ambient background blobs for glassmorphism */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-light-purple/60 blur-[120px] animate-pulse"></div>
@@ -374,7 +374,7 @@ export default function Home() {
             <div className="text-center">
               <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl mb-6 grayscale hover:grayscale-0 transition-all duration-500">
                 <Image
-                  src="/images/DSC_8392.jpg.jpeg"
+                  src="/images/ayo1.jpeg"
                   alt="Gabriel Ayobamidele"
                   fill
                   className="object-cover"
@@ -395,7 +395,7 @@ export default function Home() {
             <div className="text-center">
               <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl mb-6 grayscale hover:grayscale-0 transition-all duration-500">
                 <Image
-                  src="/images/DSC_8403.jpg.jpeg"
+                  src="/images/ayo2.jpeg"
                   alt="Ayobami Elizabeth"
                   fill
                   className="object-cover"
