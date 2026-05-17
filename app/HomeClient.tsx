@@ -404,14 +404,22 @@ export default function Home() {
                 />
               </div>
               <h3 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
-                GABRIEL
+                About the Groom
               </h3>
-              <p className="text-gray-700 leading-relaxed max-w-md mx-auto">
-                Gabriel Ayobamidele is a man of faith, vision, and purpose. With a heart 
-                devoted to serving God and loving others, he brings joy, wisdom, and 
-                steadfast commitment to everything he does. His love for Ayobami is a 
-                testament to his character—patient, kind, and unwavering.
-              </p>
+              <div className="text-gray-700 leading-relaxed max-w-md mx-auto text-left space-y-3">
+                <p>
+                  He's calm, dependable, and the kind of person who somehow makes people feel comfortable within minutes of meeting him. Quiet at first glance, but once he warms up, prepare for long conversations, unsolicited gist, strong opinions, and dad jokes he personally believes deserve standing ovations 🌚
+                </p>
+                <p>
+                  Driven and deeply intentional, he pours himself fully into the things he cares about. Whether in business, friendships, or the people he mentors and supports, he leads with generosity, wisdom, and a genuine desire to see others grow. He has a strong sense of loyalty showing up in ways that are both loud and quiet.
+                </p>
+                <p>
+                  He enjoys life deeply, the simple moments, the meaningful ones, and everything in between. Yet for all the care he gives so freely, he's still the type to become adorably awkward when the attention is turned back on him.
+                </p>
+                <p>
+                  He's faith filled and driven - believes strongly that your greatest advantage before many other things is the Holyspirit. And to the bride, he is her safe place, biggest supporter and friend, favourite walking partner, and proof that love can be both exciting and peaceful at the same time.
+                </p>
+              </div>
             </div>
 
             {/* Ayobami */}
@@ -427,14 +435,22 @@ export default function Home() {
                 />
               </div>
               <h3 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
-                AYOBAMI
+                About the Bride
               </h3>
-              <p className="text-gray-700 leading-relaxed max-w-md mx-auto">
-                Ayobami Elizabeth is a woman of grace, strength, and compassion. Her 
-                radiant spirit and genuine love for people make her a blessing to all who 
-                know her. She brings warmth, laughter, and unwavering faith into Gabriel's 
-                life, making their bond truly special.
-              </p>
+              <div className="text-gray-700 leading-relaxed max-w-md mx-auto text-left space-y-3">
+                <p>
+                  She's warm (after the second or third conversation), expressive, slightly dramatic when hungry, and sometimes has a dramatic story to tell. Equal parts soft and strong, she loves deeply, laughs loudly, and believes most problems can be discussed over good food and gist (that can suddenly become intense).
+                </p>
+                <p>
+                  She's the kind of person who will hype the people she loves endlessly, randomly break into laughter while remembering something from three weeks ago, mutter to herself at work and insist she's "not stubborn" while actively being stubborn. Between her love for meaningful conversations, cozy moments, and making memories out of ordinary days, life around her is rarely ever dull.
+                </p>
+                <p>
+                  She's ambitious, faith-filled, thoughtful, and unintentionally funny, with a sharp mind and an even softer heart. And while she can plan someone else's life like a professional project manager, she's also known for overthinking small things that pertain to her and laughing at her own jokes before anyone else does.
+                </p>
+                <p>
+                  To the groom, she is joy in human form and just the right amount of wahala, his favourite person to talk to, walk with, pray with, laugh with, and now, forever do life with. 🌚
+                </p>
+              </div>
             </div>
           </div>
         </div>
