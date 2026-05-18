@@ -5,6 +5,9 @@ import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { useState, useCallback } from 'react'
 import "yet-another-react-lightbox/styles.css"
+import Zoom from "yet-another-react-lightbox/plugins/zoom"
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails"
+import "yet-another-react-lightbox/plugins/thumbnails.css"
 
 const Lightbox = dynamic(() => import('yet-another-react-lightbox'), { ssr: false })
 
@@ -13,7 +16,7 @@ export default function Home() {
   const [photoIndex, setPhotoIndex] = useState<number>(-1)
   const [storyExpanded, setStoryExpanded] = useState(0) // 0 = collapsed, 1 = first expand, 2 = fully expanded
   const [copiedField, setCopiedField] = useState<string | null>(null)
-  const [galleryVisible, setGalleryVisible] = useState(3) // Start with 3 images visible
+  const [galleryVisible, setGalleryVisible] = useState(4) // Start with 4 images visible for mobile symmetry
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [groomExpanded, setGroomExpanded] = useState(false)
   const [brideExpanded, setBrideExpanded] = useState(false)
@@ -642,7 +645,7 @@ export default function Home() {
             {galleryImages.slice(0, galleryVisible).map((image, index) => (
               <div 
                 key={index}
-                className="relative aspect-square rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer animate-fadeIn"
+                  className={`relative rounded-lg overflow-hidden shadow-lg md:hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer animate-fadeIn ${index % 5 === 0 ? 'col-span-2 md:col-span-1 aspect-[2/1] md:aspect-square' : 'col-span-1 aspect-square'}`}
                 onClick={() => setPhotoIndex(index)}
                 role="button"
                 tabIndex={0}
@@ -668,7 +671,7 @@ export default function Home() {
                 onClick={loadMoreGallery}
                 className="btn-secondary"
               >
-                View More ({galleryImages.length - galleryVisible} remaining)
+                View More
               </button>
             </div>
           )}
@@ -689,6 +692,25 @@ export default function Home() {
         close={() => setPhotoIndex(-1)}
         index={photoIndex > -1 ? photoIndex : 0}
         slides={galleryImages.map(img => ({ src: img.src, alt: img.alt }))}
+        plugins={[Zoom, Thumbnails]}
+        zoom={{
+          maxZoomPixelRatio: 3,
+          zoomInMultiplier: 2,
+          doubleTapDelay: 300,
+          doubleClickDelay: 300,
+          keyboardMoveDistance: 50,
+          wheelZoomDistanceFactor: 100,
+          pinchZoomDistanceFactor: 100,
+          scrollToZoom: false,
+        }}
+        thumbnails={{
+          position: "bottom",
+          width: 80,
+          height: 80,
+          border: 2,
+          gap: 8,
+          padding: 4,
+        }}
       />
 
       {/* Gifting Section */}
