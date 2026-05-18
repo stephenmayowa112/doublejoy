@@ -1,6 +1,6 @@
 'use client'
 
-import { FiHeart, FiCopy, FiCheck, FiMenu, FiX, FiAlertTriangle, FiMoon, FiGift } from 'react-icons/fi'
+import { FiHeart, FiCopy, FiCheck, FiMenu, FiX, FiAlertTriangle, FiMoon, FiGift, FiHome, FiInfo, FiCamera, FiMail } from 'react-icons/fi'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { useState, useCallback } from 'react'
@@ -93,14 +93,16 @@ export default function Home() {
       <div className="relative z-10">
         <div className="sticky top-0 z-50 flex flex-col">
           {/* Announcement Bar */}
-          <div className="bg-deep-purple text-white py-2 px-4 text-center text-xs md:text-sm">
+          <div className="bg-deep-purple text-white py-2 px-4 text-center text-xs md:text-sm overflow-hidden">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
-              <span className="font-light flex items-center justify-center gap-2">
-                Your love for love brought you here... DoubleJoy'26 | <FiAlertTriangle className="inline-block" /> Strictly By Invitation Only
-              </span>
+              <div className="font-light flex items-center justify-center gap-2 whitespace-nowrap overflow-hidden text-ellipsis w-full md:w-auto marquee-mobile">
+                <span className="inline-block animate-marquee md:animate-none">
+                  Your love for love brought you here... DoubleJoy'26 | <FiAlertTriangle className="inline-block mx-1" /> Strictly By Invitation Only
+                </span>
+              </div>
               <button 
                 onClick={() => scrollToSection('rsvp')}
-                className="bg-wedding-gold text-deep-purple px-4 py-1 rounded-full text-xs font-medium hover:bg-soft-gold transition-colors"
+                className="hidden md:block bg-wedding-gold text-deep-purple px-4 py-1 rounded-full text-xs font-medium hover:bg-soft-gold transition-colors min-h-[44px] min-w-[44px]"
               >
                 RSVP Now
               </button>
@@ -109,10 +111,10 @@ export default function Home() {
 
           {/* Header Navigation */}
           <header className="bg-white/70 backdrop-blur-md border-b border-white/20 shadow-sm transition-all duration-300">
-            <nav className="max-w-7xl mx-auto px-4 md:px-8 py-2 md:py-3 flex items-center justify-between">
+            <nav className="max-w-7xl mx-auto px-4 md:px-8 py-2 md:py-3 flex items-center justify-center md:justify-between">
             <button 
               onClick={() => scrollToSection('home')} 
-            className="flex items-center hover:opacity-80 transition-opacity w-32 md:w-48 h-8 md:h-10 relative"
+            className="flex items-center justify-center md:justify-start hover:opacity-80 transition-opacity w-32 md:w-48 h-8 md:h-10 relative"
             aria-label="Go to home"
           >
             <Image
@@ -120,58 +122,28 @@ export default function Home() {
               alt="DoubleJoy'26 Logo"
               width={250}
               height={100}
-              className="absolute left-0 top-1/2 -translate-y-1/2 w-[76px] md:w-[118px] h-auto max-w-none"
+              className="absolute left-1/2 md:left-0 top-1/2 -translate-x-1/2 md:translate-x-0 -translate-y-1/2 w-[76px] md:w-[118px] h-auto max-w-none"
               priority
             />
           </button>
           <div className="hidden md:flex items-center gap-8">
-            <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-deep-purple transition-colors">
+            <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-deep-purple transition-colors p-2">
               Home
             </button>
-            <button onClick={() => scrollToSection('event-details')} className="text-gray-700 hover:text-deep-purple transition-colors">
+            <button onClick={() => scrollToSection('event-details')} className="text-gray-700 hover:text-deep-purple transition-colors p-2">
               Event Details
             </button>
-            <button onClick={() => scrollToSection('rsvp')} className="text-gray-700 hover:text-deep-purple transition-colors">
+            <button onClick={() => scrollToSection('rsvp')} className="text-gray-700 hover:text-deep-purple transition-colors p-2">
               RSVP
             </button>
-            <button onClick={() => scrollToSection('gifting')} className="text-gray-700 hover:text-deep-purple transition-colors">
+            <button onClick={() => scrollToSection('gifting')} className="text-gray-700 hover:text-deep-purple transition-colors p-2">
               Gifting
             </button>
-            <button onClick={() => scrollToSection('gallery')} className="text-gray-700 hover:text-deep-purple transition-colors">
+            <button onClick={() => scrollToSection('gallery')} className="text-gray-700 hover:text-deep-purple transition-colors p-2">
               Gallery
-            </button>
-          </div>
-          <div className="md:hidden flex items-center gap-4">
-            <button 
-              aria-label="Toggle menu" 
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-700"
-            >
-              {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
             </button>
           </div>
         </nav>
-
-        {/* Mobile Menu Dropdown */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-lg py-4 px-6 flex flex-col gap-4 animate-fadeIn">
-            <button onClick={() => scrollToSection('home')} className="text-left text-gray-800 text-lg hover:text-deep-purple transition-colors">
-              Home
-            </button>
-            <button onClick={() => scrollToSection('event-details')} className="text-left text-gray-800 text-lg hover:text-deep-purple transition-colors">
-              Event Details
-            </button>
-            <button onClick={() => scrollToSection('rsvp')} className="text-left text-gray-800 text-lg hover:text-deep-purple transition-colors">
-              RSVP
-            </button>
-            <button onClick={() => scrollToSection('gifting')} className="text-left text-gray-800 text-lg hover:text-deep-purple transition-colors">
-              Gifting
-            </button>
-            <button onClick={() => scrollToSection('gallery')} className="text-left text-gray-800 text-lg hover:text-deep-purple transition-colors">
-              Gallery
-            </button>
-          </div>
-        )}
       </header>
       </div>
 
@@ -513,68 +485,87 @@ export default function Home() {
       </section>
 
       {/* Event Details Section */}
-      <section id="event-details" className="relative section-padding overflow-hidden">
+      <section id="event-details" className="relative py-12 md:py-16 overflow-hidden">
         {/* Decorative blur for Event Details background */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <div className="absolute left-[10%] top-[20%] w-[30%] h-[60%] bg-deep-purple/40 rounded-full blur-[100px]"></div>
+          <div className="absolute right-[15%] bottom-[10%] w-[25%] h-[50%] bg-wedding-gold/30 rounded-full blur-[100px]"></div>
         </div>
-        <div className="relative max-w-4xl mx-auto text-center z-10">
-          <h2 className="text-3xl md:text-4xl font-serif text-deep-purple mb-8">
+        <div className="relative max-w-3xl mx-auto px-4 text-center z-10">
+          <h2 className="text-2xl md:text-3xl font-serif text-deep-purple mb-6">
             Event Details
           </h2>
           
-          <div className="bg-gradient-to-br from-deep-purple/90 to-royal-purple/80 backdrop-blur-xl border border-white/20 text-white rounded-2xl p-8 md:p-12 shadow-[0_8px_32px_rgba(0,0,0,0.15)] relative overflow-hidden">
+          <div className="bg-gradient-to-br from-deep-purple/95 to-royal-purple/90 backdrop-blur-xl border border-white/30 text-white rounded-xl p-6 md:p-8 shadow-[0_20px_60px_rgba(74,26,92,0.4)] relative overflow-hidden">
+            {/* Decorative corner accents */}
+            <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-wedding-gold/40 rounded-tl-xl"></div>
+            <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-wedding-gold/40 rounded-br-xl"></div>
+            
             {/* Inner glass reflection */}
             <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent pointer-events-none"></div>
 
-            <div className="mb-8 relative z-10">
-              <p className="text-sm uppercase tracking-wider mb-2 text-soft-gold">
+            <div className="mb-6 relative z-10">
+              <p className="text-xs uppercase tracking-widest mb-3 text-wedding-gold font-medium">
                 The Families of
               </p>
-              <p className="text-lg mb-2">
-                Elder & Evangelist Ajibola Afolabi Ajayi
-              </p>
-              <p className="text-sm opacity-90 mb-4">
-                Of Ita-Ogbolu, Akure-North, Ondo State
-              </p>
-              <p className="text-2xl font-serif text-wedding-gold my-4">&</p>
-              <p className="text-lg mb-2">
-                Late Chief & Mrs Samuel Bamidele Akande
-              </p>
-              <p className="text-sm opacity-90">
-                Of Araromi-Ora, Ifelodun LGA, Kwara State
-              </p>
+              <div className="space-y-3">
+                <div>
+                  <p className="text-base md:text-lg font-medium">
+                    Elder & Evangelist Ajibola Afolabi Ajayi
+                  </p>
+                  <p className="text-xs md:text-sm opacity-80">
+                    Of Ita-Ogbolu, Akure-North, Ondo State
+                  </p>
+                </div>
+                <div className="flex items-center justify-center gap-3 my-3">
+                  <div className="h-px w-12 bg-wedding-gold/50"></div>
+                  <p className="text-xl font-serif text-wedding-gold">&</p>
+                  <div className="h-px w-12 bg-wedding-gold/50"></div>
+                </div>
+                <div>
+                  <p className="text-base md:text-lg font-medium">
+                    Late Chief & Mrs Samuel Bamidele Akande
+                  </p>
+                  <p className="text-xs md:text-sm opacity-80">
+                    Of Araromi-Ora, Ifelodun LGA, Kwara State
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <div className="border-t border-white/30 pt-8 mt-8">
-              <p className="text-sm uppercase tracking-wider mb-4 text-soft-gold">
+            <div className="border-t border-white/20 pt-6 mt-6">
+              <p className="text-xs uppercase tracking-widest mb-3 text-wedding-gold font-medium">
                 Invite you to celebrate
               </p>
-              <h3 className="text-3xl md:text-4xl font-serif mb-6">
+              <h3 className="text-2xl md:text-3xl font-serif mb-5 text-soft-gold">
                 Ayobami Elizabeth & Gabriel Ayobamidele
               </h3>
               
-              <div className="space-y-4 text-lg">
-                <p>
-                  <span className="text-wedding-gold font-medium">Date:</span> June 6th, 2026
-                </p>
-                <p>
-                  <span className="text-wedding-gold font-medium">Time:</span> 10:00 AM Prompt
-                </p>
-                <p>
-                  <span className="text-wedding-gold font-medium">Location:</span> Ikeja, Lagos State
-                </p>
-                <p>
-                  <span className="text-wedding-gold font-medium">Theme Colors:</span> Purple and Gold
-                </p>
+              <div className="grid grid-cols-2 gap-3 md:gap-4 max-w-lg mx-auto mb-5">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
+                  <p className="text-xs text-wedding-gold mb-1">Date</p>
+                  <p className="text-sm md:text-base font-medium">June 6th, 2026</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
+                  <p className="text-xs text-wedding-gold mb-1">Time</p>
+                  <p className="text-sm md:text-base font-medium">10:00 AM Prompt</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
+                  <p className="text-xs text-wedding-gold mb-1">Location</p>
+                  <p className="text-sm md:text-base font-medium">Ikeja, Lagos</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
+                  <p className="text-xs text-wedding-gold mb-1">Theme</p>
+                  <p className="text-sm md:text-base font-medium">Purple & Gold</p>
+                </div>
               </div>
               
               {/* Invitation Notice */}
-              <div className="mt-8 bg-wedding-gold/20 border-2 border-wedding-gold rounded-lg p-4">
-                <p className="text-wedding-gold font-bold text-sm md:text-base flex items-center justify-center gap-2">
-                  <FiAlertTriangle /> STRICTLY BY INVITATION ONLY
+              <div className="bg-wedding-gold/20 border border-wedding-gold/60 rounded-lg p-3 backdrop-blur-sm">
+                <p className="text-wedding-gold font-bold text-xs md:text-sm flex items-center justify-center gap-2">
+                  <FiAlertTriangle className="flex-shrink-0" /> STRICTLY BY INVITATION ONLY
                 </p>
-                <p className="text-white/90 text-sm mt-1">
+                <p className="text-white/90 text-xs mt-1">
                   No Plus Ones • Access Card Required
                 </p>
               </div>
@@ -905,7 +896,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-deep-purple text-white py-8 px-4 relative overflow-hidden">
+      <footer className="bg-deep-purple text-white py-8 pb-24 md:pb-8 px-4 relative overflow-hidden">
         {/* Decorative blur for footer */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <div className="absolute top-[-50%] left-[20%] w-[60%] h-[100%] bg-wedding-gold/10 rounded-full blur-[100px]"></div>
@@ -924,6 +915,34 @@ export default function Home() {
           </p>
         </div>
       </footer>
+
+      {/* Mobile Bottom Navigation Bar */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-50 pb-safe">
+        <nav className="flex items-center justify-around px-2 py-3">
+          <button onClick={() => scrollToSection('home')} className="flex flex-col items-center gap-1 text-gray-500 hover:text-deep-purple min-w-[44px] min-h-[44px]">
+            <FiHome size={20} />
+            <span className="text-[10px] font-medium">Home</span>
+          </button>
+          <button onClick={() => scrollToSection('event-details')} className="flex flex-col items-center gap-1 text-gray-500 hover:text-deep-purple min-w-[44px] min-h-[44px]">
+            <FiInfo size={20} />
+            <span className="text-[10px] font-medium">Details</span>
+          </button>
+          <button onClick={() => scrollToSection('rsvp')} className="flex flex-col items-center gap-1 text-gray-500 hover:text-deep-purple min-w-[44px] min-h-[44px]">
+            <div className="bg-wedding-gold text-deep-purple p-2 rounded-full -mt-6 shadow-md border-4 border-white">
+              <FiCheck size={24} />
+            </div>
+            <span className="text-[10px] font-medium">RSVP</span>
+          </button>
+          <button onClick={() => scrollToSection('gallery')} className="flex flex-col items-center gap-1 text-gray-500 hover:text-deep-purple min-w-[44px] min-h-[44px]">
+            <FiCamera size={20} />
+            <span className="text-[10px] font-medium">Gallery</span>
+          </button>
+          <button onClick={() => scrollToSection('gifting')} className="flex flex-col items-center gap-1 text-gray-500 hover:text-deep-purple min-w-[44px] min-h-[44px]">
+            <FiGift size={20} />
+            <span className="text-[10px] font-medium">Gifting</span>
+          </button>
+        </nav>
+      </div>
       </div>
     </main>
   )
