@@ -17,6 +17,7 @@ module.exports = {
       fontFamily: {
         serif: ['var(--font-playfair)', 'serif'],
         sans: ['var(--font-inter)', 'sans-serif'],
+        script: ['var(--font-satisfy)', 'cursive'],
       },
     },
   },

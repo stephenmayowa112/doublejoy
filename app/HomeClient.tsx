@@ -15,6 +15,8 @@ export default function Home() {
   const [copiedField, setCopiedField] = useState<string | null>(null)
   const [galleryVisible, setGalleryVisible] = useState(3) // Start with 3 images visible
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [groomExpanded, setGroomExpanded] = useState(false)
+  const [brideExpanded, setBrideExpanded] = useState(false)
   
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
@@ -30,6 +32,16 @@ export default function Home() {
 
   const loadMoreGallery = () => {
     setGalleryVisible(prev => Math.min(prev + 8, galleryImages.length))
+  }
+
+  const toggleGroomText = () => {
+    setGroomExpanded(true)
+    setTimeout(() => setGroomExpanded(false), 90000) // Auto-collapse after 90 seconds
+  }
+
+  const toggleBrideText = () => {
+    setBrideExpanded(true)
+    setTimeout(() => setBrideExpanded(false), 90000) // Auto-collapse after 90 seconds
   }
 
   // Gallery images - Arranged by outfit: Purple, Black, Casual, White dress, Everyday casual
@@ -406,19 +418,41 @@ export default function Home() {
               <h3 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
                 About the Groom
               </h3>
-              <div className="text-gray-700 leading-relaxed max-w-md mx-auto text-left space-y-3">
+              <div className="text-gray-700 leading-relaxed max-w-md mx-auto text-left space-y-3 text-base">
                 <p>
                   He's calm, dependable, and the kind of person who somehow makes people feel comfortable within minutes of meeting him. Quiet at first glance, but once he warms up, prepare for long conversations, unsolicited gist, strong opinions, and dad jokes he personally believes deserve standing ovations 🌚
                 </p>
-                <p>
-                  Driven and deeply intentional, he pours himself fully into the things he cares about. Whether in business, friendships, or the people he mentors and supports, he leads with generosity, wisdom, and a genuine desire to see others grow. He has a strong sense of loyalty showing up in ways that are both loud and quiet.
-                </p>
-                <p>
-                  He enjoys life deeply, the simple moments, the meaningful ones, and everything in between. Yet for all the care he gives so freely, he's still the type to become adorably awkward when the attention is turned back on him.
-                </p>
-                <p>
-                  He's faith filled and driven - believes strongly that your greatest advantage before many other things is the Holyspirit. And to the bride, he is her safe place, biggest supporter and friend, favourite walking partner, and proof that love can be both exciting and peaceful at the same time.
-                </p>
+                
+                {groomExpanded && (
+                  <div className="animate-fadeIn">
+                    <p>
+                      Driven and deeply intentional, he pours himself fully into the things he cares about. Whether in business, friendships, or the people he mentors and supports, he leads with generosity, wisdom, and a genuine desire to see others grow. He has a strong sense of loyalty showing up in ways that are both loud and quiet.
+                    </p>
+                    <p>
+                      He enjoys life deeply, the simple moments, the meaningful ones, and everything in between. Yet for all the care he gives so freely, he's still the type to become adorably awkward when the attention is turned back on him.
+                    </p>
+                    <p>
+                      He's faith filled and driven - believes strongly that your greatest advantage before many other things is the Holyspirit. And to the bride, he is her safe place, biggest supporter and friend, favourite walking partner, and proof that love can be both exciting and peaceful at the same time.
+                    </p>
+                  </div>
+                )}
+
+                {!groomExpanded && (
+                  <button
+                    onClick={toggleGroomText}
+                    className="mt-2 text-deep-purple font-medium hover:text-royal-purple transition-colors flex items-center gap-2 group"
+                  >
+                    <span>Read More</span>
+                    <svg 
+                      className="w-4 h-4 group-hover:translate-x-1 transition-transform" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                )}
               </div>
             </div>
 
@@ -437,19 +471,41 @@ export default function Home() {
               <h3 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
                 About the Bride
               </h3>
-              <div className="text-gray-700 leading-relaxed max-w-md mx-auto text-left space-y-3">
+              <div className="text-gray-700 leading-relaxed max-w-md mx-auto text-left space-y-3 text-base">
                 <p>
                   She's warm (after the second or third conversation), expressive, slightly dramatic when hungry, and sometimes has a dramatic story to tell. Equal parts soft and strong, she loves deeply, laughs loudly, and believes most problems can be discussed over good food and gist (that can suddenly become intense).
                 </p>
-                <p>
-                  She's the kind of person who will hype the people she loves endlessly, randomly break into laughter while remembering something from three weeks ago, mutter to herself at work and insist she's "not stubborn" while actively being stubborn. Between her love for meaningful conversations, cozy moments, and making memories out of ordinary days, life around her is rarely ever dull.
-                </p>
-                <p>
-                  She's ambitious, faith-filled, thoughtful, and unintentionally funny, with a sharp mind and an even softer heart. And while she can plan someone else's life like a professional project manager, she's also known for overthinking small things that pertain to her and laughing at her own jokes before anyone else does.
-                </p>
-                <p>
-                  To the groom, she is joy in human form and just the right amount of wahala, his favourite person to talk to, walk with, pray with, laugh with, and now, forever do life with. 🌚
-                </p>
+                
+                {brideExpanded && (
+                  <div className="animate-fadeIn">
+                    <p>
+                      She's the kind of person who will hype the people she loves endlessly, randomly break into laughter while remembering something from three weeks ago, mutter to herself at work and insist she's "not stubborn" while actively being stubborn. Between her love for meaningful conversations, cozy moments, and making memories out of ordinary days, life around her is rarely ever dull.
+                    </p>
+                    <p>
+                      She's ambitious, faith-filled, thoughtful, and unintentionally funny, with a sharp mind and an even softer heart. And while she can plan someone else's life like a professional project manager, she's also known for overthinking small things that pertain to her and laughing at her own jokes before anyone else does.
+                    </p>
+                    <p>
+                      To the groom, she is joy in human form and just the right amount of wahala, his favourite person to talk to, walk with, pray with, laugh with, and now, forever do life with. 🌚
+                    </p>
+                  </div>
+                )}
+
+                {!brideExpanded && (
+                  <button
+                    onClick={toggleBrideText}
+                    className="mt-2 text-deep-purple font-medium hover:text-royal-purple transition-colors flex items-center gap-2 group"
+                  >
+                    <span>Read More</span>
+                    <svg 
+                      className="w-4 h-4 group-hover:translate-x-1 transition-transform" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                )}
               </div>
             </div>
           </div>
