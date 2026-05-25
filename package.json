@@ -6,25 +6,45 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "db:migrate": "node scripts/runMigrations.js",
+    "db:verify": "node scripts/verifySchema.js"
   },
   "dependencies": {
+    "@types/dompurify": "^3.0.5",
+    "@types/jsdom": "^28.0.3",
+    "@types/uuid": "^10.0.0",
+    "better-sqlite3": "^12.10.0",
     "clsx": "^2.1.1",
+    "dompurify": "^3.4.5",
+    "googleapis": "^171.4.0",
+    "jsdom": "^29.1.1",
     "lucide-react": "^0.294.0",
     "next": "^14.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.6.0",
     "tailwind-merge": "^3.6.0",
+    "uuid": "^14.0.0",
     "yet-another-react-lightbox": "^3.32.0"
   },
   "devDependencies": {
+    "@jest/globals": "^30.4.1",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20.0.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "autoprefixer": "^10.4.16",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.5",
+    "ts-jest": "^29.4.9",
+    "ts-node": "^10.9.2",
     "typescript": "^5.2.2"
   }
 }

@@ -345,8 +345,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Video Section */}
-      <section id="video" className="section-padding bg-white/40 backdrop-blur-md">
+      {/* Video Section - Hidden until video is provided */}
+      {/* <section id="video" className="section-padding bg-white/40 backdrop-blur-md">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
             Our Love Story
@@ -355,7 +355,6 @@ export default function Home() {
             Watch how our journey unfolded
           </p>
           
-          {/* Video Placeholder */}
           <div className="relative w-full aspect-video bg-gradient-to-br from-deep-purple to-royal-purple rounded-lg overflow-hidden shadow-2xl">
             <div className="absolute inset-0 flex items-center justify-center text-white">
               <div className="text-center">
@@ -368,7 +367,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Meet the Couple Section */}
       <section id="couple" className="section-padding bg-white/40 backdrop-blur-md">
