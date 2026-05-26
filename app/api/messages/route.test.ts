@@ -513,10 +513,13 @@ describe('Messages API Endpoints', () => {
  */
 
 describe('GET /api/messages', () => {
+  let insertIdCounter = 0;
+
   beforeEach(() => {
     // Clear messages table
     const db = getDatabase();
     db.prepare('DELETE FROM messages').run();
+    insertIdCounter = 0;
   });
 
   /**
@@ -543,7 +546,7 @@ describe('GET /api/messages', () => {
 
     for (let i = 0; i < count; i++) {
       stmt.run(
-        `test-id-${i}`,
+        `test-id-${insertIdCounter++}`,
         `Test User ${i}`,
         `Test message ${i} with enough characters to pass validation`,
         `${i} seconds`, // Offset to create different timestamps

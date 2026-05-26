@@ -100,7 +100,7 @@ export default function Home() {
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
               <div className="font-light flex items-center justify-center gap-2 whitespace-nowrap overflow-hidden text-ellipsis w-full md:w-auto marquee-mobile">
                 <span className="inline-block animate-marquee md:animate-none">
-                  Your love for love brought you here... DoubleJoy'26 | <FiAlertTriangle className="inline-block mx-1" /> Strictly By Invitation Only
+                  Your love for love brought you here... DoubleJoy'26 | <FiAlertTriangle className="inline-block mx-1" /> Strictly By Invitation.
                 </span>
               </div>
               <button 
@@ -569,7 +569,7 @@ export default function Home() {
                   <FiAlertTriangle className="flex-shrink-0" /> STRICTLY BY INVITATION ONLY
                 </p>
                 <p className="text-white/90 text-xs mt-1">
-                  No Plus Ones • Access Card Required
+                  No Plus Ones • Access Card Required • Each Card Admits One
                 </p>
               </div>
             </div>
@@ -596,10 +596,10 @@ export default function Home() {
           {/* Invitation Notice */}
           <div className="bg-deep-purple/10 border-2 border-deep-purple rounded-lg p-4 mb-8">
             <p className="text-deep-purple font-semibold text-sm md:text-base flex items-center justify-center gap-2">
-              <FiAlertTriangle /> STRICTLY BY INVITATION ONLY • NO PLUS ONES
+              <FiAlertTriangle /> STRICTLY BY INVITATION • NO PLUS ONES
             </p>
             <p className="text-gray-700 text-sm mt-2">
-              This is an intimate celebration. Only invited guests will be admitted.
+              This is an intimate celebration. Only invited guests will be admitted. Each access card admits one person only.
             </p>
           </div>
           
@@ -817,8 +817,8 @@ export default function Home() {
                 </div>
                 
                 <div className="bg-white/10 rounded-lg p-3">
-                  <p className="text-xs text-soft-gold mb-1">Bank Options</p>
-                  <p className="text-sm">Scotiabank or RBC</p>
+                  {/* <p className="text-xs text-soft-gold mb-1">Bank Options</p> */}
+                  {/* <p className="text-sm">Scotiabank or RBC</p> */}
                 </div>
               </div>
             </div>

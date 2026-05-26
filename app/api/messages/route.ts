@@ -247,6 +247,13 @@ const messageCache = new Map<string, CacheEntry>();
 const CACHE_DURATION_MS = 60 * 1000; // 60 seconds
 
 /**
+ * Clear the message cache (primarily for unit testing)
+ */
+export function clearMessageCache(): void {
+  messageCache.clear();
+}
+
+/**
  * Get cached data if available and not expired
  */
 function getCachedData(key: string): any | null {
