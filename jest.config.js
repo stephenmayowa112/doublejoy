@@ -7,6 +7,7 @@ const config = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
+    '^uuid$': '<rootDir>/lib/utils/uuid-mock.js',
   },
   collectCoverageFrom: [
     'lib/**/*.ts',
@@ -27,6 +28,7 @@ const config = {
       testMatch: ['**/app/api/**/*.test.ts', '**/lib/**/*.test.ts'],
       moduleNameMapper: {
         '^@/(.*)$': '<rootDir>/$1',
+        '^uuid$': '<rootDir>/lib/utils/uuid-mock.js',
       },
       transform: {
         '^.+\\.ts$': ['ts-jest', {
@@ -44,6 +46,7 @@ const config = {
       testMatch: ['**/app/components/**/*.test.tsx', '**/app/**/*.test.tsx'],
       moduleNameMapper: {
         '^@/(.*)$': '<rootDir>/$1',
+        '^uuid$': '<rootDir>/lib/utils/uuid-mock.js',
       },
     },
   ],

@@ -30,11 +30,12 @@ export default function Home() {
     eventStatus: 'https://schema.org/EventScheduled',
     location: {
       '@type': 'Place',
-      name: 'Ikeja',
+      name: 'Celebration Gardens International',
       address: {
         '@type': 'PostalAddress',
+        streetAddress: '28b Isaac John Street, GRA',
         addressLocality: 'Ikeja',
-        addressRegion: 'Lagos State',
+        addressRegion: 'Lagos',
         addressCountry: 'NG'
       }
     },

@@ -8,6 +8,12 @@ import { DELETE } from './route';
 import { execute, queryOne, transaction } from '@/lib/db/connection';
 import { v4 as uuidv4 } from 'uuid';
 
+// Mock the uuid package
+jest.mock('uuid', () => ({
+  v4: () => '12345678-1234-1234-1234-123456789012',
+  validate: (id: string) => id === '12345678-1234-1234-1234-123456789012' || /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id),
+}));
+
 // Mock the database functions
 jest.mock('@/lib/db/connection', () => ({
   execute: jest.fn(),
@@ -310,7 +316,7 @@ describe('DELETE /api/messages/[id]', () => {
   
   describe('Error Handling', () => {
     it('should return 500 when database error occurs', async () => {
-      mockQueryOne.mockImplementation(() => {
+      mockQueryOne.mockImplementationOnce(() => {
         throw new Error('Database connection failed');
       });
       
@@ -338,7 +344,7 @@ describe('DELETE /api/messages/[id]', () => {
         ip_address_hash: 'hash123',
       });
       
-      mockTransaction.mockImplementation((callback) => {
+      mockTransaction.mockImplementationOnce((callback) => {
         throw new Error('Transaction failed');
       });
       

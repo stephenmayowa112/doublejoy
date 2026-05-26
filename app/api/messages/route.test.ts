@@ -1,19 +1,80 @@
-/**
- * Tests for POST /api/messages endpoint
- * 
- * Validates: Requirements 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 9.1, 10.2, 10.3, 10.5
- */
+import fs from 'fs';
+import path from 'path';
 
-import { POST } from './route';
+const TEST_DB_PATH = path.join(process.cwd(), 'data', 'test-messages-route.db');
+process.env.DATABASE_URL = TEST_DB_PATH;
+
+// Mock the uuid package
+jest.mock('uuid', () => ({
+  v4: () => {
+    const hex = () => Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+    return `${hex()}${hex()}-${hex()}-${hex()}-${hex()}-${hex()}${hex()}${hex()}`;
+  },
+  validate: (id: string) => true,
+}));
+
+// Mock the sanitization service to avoid dynamic jsdom import in Jest node environment
+jest.mock('@/lib/services/sanitization', () => ({
+  sanitizeMessage: jest.fn((msg: string) => {
+    if (typeof msg !== 'string') return '';
+    return msg.replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, '')
+              .replace(/on\w+\s*=\s*(['"]).*?\1/gi, '')
+              .replace(/on\w+\s*=\s*[^>\s]+/gi, '')
+              .replace(/javascript:/gi, '')
+              .trim();
+  }),
+  sanitizeName: jest.fn((name: string) => {
+    if (typeof name !== 'string') return '';
+    return name.replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, '')
+               .replace(/on\w+\s*=\s*(['"]).*?\1/gi, '')
+               .replace(/on\w+\s*=\s*[^>\s]+/gi, '')
+               .trim();
+  }),
+  sanitizeEmail: jest.fn((email: string) => email ? email.trim() : ''),
+  containsXSSPatterns: jest.fn(() => false),
+}));
+
+import { POST, GET } from './route';
 import { NextRequest } from 'next/server';
-import { execute, query, getDatabase } from '@/lib/db/connection';
+import { execute, query, getDatabase, closeDatabase } from '@/lib/db/connection';
+import { runMigrations } from '@/lib/db/runMigrations';
 import { clearAllRateLimits } from '@/lib/services/rateLimit';
 import { decrypt } from '@/lib/services/encryption';
 
 // Mock environment variable for encryption
 process.env.ENCRYPTION_KEY = 'test-encryption-key-for-testing-purposes-only-32-bytes-long';
 
-describe('POST /api/messages', () => {
+describe('Messages API Endpoints', () => {
+  beforeAll(() => {
+    // Reset the cached database singleton from other test suites
+    closeDatabase();
+
+    // Set test database path before initializing database
+    process.env.DATABASE_URL = TEST_DB_PATH;
+    
+    if (fs.existsSync(TEST_DB_PATH)) {
+      try {
+        fs.unlinkSync(TEST_DB_PATH);
+      } catch (e) {}
+    }
+    
+    // Now we run the migrations on our isolated database
+    runMigrations();
+  });
+
+  afterAll(() => {
+    // Close database connection
+    closeDatabase();
+    
+    // Clean up test database file
+    if (fs.existsSync(TEST_DB_PATH)) {
+      try {
+        fs.unlinkSync(TEST_DB_PATH);
+      } catch (e) {}
+    }
+  });
+
+  describe('POST /api/messages', () => {
   beforeEach(() => {
     // Clear rate limits before each test
     clearAllRateLimits();
@@ -451,17 +512,9 @@ describe('POST /api/messages', () => {
  * Validates: Requirements 2.1, 2.3, 9.6
  */
 
-import { GET } from './route';
-
 describe('GET /api/messages', () => {
   beforeEach(() => {
     // Clear messages table
-    const db = getDatabase();
-    db.prepare('DELETE FROM messages').run();
-  });
-
-  afterAll(() => {
-    // Clean up
     const db = getDatabase();
     db.prepare('DELETE FROM messages').run();
   });
@@ -494,7 +547,7 @@ describe('GET /api/messages', () => {
         `Test User ${i}`,
         `Test message ${i} with enough characters to pass validation`,
         `${i} seconds`, // Offset to create different timestamps
-        false,
+        0,
         'test-hash'
       );
     }
@@ -512,7 +565,7 @@ describe('GET /api/messages', () => {
       'hidden-message-id',
       'Hidden User',
       'This message should not appear in public display',
-      true,
+      1,
       'test-hash'
     );
   }
@@ -602,13 +655,13 @@ describe('GET /api/messages', () => {
       db.prepare(
         `INSERT INTO messages (id, name, message, created_at, is_hidden, ip_address_hash)
          VALUES (?, ?, ?, datetime('now', '-2 hours'), ?, ?)`
-      ).run('old-message', 'Old User', 'This is an older message with enough characters', false, 'test-hash');
+      ).run('old-message', 'Old User', 'This is an older message with enough characters', 0, 'test-hash');
 
       // Insert newer message
       db.prepare(
         `INSERT INTO messages (id, name, message, created_at, is_hidden, ip_address_hash)
          VALUES (?, ?, ?, datetime('now', '-1 hour'), ?, ?)`
-      ).run('new-message', 'New User', 'This is a newer message with enough characters', false, 'test-hash');
+      ).run('new-message', 'New User', 'This is a newer message with enough characters', 0, 'test-hash');
 
       const request = createMockGetRequest();
       const response = await GET(request);
@@ -784,4 +837,5 @@ describe('GET /api/messages', () => {
       expect(data1.messages[0].id).not.toBe(data2.messages[0].id);
     });
   });
+});
 });

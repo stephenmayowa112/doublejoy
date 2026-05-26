@@ -190,7 +190,7 @@ export async function POST(request: NextRequest) {
       execute(
         `INSERT INTO messages (id, name, email_encrypted, message, created_at, is_hidden, ip_address_hash)
          VALUES (?, ?, ?, ?, datetime('now'), ?, ?)`,
-        [messageId, sanitizedName, encryptedEmail, sanitizedMessage, false, ipAddressHash]
+        [messageId, sanitizedName, encryptedEmail, sanitizedMessage, 0, ipAddressHash]
       );
     } catch (error) {
       console.error('Database insert failed:', error);
@@ -386,13 +386,13 @@ export async function GET(request: NextRequest) {
          WHERE is_hidden = ?
          ORDER BY created_at DESC
          LIMIT ? OFFSET ?`,
-        [false, limit, offset]
+        [0, limit, offset]
       );
 
       // Get total count of non-hidden messages
       const countResult = query<{ count: number }>(
         `SELECT COUNT(*) as count FROM messages WHERE is_hidden = ?`,
-        [false]
+        [0]
       );
       totalCount = countResult[0]?.count || 0;
     } catch (error) {

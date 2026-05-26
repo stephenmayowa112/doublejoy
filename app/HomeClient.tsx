@@ -554,7 +554,8 @@ export default function Home() {
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
                   <p className="text-xs text-wedding-gold mb-1">Location</p>
-                  <p className="text-sm md:text-base font-medium">Ikeja, Lagos</p>
+                  <p className="text-sm md:text-base font-medium">Celebration Gardens International</p>
+                  <p className="text-xs text-white/80 mt-1">28b Isaac John Street, GRA Ikeja, Lagos</p>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
                   <p className="text-xs text-wedding-gold mb-1">Theme</p>

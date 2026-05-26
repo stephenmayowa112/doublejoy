@@ -5,7 +5,7 @@
  * Migrations are applied in order based on their filename prefix.
  */
 
-import { getDatabase } from './connection.js';
+import { getDatabase } from './connection';
 import fs from 'fs';
 import path from 'path';
 

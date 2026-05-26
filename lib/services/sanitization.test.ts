@@ -1,4 +1,6 @@
 /**
+ * @jest-environment jsdom
+ * 
  * Unit Tests for Input Sanitization Service
  * 
  * Tests XSS prevention for message content, names, and email addresses.

@@ -11,10 +11,6 @@ import Database from 'better-sqlite3';
 import path from 'path';
 import fs from 'fs';
 
-// Database configuration
-const DB_PATH = process.env.DATABASE_URL || path.join(process.cwd(), 'data', 'wedding.db');
-const DB_DIR = path.dirname(DB_PATH);
-
 // Singleton database instance
 let db: Database.Database | null = null;
 
@@ -30,14 +26,18 @@ export function initializeDatabase(): Database.Database {
     return db;
   }
 
+  // Evaluate database path dynamically at initialization time
+  const dbPath = process.env.DATABASE_URL || path.join(process.cwd(), 'data', 'wedding.db');
+  const dbDir = path.dirname(dbPath);
+
   try {
     // Ensure the database directory exists
-    if (!fs.existsSync(DB_DIR)) {
-      fs.mkdirSync(DB_DIR, { recursive: true });
+    if (!fs.existsSync(dbDir)) {
+      fs.mkdirSync(dbDir, { recursive: true });
     }
 
     // Create database connection with optimized settings
-    db = new Database(DB_PATH, {
+    db = new Database(dbPath, {
       verbose: process.env.NODE_ENV === 'development' ? console.log : undefined,
     });
 
@@ -50,7 +50,7 @@ export function initializeDatabase(): Database.Database {
     // Set busy timeout to 5 seconds
     db.pragma('busy_timeout = 5000');
 
-    console.log(`Database initialized at: ${DB_PATH}`);
+    console.log(`Database initialized at: ${dbPath}`);
     
     return db;
   } catch (error) {

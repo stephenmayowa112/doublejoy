@@ -41,7 +41,8 @@ function getPurify(): DOMPurify.DOMPurifyI {
     purify = DOMPurify(window as unknown as Window);
     return purify;
   } catch (error) {
-    throw new Error('jsdom is required for server-side sanitization. Please install it: npm install jsdom');
+    console.error('getPurify error details:', error);
+    throw new Error(`jsdom is required for server-side sanitization. Please install it: npm install jsdom. Actual error: ${error}`);
   }
 }
 
