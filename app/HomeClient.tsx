@@ -259,9 +259,12 @@ export default function Home() {
 
             {/* Content */}
             <div className="order-1 md:order-2">
-              <h2 className="text-4xl md:text-5xl font-serif text-deep-purple mb-6">
+              <h2 className="text-4xl md:text-5xl font-serif text-deep-purple mb-2">
                 .......in the beginning
               </h2>
+              <p className="text-sm text-gray-500 italic mb-6">
+                As told by the bride
+              </p>
               
               {/* Initial content - always visible */}
               <p className="text-gray-700 leading-relaxed mb-4">
