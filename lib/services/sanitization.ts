@@ -11,12 +11,12 @@
 import DOMPurify from 'dompurify';
 
 // Lazy-loaded DOMPurify instance
-let purify: DOMPurify.DOMPurifyI | null = null;
+let purify: any = null;
 
 // Create a DOMPurify instance on first use
 // In Node.js environment (server-side), we need to provide a window object via jsdom
 // In browser/jsdom test environment, we can use the global window
-function getPurify(): DOMPurify.DOMPurifyI {
+function getPurify(): any {
   if (purify) {
     return purify;
   }
@@ -38,7 +38,7 @@ function getPurify(): DOMPurify.DOMPurifyI {
   try {
     const { JSDOM } = require('jsdom');
     const window = new JSDOM('').window;
-    purify = DOMPurify(window as unknown as Window);
+    purify = DOMPurify(window as any);
     return purify;
   } catch (error) {
     console.error('getPurify error details:', error);

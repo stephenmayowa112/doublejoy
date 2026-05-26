@@ -1,6 +1,6 @@
 'use client'
 
-import { FiHeart, FiCopy, FiCheck, FiMenu, FiX, FiAlertTriangle, FiMoon, FiGift, FiHome, FiInfo, FiCamera, FiMail } from 'react-icons/fi'
+import { FiHeart, FiCopy, FiCheck, FiMenu, FiX, FiAlertTriangle, FiMoon, FiGift, FiHome, FiInfo, FiCamera, FiMail, FiMap, FiCompass, FiNavigation } from 'react-icons/fi'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { useState, useCallback } from 'react'
@@ -577,6 +577,62 @@ export default function Home() {
                 <p className="text-white/90 text-xs mt-1">
                   No Plus Ones • Access Card Required • Each Card Admits One
                 </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Map & Directions Panel */}
+          <div className="mt-8 bg-white/40 backdrop-blur-xl border border-white/20 rounded-2xl p-6 md:p-8 shadow-xl text-left relative overflow-hidden transition-all duration-300 hover:shadow-2xl max-w-3xl mx-auto">
+            {/* Ambient gold glow */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-wedding-gold/10 rounded-full blur-2xl pointer-events-none"></div>
+            
+            <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-stretch">
+              {/* Map Iframe with Claymorphism Frame */}
+              <div className="w-full md:w-3/5 min-h-[250px] relative rounded-xl overflow-hidden border-4 border-white/80 shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),_0_8px_16px_rgba(74,26,92,0.15)] bg-slate-100 flex items-stretch">
+                <iframe
+                  title="Celebration Gardens International Location Map"
+                  src="https://maps.google.com/maps?q=Celebration%20Gardens%20International%2028b%20Isaac%20John%20Street%20GRA%20Ikeja%20Lagos&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  className="w-full h-full border-0 absolute inset-0"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+
+              {/* Directions Details */}
+              <div className="w-full md:w-2/5 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-3 text-deep-purple font-serif font-bold text-lg md:text-xl">
+                    <FiMap className="text-wedding-gold w-5 h-5 flex-shrink-0" />
+                    <span>Venue Location</span>
+                  </div>
+                  <h4 className="text-gray-800 font-bold text-base md:text-lg mb-1 leading-snug">
+                    Celebration Gardens International
+                  </h4>
+                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                    28b Isaac John Street, GRA Ikeja, Lagos, Nigeria
+                  </p>
+                  
+                  <div className="bg-white/40 border border-white/20 rounded-lg p-3 text-xs text-gray-600 leading-relaxed shadow-sm mb-4">
+                    <p className="font-semibold text-deep-purple flex items-center gap-1 mb-1">
+                      <FiCompass className="text-wedding-gold animate-spin-slow" />
+                      Navigational Tip:
+                    </p>
+                    <p>
+                      Located in the serene area of GRA Ikeja. If driving, you can easily access via Joel Ogunnaike or Mobolaji Bank Anthony Way.
+                    </p>
+                  </div>
+                </div>
+
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=Celebration+Gardens+International,+28b+Isaac+John+Street,+GRA+Ikeja,+Lagos"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 w-full py-3 px-4 bg-deep-purple hover:bg-royal-purple text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-[2px]"
+                >
+                  <FiNavigation className="animate-pulse" />
+                  <span>Get Live Directions</span>
+                </a>
               </div>
             </div>
           </div>
