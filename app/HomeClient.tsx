@@ -139,11 +139,14 @@ export default function Home() {
             <button onClick={() => scrollToSection('rsvp')} className="text-gray-700 hover:text-deep-purple transition-colors p-2">
               RSVP
             </button>
-            <button onClick={() => scrollToSection('gifting')} className="text-gray-700 hover:text-deep-purple transition-colors p-2">
-              Gifting
-            </button>
             <button onClick={() => scrollToSection('gallery')} className="text-gray-700 hover:text-deep-purple transition-colors p-2">
               Gallery
+            </button>
+            <a href="/guestbook" className="text-gray-700 hover:text-deep-purple transition-colors p-2">
+              Guestbook
+            </a>
+            <button onClick={() => scrollToSection('gifting')} className="text-gray-700 hover:text-deep-purple transition-colors p-2">
+              Gifting
             </button>
           </div>
         </nav>
@@ -296,7 +299,7 @@ export default function Home() {
                     finishing my routine.
                   </p>
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    Then this man walks up to me and says, <span className="italic">"If you beg me, 
+                    Then this man walks up to me and says, <span className="italic">"If you give me your number, 
                     I'll tell Coach to let you go home."</span>
                   </p>
                   <p className="text-gray-700 leading-relaxed mb-4">
@@ -566,7 +569,7 @@ export default function Home() {
               {/* Invitation Notice */}
               <div className="bg-wedding-gold/20 border border-wedding-gold/60 rounded-lg p-3 backdrop-blur-sm">
                 <p className="text-wedding-gold font-bold text-xs md:text-sm flex items-center justify-center gap-2">
-                  <FiAlertTriangle className="flex-shrink-0" /> STRICTLY BY INVITATION ONLY
+                  <FiAlertTriangle className="flex-shrink-0" /> STRICTLY BY INVITATION
                 </p>
                 <p className="text-white/90 text-xs mt-1">
                   No Plus Ones • Access Card Required • Each Card Admits One
@@ -713,6 +716,7 @@ export default function Home() {
         }}
       />
 
+
       {/* Gifting Section */}
       <section id="gifting" className="relative section-padding overflow-hidden">
         {/* Decorative blur for Gifting background */}
@@ -737,7 +741,7 @@ export default function Home() {
                 <FiGift className="text-xl" /> MONETARY GIFTS ONLY
               </p>
               <p className="text-gray-700 text-sm md:text-base">
-                We kindly request that all gifts be monetary contributions.
+                We kindly request that all gifts be monetary contributions. Love don't cost a thing… but this wedding sure did. Thank you!
               </p>
             </div>
           </div>
@@ -918,23 +922,47 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-deep-purple text-white py-8 pb-24 md:pb-8 px-4 relative overflow-hidden">
-        {/* Decorative blur for footer */}
+      <footer className="bg-gradient-to-br from-deep-purple via-deep-purple to-purple-900 text-white py-6 pb-24 md:pb-6 px-4 relative overflow-hidden">
+        {/* Decorative elements */}
         <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="absolute top-[-50%] left-[20%] w-[60%] h-[100%] bg-wedding-gold/10 rounded-full blur-[100px]"></div>
+          <div className="absolute top-[-30%] left-[10%] w-[40%] h-[80%] bg-wedding-gold/5 rounded-full blur-[80px]"></div>
+          <div className="absolute bottom-[-30%] right-[10%] w-[40%] h-[80%] bg-wedding-gold/5 rounded-full blur-[80px]"></div>
         </div>
-        <div className="max-w-7xl mx-auto text-center relative z-10">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <span className="text-lg">With love</span>
-            <FiHeart size={20} fill="currentColor" className="text-wedding-gold" />
-            <span className="text-lg">DoubleJoy'26</span>
+        
+        <div className="max-w-4xl mx-auto relative z-10">
+          {/* Main content */}
+          <div className="text-center space-y-3">
+            {/* Love message */}
+            <div className="flex items-center justify-center gap-2">
+              <div className="h-px w-8 bg-gradient-to-r from-transparent to-wedding-gold/50"></div>
+              <FiHeart size={16} className="text-wedding-gold animate-pulse" fill="currentColor" />
+              <span className="text-sm font-light tracking-wider text-wedding-gold/90">DoubleJoy'26</span>
+              <FiHeart size={16} className="text-wedding-gold animate-pulse" fill="currentColor" />
+              <div className="h-px w-8 bg-gradient-to-l from-transparent to-wedding-gold/50"></div>
+            </div>
+            
+            {/* Names */}
+            <h3 className="text-base md:text-lg font-serif text-white/95">
+              Ayobami Elizabeth & Gabriel Ayobamidele
+            </h3>
+            
+            {/* Event details */}
+            <div className="flex items-center justify-center gap-3 text-xs text-white/70">
+              <span>June 6th, 2026</span>
+              <span className="text-wedding-gold/50">•</span>
+              <span>Celebration Gardens International</span>
+            </div>
+            
+            {/* Divider */}
+            <div className="pt-3">
+              <div className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-wedding-gold/30 to-transparent"></div>
+            </div>
+            
+            {/* Copyright */}
+            <p className="text-xs text-white/50 pt-2">
+              © 2026 DoubleJoy. All rights reserved.
+            </p>
           </div>
-          <p className="text-sm opacity-80">
-            Ayobami Elizabeth & Gabriel Ayobamidele
-          </p>
-          <p className="text-xs opacity-60 mt-2">
-            June 6th, 2026 | Ikeja, Lagos State
-          </p>
         </div>
       </footer>
 
@@ -955,6 +983,10 @@ export default function Home() {
             </div>
             <span className="text-[10px] font-medium">RSVP</span>
           </button>
+          <a href="/guestbook" className="flex flex-col items-center gap-1 text-gray-500 hover:text-deep-purple min-w-[44px] min-h-[44px]">
+            <FiMail size={20} />
+            <span className="text-[10px] font-medium">Guestbook</span>
+          </a>
           <button onClick={() => scrollToSection('gallery')} className="flex flex-col items-center gap-1 text-gray-500 hover:text-deep-purple min-w-[44px] min-h-[44px]">
             <FiCamera size={20} />
             <span className="text-[10px] font-medium">Gallery</span>

@@ -102,7 +102,7 @@ The implementation follows a layered approach: first establishing core infrastru
     - **Property 28: Sensitive Data Excluded From Logs**
     - **Validates: Requirements 10.6**
 
-- [ ] 5. Implement rate limiting service
+- [x] 5. Implement rate limiting service
   - [x] 5.1 Create rate limiting middleware
     - Implement `lib/services/rateLimit.ts` with in-memory Map for development
     - Support configurable limits per endpoint (3 messages/hour, 5 uploads/hour)
@@ -139,8 +139,8 @@ The implementation follows a layered approach: first establishing core infrastru
     - **Property 17: Upload Retry Logic Executes With Exponential Backoff**
     - **Validates: Requirements 5.6**
 
-- [ ] 8. Implement message API endpoints
-  - [-] 8.1 Create POST /api/messages endpoint
+- [x] 8. Implement message API endpoints
+  - [x] 8.1 Create POST /api/messages endpoint
     - Implement `app/api/messages/route.ts` with POST handler
     - Validate request body using message validation service
     - Sanitize input using sanitization service
@@ -158,7 +158,7 @@ The implementation follows a layered approach: first establishing core infrastru
     - **Property 26: SQL Injection Payloads Are Handled Safely**
     - **Validates: Requirements 10.2**
   
-  - [-] 8.4 Create GET /api/messages endpoint
+  - [x] 8.4 Create GET /api/messages endpoint
     - Implement GET handler in `app/api/messages/route.ts`
     - Parse query parameters for page and limit (default: page=1, limit=20, max=50)
     - Query database for messages where is_hidden=false, ordered by created_at DESC
@@ -178,7 +178,7 @@ The implementation follows a layered approach: first establishing core infrastru
     - **Property 25: Message List Caching Reduces Database Queries**
     - **Validates: Requirements 9.6**
   
-  - [ ] 8.8 Create DELETE /api/messages/[id] endpoint (admin only)
+  - [x] 8.8 Create DELETE /api/messages/[id] endpoint (admin only)
     - Implement `app/api/messages/[id]/route.ts` with DELETE handler
     - Add authentication check (implementation TBD based on existing auth system)
     - Support delete and hide actions via request body
@@ -194,8 +194,8 @@ The implementation follows a layered approach: first establishing core infrastru
     - **Property 21: Moderation Actions Are Logged**
     - **Validates: Requirements 8.5**
 
-- [ ] 9. Implement upload API endpoint
-  - [~] 9.1 Create POST /api/upload endpoint
+- [x] 9. Implement upload API endpoint
+  - [x] 9.1 Create POST /api/upload endpoint
     - Implement `app/api/upload/route.ts` with POST handler for multipart/form-data
     - Parse uploaded files from request (up to 10 files)
     - Validate each file using file validation service
@@ -205,17 +205,17 @@ The implementation follows a layered approach: first establishing core infrastru
     - Return response with per-file upload results (success/error status, driveFileId, error messages)
     - _Requirements: 3.1, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 5.2, 5.4, 5.6, 9.2_
 
-- [~] 10. Checkpoint - Ensure all tests pass
+- [x] 10. Checkpoint - Ensure all tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 11. Implement GuestMessagesSection component
-  - [~] 11.1 Create GuestMessagesSection component structure
+- [x] 11. Implement GuestMessagesSection component
+  - [x] 11.1 Create GuestMessagesSection component structure
     - Create `app/components/GuestMessagesSection.tsx` with TypeScript interfaces for props and state
     - Implement component state for messages array, loading states, error handling, pagination
     - Set up form fields for name, email (optional), and message with controlled inputs
     - _Requirements: 1.1, 2.2_
   
-  - [~] 11.2 Implement message submission logic
+  - [x] 11.2 Implement message submission logic
     - Add form submission handler that calls POST /api/messages
     - Implement client-side validation with inline error messages
     - Show optimistic UI update (add message immediately, rollback on error)
@@ -227,7 +227,7 @@ The implementation follows a layered approach: first establishing core infrastru
     - **Property 29: Validation Errors Highlight Specific Fields**
     - **Validates: Requirements 11.4**
   
-  - [~] 11.4 Implement message display and pagination
+  - [x] 11.4 Implement message display and pagination
     - Fetch initial messages from GET /api/messages on component mount
     - Display messages with guest name, message content, and relative timestamp
     - Implement infinite scroll with intersection observer to load next page
@@ -238,7 +238,7 @@ The implementation follows a layered approach: first establishing core infrastru
     - **Property 7: Message Display Includes All Required Fields**
     - **Validates: Requirements 2.2**
   
-  - [~] 11.6 Style GuestMessagesSection component
+  - [x] 11.6 Style GuestMessagesSection component
     - Apply Tailwind CSS classes using deep purple (#4A1A5C) and gold (#D4AF37) color scheme
     - Implement responsive design for mobile (320px+), tablet, and desktop
     - Ensure touch-friendly inputs with 44x44px minimum touch targets
@@ -250,14 +250,14 @@ The implementation follows a layered approach: first establishing core infrastru
     - **Property 19: Interactive Elements Have ARIA Labels**
     - **Validates: Requirements 7.5**
 
-- [ ] 12. Implement MediaUploadSection component
-  - [~] 12.1 Create MediaUploadSection component structure
+- [x] 12. Implement MediaUploadSection component
+  - [x] 12.1 Create MediaUploadSection component structure
     - Create `app/components/MediaUploadSection.tsx` with TypeScript interfaces for props and state
     - Implement component state for selected files, upload progress, upload status, errors
     - Create FileWithPreview interface with id, file, preview, and type fields
     - _Requirements: 3.1, 3.3, 3.4_
   
-  - [~] 12.2 Implement file selection interface
+  - [x] 12.2 Implement file selection interface
     - Add file input with multiple file selection support
     - Implement drag-and-drop zone with visual feedback on dragover
     - Generate preview thumbnails for images using FileReader API
@@ -272,7 +272,7 @@ The implementation follows a layered approach: first establishing core infrastru
     - **Property 10: File Metadata Displayed for All Selected Files**
     - **Validates: Requirements 3.4**
   
-  - [~] 12.5 Implement client-side file validation
+  - [x] 12.5 Implement client-side file validation
     - Validate file types against allowed formats (JPEG, PNG, HEIC, MP4, MOV, AVI)
     - Validate image files against 25MB size limit
     - Validate video files against 100MB size limit
@@ -280,7 +280,7 @@ The implementation follows a layered approach: first establishing core infrastru
     - Display inline error messages for validation failures
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 4.6_
   
-  - [~] 12.6 Implement file upload logic
+  - [x] 12.6 Implement file upload logic
     - Add upload handler that calls POST /api/upload with FormData
     - Track upload progress for each file using XMLHttpRequest or fetch with progress events
     - Update progress bars as upload progresses
@@ -293,7 +293,7 @@ The implementation follows a layered approach: first establishing core infrastru
     - **Property 18: Progress Updates Reflect Upload Percentage**
     - **Validates: Requirements 6.2**
   
-  - [~] 12.8 Style MediaUploadSection component
+  - [x] 12.8 Style MediaUploadSection component
     - Apply Tailwind CSS classes using deep purple (#4A1A5C) and gold (#D4AF37) color scheme
     - Implement responsive design for mobile (320px+), tablet, and desktop
     - Ensure touch-friendly controls with 44x44px minimum touch targets
@@ -301,8 +301,8 @@ The implementation follows a layered approach: first establishing core infrastru
     - Style drag-and-drop zone with clear visual feedback
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5_
 
-- [ ] 13. Implement error handling and user feedback
-  - [~] 13.1 Add comprehensive error handling to components
+- [x] 13. Implement error handling and user feedback
+  - [x] 13.1 Add comprehensive error handling to components
     - Implement network error handling with user-friendly messages and retry buttons
     - Handle API errors with structured error response parsing
     - Display service unavailable messages when backend is down
@@ -313,25 +313,61 @@ The implementation follows a layered approach: first establishing core infrastru
     - **Property 30: Error Responses Include Code and Message**
     - **Validates: Requirements 11.6**
   
-  - [~] 13.3 Implement consistent error styling
+  - [x] 13.3 Implement consistent error styling
     - Create reusable error message components with consistent styling
     - Match error messages to website design aesthetic
     - Ensure error messages are accessible with proper ARIA attributes
     - _Requirements: 11.5_
 
-- [ ] 14. Integrate components into main page
-  - [~] 14.1 Add GuestMessagesSection to home page
+- [x] 14. Integrate components into main page
+  - [x] 14.1 Add GuestMessagesSection to home page
     - Import and render GuestMessagesSection component in `app/page.tsx` or appropriate page
     - Position component in appropriate section of the page layout
     - _Requirements: 1.1, 2.1_
   
-  - [~] 14.2 Add MediaUploadSection to home page
+  - [x] 14.2 Add MediaUploadSection to home page
     - Import and render MediaUploadSection component in `app/page.tsx` or appropriate page
     - Position component in appropriate section of the page layout
     - _Requirements: 3.1_
 
-- [~] 15. Final checkpoint - Ensure all tests pass
+- [x] 15. Final checkpoint - Ensure all tests pass
   - Ensure all tests pass, ask the user if questions arise.
+
+## Notes
+
+- Tasks marked with `*` are optional property-based tests and can be skipped for faster MVP delivery
+- Each task references specific requirements for traceability
+- The implementation uses TypeScript throughout for type safety
+- Database choice (SQLite for development, PostgreSQL/MySQL for production) should be determined before starting task 2
+- Google Drive OAuth 2.0 credentials must be obtained and configured in environment variables before starting task 7
+- Admin authentication system for message moderation (task 8.8) depends on existing auth infrastructure
+- Property-based tests use fast-check library with minimum 100 iterations per test
+- All API endpoints implement proper error handling with structured error responses
+- Security measures (sanitization, encryption, rate limiting) are integrated throughout the implementation
+- The design follows Next.js 14 App Router conventions with server components and API route handlers
+
+## Task Dependency Graph
+
+```json
+{
+  "waves": [
+    { "id": 0, "tasks": ["1"] },
+    { "id": 1, "tasks": ["2.1", "2.2", "2.3"] },
+    { "id": 2, "tasks": ["3.1", "3.5", "4.1", "4.3", "4.5"] },
+    { "id": 3, "tasks": ["3.2", "3.3", "3.4", "3.6", "3.7", "3.8", "3.9", "3.10", "4.2", "4.4", "4.6", "5.1"] },
+    { "id": 4, "tasks": ["5.2", "5.3", "5.4", "7.1"] },
+    { "id": 5, "tasks": ["7.2", "7.3", "8.1"] },
+    { "id": 6, "tasks": ["8.2", "8.3", "8.4"] },
+    { "id": 7, "tasks": ["8.5", "8.6", "8.7", "8.8", "9.1"] },
+    { "id": 8, "tasks": ["8.9", "8.10", "11.1", "12.1"] },
+    { "id": 9, "tasks": ["11.2", "11.4", "12.2"] },
+    { "id": 10, "tasks": ["11.3", "11.5", "12.3", "12.4", "12.5"] },
+    { "id": 11, "tasks": ["11.6", "12.6"] },
+    { "id": 12, "tasks": ["11.7", "12.7", "12.8", "13.1"] },
+    { "id": 13, "tasks": ["13.2", "13.3", "14.1", "14.2"] }
+  ]
+}
+```
 
 ## Notes
 
