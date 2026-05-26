@@ -60,11 +60,12 @@ function cleanupExpiredEntries(): void {
   const now = new Date();
   const keysToDelete: string[] = [];
 
-  for (const [key, entry] of rateLimitStore.entries()) {
+  // Convert entries to array to avoid iteration issues
+  Array.from(rateLimitStore.entries()).forEach(([key, entry]) => {
     if (entry.resetAt <= now) {
       keysToDelete.push(key);
     }
-  }
+  });
 
   for (const key of keysToDelete) {
     rateLimitStore.delete(key);
