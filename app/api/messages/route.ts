@@ -387,20 +387,20 @@ export async function GET(request: NextRequest) {
 
     try {
       // Fetch messages with pagination
-      messages = await query<MessageRecord>(
+      messages = (await query(
         `SELECT id, name, message, created_at, is_hidden
          FROM messages
          WHERE is_hidden = $1
          ORDER BY created_at DESC
          LIMIT $2 OFFSET $3`,
         [false, limit, offset]
-      );
+      )) as MessageRecord[];
 
       // Get total count of non-hidden messages
-      const countResult = await query<{ count: number }>(
+      const countResult = (await query(
         `SELECT COUNT(*) as count FROM messages WHERE is_hidden = $1`,
         [false]
-      );
+      )) as { count: number }[];
       totalCount = countResult[0]?.count || 0;
     } catch (error) {
       console.error('Database query failed:', error);

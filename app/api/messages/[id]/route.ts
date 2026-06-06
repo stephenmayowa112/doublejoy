@@ -166,10 +166,10 @@ export async function DELETE(
     }
     
     // Check if message exists
-    const existingMessage = await queryOne<MessageRecord>(
+    const existingMessage = (await queryOne(
       'SELECT * FROM messages WHERE id = $1',
       [messageId]
-    );
+    )) as MessageRecord | undefined;
     
     if (!existingMessage) {
       return NextResponse.json(
