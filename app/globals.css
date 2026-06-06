@@ -28,7 +28,7 @@
   }
   
   .section-padding {
-    @apply py-16 md:py-24 px-4 md:px-8;
+    @apply py-8 md:py-12 px-4 md:px-8;
   }
 
   .animate-fadeIn {

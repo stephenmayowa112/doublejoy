@@ -156,11 +156,11 @@ export default function Home() {
       {/* Hero Section */}
       <section id="home" className="relative bg-gradient-to-b from-white/80 to-white/40 backdrop-blur-sm section-padding overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8">
-            <p className="text-sm md:text-base text-gray-600 mb-2">
+          <div className="text-center mb-4">
+            <p className="text-sm md:text-base text-gray-600 mb-1">
               June 6th, 2026 | 10 AM Prompt
             </p>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-deep-purple mb-2">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-deep-purple mb-1">
               Ayobami & Gabriel
             </h1>
             <p className="text-lg md:text-xl text-royal-purple italic">
@@ -169,7 +169,7 @@ export default function Home() {
           </div>
 
           {/* Couple Image with Floral Decorations */}
-          <div className="relative max-w-4xl mx-auto my-12">
+          <div className="relative max-w-4xl mx-auto my-6">
             {/* Left Floral */}
             <div className="absolute left-0 bottom-0 w-32 md:w-48 h-32 md:h-48 opacity-60">
               <svg viewBox="0 0 200 200" className="w-full h-full text-light-purple">
@@ -207,7 +207,7 @@ export default function Home() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-12">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-6">
             <button 
               onClick={() => scrollToSection('event-details')}
               className="btn-primary w-full md:w-auto"
@@ -229,8 +229,8 @@ export default function Home() {
           </div>
 
           {/* Bible Verse */}
-          <div className="text-center mt-12 max-w-2xl mx-auto">
-            <p className="text-sm text-gray-500 mb-2">Ecclesiastes 4:12</p>
+          <div className="text-center mt-6 max-w-2xl mx-auto">
+            <p className="text-sm text-gray-500 mb-1">Ecclesiastes 4:12</p>
             <p className="text-lg md:text-xl font-serif text-deep-purple italic">
               "...A cord of three strands is not easily broken..."
             </p>
@@ -241,7 +241,7 @@ export default function Home() {
       {/* The Story Section */}
       <section id="story" className="bg-white/40 backdrop-blur-md section-padding">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
             {/* Image */}
             <div className="order-2 md:order-1">
               <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl">
@@ -259,29 +259,29 @@ export default function Home() {
 
             {/* Content */}
             <div className="order-1 md:order-2">
-              <h2 className="text-4xl md:text-5xl font-serif text-deep-purple mb-2">
+              <h2 className="text-4xl md:text-5xl font-serif text-deep-purple mb-1">
                 .......in the beginning
               </h2>
-              <p className="text-sm text-gray-500 italic mb-6">
+              <p className="text-sm text-gray-500 italic mb-4">
                 As told by the bride
               </p>
               
               {/* Initial content - always visible */}
-              <p className="text-gray-700 leading-relaxed mb-4">
+              <p className="text-gray-700 leading-relaxed mb-3">
                 Quite the weird love story, honestly.
               </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
+              <p className="text-gray-700 leading-relaxed mb-3">
                 We actually met at the gym. And yes! this is your sign to stop ignoring that 
                 membership card and "start next Monday." <FiMoon className="inline-block relative -top-[2px] text-gray-500" />
               </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
+              <p className="text-gray-700 leading-relaxed mb-3">
                 Funny thing is, the year before, I had promised myself I'd finally take fitness 
                 seriously after my birthday. I had a gym close to my house, but it was under 
                 renovation, and if I'm being honest, I also wanted somewhere a little less 
                 familiar. Somewhere I could sweat in peace without seeing half the neighbourhood. 
                 So I switched locations.
               </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
+              <p className="text-gray-700 leading-relaxed mb-3">
                 Little did I know I was not only going there to lose weight… apparently, I went 
                 there to lose my singlehood too.
               </p>
@@ -289,23 +289,23 @@ export default function Home() {
               {/* First expansion - visible after first click */}
               {storyExpanded >= 1 && (
                 <div className="animate-fadeIn">
-                  <p className="text-gray-700 leading-relaxed mb-4">
+                  <p className="text-gray-700 leading-relaxed mb-3">
                     I had been consistent for a couple of months when we met. And the irony? On the 
                     exact day we met, I was exhausted, irritated, and fully ready to go home. I walked 
                     up to my coach to announce my resignation from fitness for the day, and standing 
                     there was this seemingly calm, gentleman-looking human being. (Heavy emphasis on 
                     *seemingly*, because now? Hmm. That's another conversation.)
                   </p>
-                  <p className="text-gray-700 leading-relaxed mb-4">
+                  <p className="text-gray-700 leading-relaxed mb-3">
                     My coach introduced us because we were namesakes, and that was supposed to be the 
                     end of it. I went back to my corner because Coach refused to let me escape without 
                     finishing my routine.
                   </p>
-                  <p className="text-gray-700 leading-relaxed mb-4">
+                  <p className="text-gray-700 leading-relaxed mb-3">
                     Then this man walks up to me and says, <span className="italic">"If you give me your number, 
                     I'll tell Coach to let you go home."</span>
                   </p>
-                  <p className="text-gray-700 leading-relaxed mb-4">
+                  <p className="text-gray-700 leading-relaxed mb-3">
                     The audacity. The confidence. The nonsense.
                   </p>
                 </div>
@@ -314,11 +314,11 @@ export default function Home() {
               {/* Second expansion - visible after second click */}
               {storyExpanded >= 2 && (
                 <div className="animate-fadeIn">
-                  <p className="text-gray-700 leading-relaxed mb-4">
+                  <p className="text-gray-700 leading-relaxed mb-3">
                     But somehow, we started talking. And talking. And talking. So much that I still 
                     didn't finish that routine. Instead, we ended up walking home together.
                   </p>
-                  <p className="text-gray-700 leading-relaxed mb-4">
+                  <p className="text-gray-700 leading-relaxed mb-3">
                     And somehow, since that day, we've just kept talking, walking, gyming, laughing, 
                     arguing, gist-ing, and doing life together.
                   </p>
@@ -378,14 +378,14 @@ export default function Home() {
       {/* Meet the Couple Section */}
       <section id="couple" className="section-padding bg-white/40 backdrop-blur-md">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif text-deep-purple text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-serif text-deep-purple text-center mb-8">
             Meet the Couple
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             {/* Gabriel */}
             <div className="text-center">
-              <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden mb-6">
+              <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden mb-4">
                 <Image
                   src="/images/ayo1.jpeg"
                   alt="Gabriel Ayobamidele"
@@ -395,7 +395,7 @@ export default function Home() {
                   loading="lazy"
                 />
               </div>
-              <h3 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
+              <h3 className="text-3xl md:text-4xl font-serif text-deep-purple mb-3">
                 About the Groom
               </h3>
               <div className="text-gray-700 leading-relaxed max-w-md mx-auto text-left space-y-3 text-base">
@@ -438,7 +438,7 @@ export default function Home() {
 
             {/* Ayobami */}
             <div className="text-center">
-              <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden mb-6">
+              <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden mb-4">
                 <Image
                   src="/images/ayo2.jpeg"
                   alt="Ayobami Elizabeth"
@@ -448,7 +448,7 @@ export default function Home() {
                   loading="lazy"
                 />
               </div>
-              <h3 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
+              <h3 className="text-3xl md:text-4xl font-serif text-deep-purple mb-3">
                 About the Bride
               </h3>
               <div className="text-gray-700 leading-relaxed max-w-md mx-auto text-left space-y-3 text-base">
@@ -493,14 +493,14 @@ export default function Home() {
       </section>
 
       {/* Event Details Section */}
-      <section id="event-details" className="relative py-12 md:py-16 overflow-hidden">
+      <section id="event-details" className="relative py-8 md:py-12 overflow-hidden">
         {/* Decorative blur for Event Details background */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <div className="absolute left-[10%] top-[20%] w-[30%] h-[60%] bg-deep-purple/40 rounded-full blur-[100px]"></div>
           <div className="absolute right-[15%] bottom-[10%] w-[25%] h-[50%] bg-wedding-gold/30 rounded-full blur-[100px]"></div>
         </div>
         <div className="relative max-w-3xl mx-auto px-4 text-center z-10">
-          <h2 className="text-2xl md:text-3xl font-serif text-deep-purple mb-6">
+          <h2 className="text-2xl md:text-3xl font-serif text-deep-purple mb-4">
             Event Details
           </h2>
           
@@ -512,11 +512,11 @@ export default function Home() {
             {/* Inner glass reflection */}
             <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent pointer-events-none"></div>
 
-            <div className="mb-6 relative z-10">
-              <p className="text-xs uppercase tracking-widest mb-3 text-wedding-gold font-medium">
+            <div className="mb-4 relative z-10">
+              <p className="text-xs uppercase tracking-widest mb-2 text-wedding-gold font-medium">
                 The Families of
               </p>
-              <div className="space-y-3">
+              <div className="space-y-2">
                 <div>
                   <p className="text-base md:text-lg font-medium">
                     Elder & Evangelist Ajibola Afolabi Ajayi
@@ -525,7 +525,7 @@ export default function Home() {
                     Of Ita-Ogbolu, Akure-North, Ondo State
                   </p>
                 </div>
-                <div className="flex items-center justify-center gap-3 my-3">
+                <div className="flex items-center justify-center gap-3 my-2">
                   <div className="h-px w-12 bg-wedding-gold/50"></div>
                   <p className="text-xl font-serif text-wedding-gold">&</p>
                   <div className="h-px w-12 bg-wedding-gold/50"></div>
@@ -541,15 +541,15 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="border-t border-white/20 pt-6 mt-6">
-              <p className="text-xs uppercase tracking-widest mb-3 text-wedding-gold font-medium">
+            <div className="border-t border-white/20 pt-4 mt-4">
+              <p className="text-xs uppercase tracking-widest mb-2 text-wedding-gold font-medium">
                 Invite you to celebrate
               </p>
-              <h3 className="text-2xl md:text-3xl font-serif mb-5 text-soft-gold">
+              <h3 className="text-2xl md:text-3xl font-serif mb-4 text-soft-gold">
                 Ayobami Elizabeth & Gabriel Ayobamidele
               </h3>
               
-              <div className="grid grid-cols-2 gap-3 md:gap-4 max-w-lg mx-auto mb-5">
+              <div className="grid grid-cols-2 gap-3 md:gap-4 max-w-lg mx-auto mb-4">
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
                   <p className="text-xs text-wedding-gold mb-1">Date</p>
                   <p className="text-sm md:text-base font-medium">June 6th, 2026</p>
@@ -582,11 +582,11 @@ export default function Home() {
           </div>
 
           {/* Map & Directions Panel */}
-          <div className="mt-8 bg-white/40 backdrop-blur-xl border border-white/20 rounded-2xl p-6 md:p-8 shadow-xl text-left relative overflow-hidden transition-all duration-300 hover:shadow-2xl max-w-3xl mx-auto">
+          <div className="mt-6 bg-white/40 backdrop-blur-xl border border-white/20 rounded-2xl p-4 md:p-6 shadow-xl text-left relative overflow-hidden transition-all duration-300 hover:shadow-2xl max-w-3xl mx-auto">
             {/* Ambient gold glow */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-wedding-gold/10 rounded-full blur-2xl pointer-events-none"></div>
             
-            <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-stretch">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-stretch">
               {/* Map Iframe with Claymorphism Frame */}
               <div className="w-full md:w-3/5 min-h-[250px] relative rounded-xl overflow-hidden border-4 border-white/80 shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),_0_8px_16px_rgba(74,26,92,0.15)] bg-slate-100 flex items-stretch">
                 <iframe
@@ -602,18 +602,18 @@ export default function Home() {
               {/* Directions Details */}
               <div className="w-full md:w-2/5 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-2 mb-3 text-deep-purple font-serif font-bold text-lg md:text-xl">
+                  <div className="flex items-center gap-2 mb-2 text-deep-purple font-serif font-bold text-lg md:text-xl">
                     <FiMap className="text-wedding-gold w-5 h-5 flex-shrink-0" />
                     <span>Venue Location</span>
                   </div>
                   <h4 className="text-gray-800 font-bold text-base md:text-lg mb-1 leading-snug">
                     Celebration Gardens International
                   </h4>
-                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                  <p className="text-gray-600 text-sm mb-3 leading-relaxed">
                     28b Isaac John Street, GRA Ikeja, Lagos, Nigeria
                   </p>
                   
-                  <div className="bg-white/40 border border-white/20 rounded-lg p-3 text-xs text-gray-600 leading-relaxed shadow-sm mb-4">
+                  <div className="bg-white/40 border border-white/20 rounded-lg p-3 text-xs text-gray-600 leading-relaxed shadow-sm mb-3">
                     <p className="font-semibold text-deep-purple flex items-center gap-1 mb-1">
                       <FiCompass className="text-wedding-gold animate-spin-slow" />
                       Navigational Tip:
@@ -648,15 +648,15 @@ export default function Home() {
         </div>
 
         <div className="relative max-w-2xl mx-auto text-center z-10">
-          <h2 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
+          <h2 className="text-3xl md:text-4xl font-serif text-deep-purple mb-3">
             RSVP
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-700 mb-3">
             Please confirm your attendance by May 16th, 2026 to receive your access card
           </p>
           
           {/* Invitation Notice */}
-          <div className="bg-deep-purple/10 border-2 border-deep-purple rounded-lg p-4 mb-8">
+          <div className="bg-deep-purple/10 border-2 border-deep-purple rounded-lg p-3 mb-6">
             <p className="text-deep-purple font-semibold text-sm md:text-base flex items-center justify-center gap-2">
               <FiAlertTriangle /> STRICTLY BY INVITATION • NO PLUS ONES
             </p>
@@ -665,8 +665,8 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="bg-white/60 backdrop-blur-xl border border-white/50 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] p-8 md:p-12">
-            <div className="mb-8">
+          <div className="bg-white/60 backdrop-blur-xl border border-white/50 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] p-6 md:p-8">
+            <div className="mb-6">
               <p className="text-lg text-gray-700 mb-2">
                 Contact for RSVP:
               </p>
@@ -681,8 +681,8 @@ export default function Home() {
               </a>
             </div>
             
-            <div className="border-t border-gray-200 pt-8">
-              <p className="text-sm text-gray-600 mb-4">
+            <div className="border-t border-gray-200 pt-6">
+              <p className="text-sm text-gray-600 mb-3">
                 RSVP Deadline: May 16th, 2026
               </p>
               <a 
@@ -699,7 +699,7 @@ export default function Home() {
       {/* Gallery Preview Section */}
       <section id="gallery" className="section-padding bg-white/40 backdrop-blur-md">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif text-deep-purple text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-serif text-deep-purple text-center mb-8">
             Gallery
           </h2>
           
@@ -728,7 +728,7 @@ export default function Home() {
           </div>
           
           {galleryVisible < galleryImages.length && (
-            <div className="text-center mt-8">
+            <div className="text-center mt-6">
               <button 
                 onClick={loadMoreGallery}
                 className="btn-secondary"
@@ -739,7 +739,7 @@ export default function Home() {
           )}
 
           {galleryVisible >= galleryImages.length && (
-            <div className="text-center mt-8">
+            <div className="text-center mt-6">
               <p className="text-gray-600 italic">
                 You've reached the end of our gallery <FiHeart className="inline-block relative -top-[2px] text-gray-500" />
               </p>
@@ -785,17 +785,17 @@ export default function Home() {
         </div>
 
         <div className="relative max-w-5xl mx-auto z-10">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-serif text-deep-purple mb-4">
+          <div className="text-center mb-6">
+            <h2 className="text-3xl md:text-4xl font-serif text-deep-purple mb-3">
               Wedding Gift
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto mb-6">
+            <p className="text-gray-600 max-w-2xl mx-auto mb-4">
               Your presence at our wedding is the greatest gift. However, if you wish to honor us with a gift, 
               we would be grateful for a contribution towards our future together.
             </p>
             
             {/* Gift Policy Notice */}
-            <div className="max-w-2xl mx-auto bg-deep-purple/10 border-2 border-deep-purple rounded-lg p-4 mb-8">
+            <div className="max-w-2xl mx-auto bg-deep-purple/10 border-2 border-deep-purple rounded-lg p-3 mb-6">
               <p className="flex items-center justify-center gap-2 text-deep-purple font-bold text-base md:text-lg mb-2">
                 <FiGift className="text-xl" /> MONETARY GIFTS ONLY
               </p>
@@ -969,8 +969,8 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="text-center mt-8">
-            <p className="text-gray-600 italic mb-2">
+          <div className="text-center mt-6">
+            <p className="text-gray-600 italic mb-1">
               Thank you for your love and generosity <FiHeart className="inline-block relative -top-[2px] text-gray-500" />
             </p>
             <p className="text-sm text-gray-500">
