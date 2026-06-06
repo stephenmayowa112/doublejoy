@@ -8,15 +8,15 @@
 // Check if Postgres connection string is available
 const isPostgres = !!(process.env.POSTGRES_URL || (process.env.DATABASE_URL && process.env.DATABASE_URL.startsWith('postgres')));
 
-// Dynamic imports based on database type
+// Import appropriate module based on database type
 let dbModule: any;
 
 if (isPostgres) {
   console.log('Using Postgres/Neon database');
-  dbModule = require('./connection-postgres');
+  dbModule = await import('./connection-postgres.ts');
 } else {
   console.log('Using SQLite database');
-  dbModule = require('./connection');
+  dbModule = await import('./connection.ts');
 }
 
 // Export all database functions

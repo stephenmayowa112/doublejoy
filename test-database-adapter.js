@@ -5,7 +5,7 @@
  * or Postgres (production) and that SQL queries work with both databases.
  */
 
-const { query, execute, isDatabaseHealthy } = require('./lib/db/adapter.ts');
+import { query, execute, isDatabaseHealthy } from './lib/db/adapter.ts';
 
 async function testDatabaseAdapter() {
   console.log('\n=== Testing Database Adapter ===\n');
