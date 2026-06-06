@@ -14,7 +14,7 @@ import { validateFile, validateFileType, validateBatchSize } from '@/lib/service
 import { checkRateLimit } from '@/lib/services/rateLimit';
 import { hashIpAddress } from '@/lib/utils/ipHash';
 import { uploadFiles, FileUpload } from '@/lib/services/googleDrive';
-import { execute } from '@/lib/db/connection';
+import { execute } from '@/lib/db/adapter';
 
 /**
  * Get client IP address from request headers
@@ -171,9 +171,9 @@ export async function POST(request: NextRequest) {
         const fileType = typeValidation.fileType || 'image';
 
         try {
-          execute(
+          await execute(
             `INSERT INTO uploads (id, filename, drive_file_id, file_type, file_size, mime_type, uploaded_at, ip_address_hash)
-             VALUES (?, ?, ?, ?, ?, ?, datetime('now'), ?)`,
+             VALUES ($1, $2, $3, $4, $5, $6, CURRENT_TIMESTAMP, $7)`,
             [
               uploadId,
               driveResult.fileName || file.name,

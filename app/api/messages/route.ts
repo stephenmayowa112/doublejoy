@@ -15,7 +15,7 @@ import { sanitizeMessage, sanitizeName, sanitizeEmail } from '@/lib/services/san
 import { checkRateLimit } from '@/lib/services/rateLimit';
 import { encrypt } from '@/lib/services/encryption';
 import { hashIpAddress } from '@/lib/utils/ipHash';
-import { execute, query } from '@/lib/db/connection';
+import { execute, query } from '@/lib/db/adapter';
 import type { Message, MessageRecord } from '@/lib/db/types';
 
 /**
@@ -187,10 +187,10 @@ export async function POST(request: NextRequest) {
 
     // Store message in database (Requirement 1.4, 10.2)
     try {
-      execute(
+      await execute(
         `INSERT INTO messages (id, name, email_encrypted, message, created_at, is_hidden, ip_address_hash)
-         VALUES (?, ?, ?, ?, datetime('now'), ?, ?)`,
-        [messageId, sanitizedName, encryptedEmail, sanitizedMessage, 0, ipAddressHash]
+         VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP, $5, $6)`,
+        [messageId, sanitizedName, encryptedEmail, sanitizedMessage, false, ipAddressHash]
       );
     } catch (error) {
       console.error('Database insert failed:', error);
@@ -387,19 +387,19 @@ export async function GET(request: NextRequest) {
 
     try {
       // Fetch messages with pagination
-      messages = query<MessageRecord>(
+      messages = await query<MessageRecord>(
         `SELECT id, name, message, created_at, is_hidden
          FROM messages
-         WHERE is_hidden = ?
+         WHERE is_hidden = $1
          ORDER BY created_at DESC
-         LIMIT ? OFFSET ?`,
-        [0, limit, offset]
+         LIMIT $2 OFFSET $3`,
+        [false, limit, offset]
       );
 
       // Get total count of non-hidden messages
-      const countResult = query<{ count: number }>(
-        `SELECT COUNT(*) as count FROM messages WHERE is_hidden = ?`,
-        [0]
+      const countResult = await query<{ count: number }>(
+        `SELECT COUNT(*) as count FROM messages WHERE is_hidden = $1`,
+        [false]
       );
       totalCount = countResult[0]?.count || 0;
     } catch (error) {

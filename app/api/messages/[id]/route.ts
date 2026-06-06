@@ -6,7 +6,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { execute, queryOne, transaction } from '@/lib/db/connection';
+import { execute, queryOne, transaction } from '@/lib/db/adapter';
 import { MessageRecord, CreateModerationLogInput } from '@/lib/db/types';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -62,7 +62,7 @@ function getAdminId(request: NextRequest): string | null {
  * 
  * @param input - Moderation log data
  */
-function createModerationLog(input: CreateModerationLogInput): void {
+async function createModerationLog(input: CreateModerationLogInput): Promise<void> {
   const id = uuidv4();
   
   const query = `
@@ -73,10 +73,10 @@ function createModerationLog(input: CreateModerationLogInput): void {
       admin_id,
       action_timestamp,
       reason
-    ) VALUES (?, ?, ?, ?, datetime('now'), ?)
+    ) VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP, $5)
   `;
   
-  execute(query, [
+  await execute(query, [
     id,
     input.messageId,
     input.actionType,
@@ -166,8 +166,8 @@ export async function DELETE(
     }
     
     // Check if message exists
-    const existingMessage = queryOne<MessageRecord>(
-      'SELECT * FROM messages WHERE id = ?',
+    const existingMessage = await queryOne<MessageRecord>(
+      'SELECT * FROM messages WHERE id = $1',
       [messageId]
     );
     
@@ -186,13 +186,13 @@ export async function DELETE(
     
     // Perform moderation action in a transaction
     // Requirements: 8.3 (hide), 8.5 (logging)
-    transaction(() => {
+    await transaction(async () => {
       if (body.action === 'delete') {
         // Permanently delete the message
-        execute('DELETE FROM messages WHERE id = ?', [messageId]);
+        await execute('DELETE FROM messages WHERE id = $1', [messageId]);
         
         // Log the deletion
-        createModerationLog({
+        await createModerationLog({
           messageId,
           actionType: 'delete',
           adminId,
@@ -200,13 +200,13 @@ export async function DELETE(
         });
       } else if (body.action === 'hide') {
         // Hide the message without deleting (Requirement 8.3)
-        execute(
-          'UPDATE messages SET is_hidden = TRUE WHERE id = ?',
+        await execute(
+          'UPDATE messages SET is_hidden = TRUE WHERE id = $1',
           [messageId]
         );
         
         // Log the hide action (Requirement 8.5)
-        createModerationLog({
+        await createModerationLog({
           messageId,
           actionType: 'hide',
           adminId,

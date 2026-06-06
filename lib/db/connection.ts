@@ -89,10 +89,61 @@ export function closeDatabase(): void {
 }
 
 /**
+ * Convert Postgres-style $1, $2, $3 placeholders to SQLite ? placeholders
+ * This allows the same SQL queries to work with both databases
+ * 
+ * @param query SQL query string with $1, $2, etc. placeholders
+ * @returns SQL query string with ? placeholders
+ */
+function convertPlaceholders(query: string): string {
+  // Replace $1, $2, $3, etc. with ?
+  return query.replace(/\$\d+/g, '?');
+}
+
+/**
+ * Convert Postgres CURRENT_TIMESTAMP to SQLite datetime('now')
+ * 
+ * @param query SQL query string
+ * @returns SQL query string with SQLite datetime syntax
+ */
+function convertTimestamp(query: string): string {
+  return query.replace(/CURRENT_TIMESTAMP/gi, "datetime('now')");
+}
+
+/**
+ * Convert Postgres boolean values to SQLite integers
+ * 
+ * @param params Query parameters
+ * @returns Parameters with booleans converted to 0/1
+ */
+function convertBooleans(params: any[]): any[] {
+  return params.map(param => {
+    if (typeof param === 'boolean') {
+      return param ? 1 : 0;
+    }
+    return param;
+  });
+}
+
+/**
+ * Prepare query for SQLite by converting Postgres syntax
+ * 
+ * @param query SQL query string
+ * @param params Query parameters
+ * @returns Converted query and parameters
+ */
+function prepareForSQLite(query: string, params: any[]): { query: string; params: any[] } {
+  let convertedQuery = convertPlaceholders(query);
+  convertedQuery = convertTimestamp(convertedQuery);
+  const convertedParams = convertBooleans(params);
+  return { query: convertedQuery, params: convertedParams };
+}
+
+/**
  * Execute a SELECT query with parameterized values
  * Prevents SQL injection by using prepared statements
  * 
- * @param query SQL query string with ? placeholders
+ * @param query SQL query string with $1, $2, etc. placeholders (Postgres style)
  * @param params Query parameters
  * @returns Array of result rows
  * @throws Error if query execution fails
@@ -100,8 +151,10 @@ export function closeDatabase(): void {
 export function query<T = any>(query: string, params: any[] = []): T[] {
   try {
     const database = getDatabase();
-    const stmt = database.prepare(query);
-    const results = stmt.all(...params) as T[];
+    const { query: sqliteQuery, params: sqliteParams } = prepareForSQLite(query, params);
+    console.log(sqliteQuery);
+    const stmt = database.prepare(sqliteQuery);
+    const results = stmt.all(...sqliteParams) as T[];
     return results;
   } catch (error) {
     console.error('Query execution failed:', { query, error });
@@ -113,7 +166,7 @@ export function query<T = any>(query: string, params: any[] = []): T[] {
  * Execute a SELECT query and return a single row
  * Prevents SQL injection by using prepared statements
  * 
- * @param query SQL query string with ? placeholders
+ * @param query SQL query string with $1, $2, etc. placeholders (Postgres style)
  * @param params Query parameters
  * @returns Single result row or undefined
  * @throws Error if query execution fails
@@ -121,8 +174,10 @@ export function query<T = any>(query: string, params: any[] = []): T[] {
 export function queryOne<T = any>(query: string, params: any[] = []): T | undefined {
   try {
     const database = getDatabase();
-    const stmt = database.prepare(query);
-    const result = stmt.get(...params) as T | undefined;
+    const { query: sqliteQuery, params: sqliteParams } = prepareForSQLite(query, params);
+    console.log(sqliteQuery);
+    const stmt = database.prepare(sqliteQuery);
+    const result = stmt.get(...sqliteParams) as T | undefined;
     return result;
   } catch (error) {
     console.error('Query execution failed:', { query, error });
@@ -134,7 +189,7 @@ export function queryOne<T = any>(query: string, params: any[] = []): T | undefi
  * Execute an INSERT, UPDATE, or DELETE query
  * Prevents SQL injection by using prepared statements
  * 
- * @param query SQL query string with ? placeholders
+ * @param query SQL query string with $1, $2, etc. placeholders (Postgres style)
  * @param params Query parameters
  * @returns Query execution info (changes, lastInsertRowid)
  * @throws Error if query execution fails
@@ -142,8 +197,10 @@ export function queryOne<T = any>(query: string, params: any[] = []): T | undefi
 export function execute(query: string, params: any[] = []): Database.RunResult {
   try {
     const database = getDatabase();
-    const stmt = database.prepare(query);
-    const result = stmt.run(...params);
+    const { query: sqliteQuery, params: sqliteParams } = prepareForSQLite(query, params);
+    console.log(sqliteQuery);
+    const stmt = database.prepare(sqliteQuery);
+    const result = stmt.run(...sqliteParams);
     return result;
   } catch (error) {
     console.error('Query execution failed:', { query, error });
@@ -159,7 +216,7 @@ export function execute(query: string, params: any[] = []): Database.RunResult {
  * @returns Result of the callback function
  * @throws Error if transaction fails
  */
-export function transaction<T>(callback: () => T): T {
+export async function transaction<T>(callback: () => Promise<T> | T): Promise<T> {
   const database = getDatabase();
   
   try {
@@ -167,7 +224,7 @@ export function transaction<T>(callback: () => T): T {
     database.prepare('BEGIN').run();
     
     // Execute callback
-    const result = callback();
+    const result = await callback();
     
     // Commit transaction
     database.prepare('COMMIT').run();
@@ -190,7 +247,7 @@ export function transaction<T>(callback: () => T): T {
  * Execute a batch of queries with parameters
  * Useful for bulk inserts or updates
  * 
- * @param query SQL query string with ? placeholders
+ * @param query SQL query string with $1, $2, etc. placeholders (Postgres style)
  * @param paramsList Array of parameter arrays
  * @returns Array of execution results
  * @throws Error if batch execution fails
@@ -199,14 +256,16 @@ export function executeBatch(query: string, paramsList: any[][]): Database.RunRe
   const database = getDatabase();
   
   try {
-    const stmt = database.prepare(query);
+    const { query: sqliteQuery } = prepareForSQLite(query, []);
+    const stmt = database.prepare(sqliteQuery);
     const results: Database.RunResult[] = [];
     
     // Use transaction for better performance
     database.prepare('BEGIN').run();
     
     for (const params of paramsList) {
-      results.push(stmt.run(...params));
+      const convertedParams = convertBooleans(params);
+      results.push(stmt.run(...convertedParams));
     }
     
     database.prepare('COMMIT').run();
