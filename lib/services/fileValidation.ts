@@ -11,8 +11,7 @@
  */
 
 // Constants
-const MAX_IMAGE_SIZE = 25 * 1024 * 1024; // 25MB in bytes
-const MAX_VIDEO_SIZE = 100 * 1024 * 1024; // 100MB in bytes
+// File size limits removed - no restrictions
 const MAX_FILES_PER_BATCH = 10;
 
 // Allowed MIME types
@@ -96,45 +95,25 @@ export function validateFileType(mimeType: string): FileValidationResult {
 
 /**
  * Validates if an image file size is within limits
- * Requirement 4.2: Image size validation (≤25MB)
+ * Size validation removed - accepts any file size
  * 
  * @param fileSize - The size of the file in bytes
- * @returns ValidationResult with error if size exceeds limit
+ * @returns ValidationResult always returns valid
  */
 export function validateImageSize(fileSize: number): ValidationResult {
-  if (fileSize > MAX_IMAGE_SIZE) {
-    return {
-      isValid: false,
-      error: {
-        code: 'IMAGE_SIZE_EXCEEDED',
-        message: `Image size exceeds maximum allowed size of 25MB`,
-        field: 'fileSize',
-      },
-    };
-  }
-  
+  // Size limit removed - all sizes accepted
   return { isValid: true };
 }
 
 /**
  * Validates if a video file size is within limits
- * Requirement 4.3: Video size validation (≤100MB)
+ * Size validation removed - accepts any file size
  * 
  * @param fileSize - The size of the file in bytes
- * @returns ValidationResult with error if size exceeds limit
+ * @returns ValidationResult always returns valid
  */
 export function validateVideoSize(fileSize: number): ValidationResult {
-  if (fileSize > MAX_VIDEO_SIZE) {
-    return {
-      isValid: false,
-      error: {
-        code: 'VIDEO_SIZE_EXCEEDED',
-        message: `Video size exceeds maximum allowed size of 100MB`,
-        field: 'fileSize',
-      },
-    };
-  }
-  
+  // Size limit removed - all sizes accepted
   return { isValid: true };
 }
 
@@ -276,8 +255,6 @@ export function isAllowedExtension(filename: string): boolean {
 
 // Export constants for use in other modules
 export const FILE_VALIDATION_CONSTANTS = {
-  MAX_IMAGE_SIZE,
-  MAX_VIDEO_SIZE,
   MAX_FILES_PER_BATCH,
   ALLOWED_IMAGE_TYPES,
   ALLOWED_VIDEO_TYPES,

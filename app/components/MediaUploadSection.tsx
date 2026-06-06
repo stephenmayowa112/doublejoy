@@ -82,25 +82,7 @@ export default function MediaUploadSection() {
 
     const fileType: 'image' | 'video' = (isImageMime || isImageExt) ? 'image' : 'video'
 
-    // 2. Validate Size (Requirement 4.2: Image ≤ 25MB, Requirement 4.3: Video ≤ 100MB)
-    const maxImageSize = 25 * 1024 * 1024
-    const maxVideoSize = 100 * 1024 * 1024
-
-    if (fileType === 'image' && file.size > maxImageSize) {
-      return {
-        isValid: false,
-        type: 'image',
-        error: 'Image is too large. Maximum size is 25MB.'
-      }
-    }
-
-    if (fileType === 'video' && file.size > maxVideoSize) {
-      return {
-        isValid: false,
-        type: 'video',
-        error: 'Video is too large. Maximum size is 100MB.'
-      }
-    }
+    // Size validation removed - all file sizes accepted
 
     return {
       isValid: true,
@@ -334,7 +316,7 @@ export default function MediaUploadSection() {
             Drag & Drop your photos and videos here
           </p>
           <p className="text-xs text-gray-500 max-w-md mx-auto leading-relaxed">
-            Supports JPEG, PNG, HEIC images up to 25MB and MP4, MOV, AVI videos up to 100MB. Upload up to 10 files per batch.
+            Supports JPEG, PNG, HEIC images and MP4, MOV, AVI videos. Upload up to 10 files per batch.
           </p>
         </div>
 
