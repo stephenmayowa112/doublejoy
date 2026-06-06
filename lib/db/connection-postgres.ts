@@ -37,7 +37,9 @@ function getClient() {
 export async function query<T = any>(queryText: string, params: any[] = []): Promise<T[]> {
   try {
     const sql = getClient();
-    const results = await sql(queryText, params);
+    // Use the neon client's parameterized query support
+    // Build the query with placeholders
+    const results = await sql(queryText, params) as any;
     return results as T[];
   } catch (error) {
     console.error('Query execution failed:', { query: queryText, error });
@@ -69,7 +71,7 @@ export async function queryOne<T = any>(queryText: string, params: any[] = []): 
 export async function execute(queryText: string, params: any[] = []): Promise<{ rowCount: number; lastInsertId?: string }> {
   try {
     const sql = getClient();
-    const result = await sql(queryText, params);
+    const result = await sql(queryText, params) as any;
     
     return {
       rowCount: result.length || 0,
