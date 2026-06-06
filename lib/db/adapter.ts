@@ -23,10 +23,10 @@ async function getDbModule() {
   if (!dbModulePromise) {
     if (isPostgres) {
       console.log('Using Postgres/Neon database');
-      dbModulePromise = import('./connection-postgres.ts');
+      dbModulePromise = import('./connection-postgres');
     } else {
       console.log('Using SQLite database');
-      dbModulePromise = import('./connection.ts');
+      dbModulePromise = import('./connection');
     }
   }
   
